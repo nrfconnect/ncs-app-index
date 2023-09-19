@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "module": "CommonJS",
+        "isolatedModules": true,
+        "sourceMap": true,
+        "rootDir": ".",
+        "outDir": "out",
+        "skipLibCheck": true,
+        "noUncheckedIndexedAccess": true,
+        "target": "ES2020",
+        "lib": ["ES2022"]
+    },
+    "include": ["src"]
+}

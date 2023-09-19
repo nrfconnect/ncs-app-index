@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "http://nordicsemi.no/app_index/schemas/org.json",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "organization",
+                "user"
+            ]
+        },
+        "isPartner": {
+            "type": "boolean"
+        },
+        "location": {
+            "type": "string"
+        },
+        "avatar": {
+            "type": "string",
+            "format": "uri"
+        },
+        "urls": {
+            "type": "object",
+            "properties": {
+                "support": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "blog": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "twitter": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            },
+            "required": [
+                "support"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "description",
+        "type",
+        "isPartner",
+        "urls"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+        "http://nordicsemi.no/app_index/schemas/app_kind.json": {
+            "$id": "http://nordicsemi.no/app_index/schemas/app_kind.json",
+            "enum": [
+                "template",
+                "sample",
+                "project"
+            ]
+        },
+        "http://nordicsemi.no/app_index/schemas/app_tag.json": {
+            "$id": "http://nordicsemi.no/app_index/schemas/app_tag.json",
+            "enum": [
+                "bluetooth",
+                "zigbee",
+                "lte",
+                "dfu",
+                "thread",
+                "matter",
+                "bt-mesh"
+            ]
+        }
+    }
+}
