@@ -6,10 +6,7 @@
         "orgs": {
             "type": "object",
             "additionalProperties": {
-                "type": "array",
-                "items": {
-                    "$ref": "http://nordicsemi.no/app_index/schemas/org.json"
-                }
+                "$ref": "http://nordicsemi.no/app_index/schemas/org.json"
             }
         },
         "apps": {
@@ -127,6 +124,9 @@
                 "license": {
                     "type": "string"
                 },
+                "repo": {
+                    "type": "string"
+                },
                 "isTemplate": {
                     "type": "boolean"
                 },
@@ -168,7 +168,8 @@
                             "date"
                         ],
                         "additionalProperties": false
-                    }
+                    },
+                    "minItems": 1
                 },
                 "watchers": {
                     "type": "integer"
@@ -197,7 +198,8 @@
                 "watchers",
                 "forks",
                 "defaultBranch",
-                "lastUpdate"
+                "lastUpdate",
+                "repo"
             ],
             "additionalProperties": false
         }

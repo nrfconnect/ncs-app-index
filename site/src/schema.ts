@@ -10,6 +10,13 @@ export type AppIndex = FromSchema<
     { references: [typeof orgSchema, typeof appSchema, typeof appKindSchema, typeof appTagSchema] }
 >;
 
+type Application = AppIndex['apps'][number];
+
+type Organization = AppIndex['orgs'][string];
+
+// Move the organisation into the app object instead of just a pointer.
+export type NormalisedApp = Omit<Application, 'owner'> & { owner: Organization };
+
 /**
  * Provided by each GitHub organization or user that contributes
  * applications to the index.
@@ -34,14 +41,26 @@ export const SchemaIds = (() => {
     } as const;
 })();
 
+export const validAppKinds = ['template', 'sample', 'project'] as const;
+
+export const validTags = [
+    'bluetooth',
+    'zigbee',
+    'lte',
+    'dfu',
+    'thread',
+    'matter',
+    'bt-mesh',
+] as const;
+
 export const appKindSchema = {
     $id: SchemaIds.AppKind,
-    enum: ['template', 'sample', 'project'],
+    enum: validAppKinds,
 } as const satisfies JSONSchema;
 
 export const appTagSchema = {
     $id: SchemaIds.AppTag,
-    enum: ['bluetooth', 'zigbee', 'lte', 'dfu', 'thread', 'matter', 'bt-mesh'],
+    enum: validTags,
 } as const satisfies JSONSchema;
 
 export const appMetadataSchema = {
@@ -105,6 +124,7 @@ export const appSchema = {
         name: { type: 'string' },
         description: { type: 'string' },
         license: { type: 'string' },
+        repo: { type: 'string' },
         isTemplate: { type: 'boolean' },
         owner: { type: 'string', description: 'The ID of the owner organization.' },
         manifest: { type: 'string' },
@@ -122,6 +142,7 @@ export const appSchema = {
                 required: ['tag', 'name', 'date'],
                 additionalProperties: false,
             },
+            minItems: 1,
         },
         watchers: { type: 'integer' },
         forks: { type: 'integer' },
@@ -142,6 +163,7 @@ export const appSchema = {
         'forks',
         'defaultBranch',
         'lastUpdate',
+        'repo',
     ],
     additionalProperties: false,
 } as const satisfies JSONSchema;
@@ -153,8 +175,7 @@ export const appIndexSchema = {
         orgs: {
             type: 'object',
             additionalProperties: {
-                type: 'array',
-                items: { $ref: SchemaIds.Organization },
+                $ref: SchemaIds.Organization,
             },
         },
         apps: {

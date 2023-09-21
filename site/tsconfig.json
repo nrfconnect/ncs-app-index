@@ -3,7 +3,7 @@
         "strict": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
-        "module": "CommonJS",
+        "module": "ESNext",
         "isolatedModules": true,
         "sourceMap": true,
         "rootDir": ".",
@@ -11,7 +11,18 @@
         "skipLibCheck": true,
         "noUncheckedIndexedAccess": true,
         "target": "ES2020",
-        "lib": ["ES2022"]
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "noEmit": true,
+        "jsx": "preserve",
+        "moduleResolution": "bundler",
+        "allowJs": true,
+        "incremental": true,
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "include": ["src"]
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+    "exclude": ["node_modules"]
 }
