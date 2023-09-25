@@ -18,11 +18,6 @@ body {
 }
 
 @font-face {
-    font-family: GT-Eesti-Display-ULight;
-    src: url('/fonts/GT-Eesti-Display-ULight.ttf');
-}
-
-@font-face {
     font-family: GT-Eesti-Display-Thin;
     src: url('/fonts/GT-Eesti-Display-Thin.ttf');
 }
