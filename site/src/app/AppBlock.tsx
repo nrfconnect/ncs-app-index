@@ -5,7 +5,7 @@ import {
     StarIcon,
     EnvelopeIcon,
     CommandLineIcon,
-    GlobeEuropeAfricaIcon,
+    ArrowTopRightOnSquareIcon,
 } from '@heroicons/react/20/solid';
 
 import { NormalisedApp } from '../schema';
@@ -27,10 +27,10 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                     <div className="flex items-center gap-2">
                         <h1 className="text-xl text-gray-600">{app.name}</h1>
                         <a href={app.repo} target="_blank" title="Visit Website">
-                            <GlobeEuropeAfricaIcon
+                            <ArrowTopRightOnSquareIcon
                                 className="hoverable-icon"
-                                width={25}
-                                height={25}
+                                width={20}
+                                height={20}
                             />
                         </a>
                     </div>

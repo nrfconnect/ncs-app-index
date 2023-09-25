@@ -50,7 +50,7 @@ function Root(props: Props) {
     );
 
     return (
-        <main className="flex h-full flex-col gap-4 text-gray-600 md:gap-14" id="root">
+        <main className="flex h-full flex-col gap-4 text-gray-600 md:gap-10" id="root">
             <Dialog ref={dialogRef}>
                 {showingApp && <InstructionsDialog app={showingApp} close={onDialogClose} />}
                 {showingAboutDialog && <AboutDialog close={onDialogClose} />}
