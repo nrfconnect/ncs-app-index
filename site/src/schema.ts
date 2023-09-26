@@ -15,9 +15,9 @@ export type AppIndex = FromSchema<
     { references: [typeof orgSchema, typeof appSchema, typeof appKindSchema, typeof appTagSchema] }
 >;
 
-type Application = AppIndex['apps'][number];
+export type Application = AppIndex['apps'][number];
 
-type Organization = AppIndex['orgs'][string];
+export type Organization = AppIndex['orgs'][string];
 
 // Move the organisation into the app object instead of just a pointer.
 export type NormalisedApp = Omit<Application, 'owner'> & { owner: Organization };
@@ -127,6 +127,8 @@ export const orgIndexSchema = {
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
+export const validOrgKinds = ['User', 'Organization'] as const;
+
 export const orgSchema = {
     $id: SchemaIds.Organization,
     type: 'object',
@@ -134,7 +136,7 @@ export const orgSchema = {
         id: { type: 'string' },
         name: { type: 'string' },
         description: { type: 'string' },
-        type: { type: 'string', enum: ['organization', 'user'] },
+        type: { type: 'string', enum: validOrgKinds },
         isPartner: { type: 'boolean' },
         location: { type: 'string' },
         avatar: { type: 'string', format: 'uri' },
@@ -191,7 +193,6 @@ export const appSchema = {
         'id',
         'name',
         'description',
-        'license',
         'isTemplate',
         'owner',
         'kind',
