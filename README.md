@@ -2,6 +2,12 @@
 
 An index of applications built for the nRF Connect SDK.
 
+## App Index
+
+The app index is a JSON file containing organizations and their applications, generated from the contents of the `index` folder. Each JSON file in the folder should be named after the organization's GitHub username (e.g. `nrfconnect.json`), and contain metadata about the organization and it's applications according to the schema in `resources/org_index_schema.json`.
+
+To build the index file, run `npm run generate-index-json` from the root directory.
+
 ## Website
 
 This repository includes a static website that displays the contributed applications in a searchable frontend. It's developed using the [Next.js](https://nextjs.org/) React framework, and uses [Tailwind](https://tailwindcss.com/) for styling.
