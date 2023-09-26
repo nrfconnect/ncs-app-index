@@ -18,10 +18,11 @@ async function writeSchemas(): Promise<void[]> {
     return Promise.all([
         writeSchema('org_index_schema', {
             $schema: 'http://json-schema.org/draft-07/schema#',
-            ...Schemas.orgSchema,
+            ...Schemas.orgIndexSchema,
             definitions: {
                 [SchemaIds.AppKind]: Schemas.appKindSchema,
                 [SchemaIds.AppTag]: Schemas.appTagSchema,
+                [SchemaIds.AppMetadata]: Schemas.appMetadataSchema,
             },
         }),
         writeSchema('app_index_schema', {

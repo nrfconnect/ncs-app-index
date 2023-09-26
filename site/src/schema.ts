@@ -41,7 +41,13 @@ export const SchemaIds = (() => {
     } as const;
 })();
 
-export const validAppKinds = ['template', 'sample', 'project'] as const;
+const appKinds = [
+    { const: 'template', description: 'A starting point for new apps' },
+    { const: 'sample', description: 'A demonstration of a concept.' },
+    { const: 'project', description: 'A fully-fledged project users can run on their devices.' },
+] as const;
+
+export const validAppKinds = appKinds.map((kind) => kind.const);
 
 export const validTags = [
     'bluetooth',
@@ -55,7 +61,7 @@ export const validTags = [
 
 export const appKindSchema = {
     $id: SchemaIds.AppKind,
-    enum: validAppKinds,
+    oneOf: appKinds,
 } as const satisfies JSONSchema;
 
 export const appTagSchema = {
@@ -67,11 +73,28 @@ export const appMetadataSchema = {
     $id: SchemaIds.AppMetadata,
     type: 'object',
     properties: {
-        name: { type: 'string' },
-        description: { type: 'string' },
-        manifest: { type: 'string', default: 'west.yml' },
-        kind: { $ref: SchemaIds.AppKind },
-        tags: { type: 'array', items: { $ref: SchemaIds.AppTag } },
+        name: {
+            type: 'string',
+            description: 'The name of the application.',
+        },
+        description: {
+            type: 'string',
+            description: 'Text describing the application. Inferred from the repo if missing.',
+        },
+        manifest: {
+            type: 'string',
+            default: 'west.yml',
+            description: 'T',
+        },
+        kind: {
+            $ref: SchemaIds.AppKind,
+            description: 'The type of the app repo.',
+        },
+        tags: {
+            type: 'array',
+            items: { $ref: SchemaIds.AppTag },
+            description: 'An array of tags describing the application.',
+        },
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags'],
@@ -81,9 +104,19 @@ export const orgIndexSchema = {
     $id: SchemaIds.OrgIndex,
     type: 'object',
     properties: {
-        name: { type: 'string' },
-        description: { type: 'string' },
-        apps: { type: 'array', items: { $ref: SchemaIds.AppMetadata } },
+        name: {
+            type: 'string',
+            description: 'The name of the organization.',
+        },
+        description: {
+            type: 'string',
+            description: 'A short sentence describing the organization.',
+        },
+        apps: {
+            type: 'array',
+            items: { $ref: SchemaIds.AppMetadata },
+            description: 'A list of applications contributed by the organization.',
+        },
     },
     required: ['name', 'description', 'apps'],
     additionalProperties: false,

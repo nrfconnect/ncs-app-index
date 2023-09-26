@@ -24,10 +24,19 @@
     "definitions": {
         "http://nordicsemi.no/app_index/schemas/app_kind.json": {
             "$id": "http://nordicsemi.no/app_index/schemas/app_kind.json",
-            "enum": [
-                "template",
-                "sample",
-                "project"
+            "oneOf": [
+                {
+                    "const": "template",
+                    "description": "A starting point for new apps"
+                },
+                {
+                    "const": "sample",
+                    "description": "A demonstration of a concept."
+                },
+                {
+                    "const": "project",
+                    "description": "A fully-fledged project users can run on their devices."
+                }
             ]
         },
         "http://nordicsemi.no/app_index/schemas/app_tag.json": {

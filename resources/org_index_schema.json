@@ -1,76 +1,46 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://nordicsemi.no/app_index/schemas/org.json",
+    "$id": "http://nordicsemi.no/app_index/schemas/org_index.json",
     "type": "object",
     "properties": {
-        "id": {
-            "type": "string"
-        },
         "name": {
-            "type": "string"
+            "type": "string",
+            "description": "The name of the organization."
         },
         "description": {
-            "type": "string"
-        },
-        "type": {
             "type": "string",
-            "enum": [
-                "organization",
-                "user"
-            ]
+            "description": "A short sentence describing the organization."
         },
-        "isPartner": {
-            "type": "boolean"
-        },
-        "location": {
-            "type": "string"
-        },
-        "avatar": {
-            "type": "string",
-            "format": "uri"
-        },
-        "urls": {
-            "type": "object",
-            "properties": {
-                "support": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "email": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "blog": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "twitter": {
-                    "type": "string",
-                    "format": "uri"
-                }
+        "apps": {
+            "type": "array",
+            "items": {
+                "$ref": "http://nordicsemi.no/app_index/schemas/app_metadata.json"
             },
-            "required": [
-                "support"
-            ],
-            "additionalProperties": false
+            "description": "A list of applications contributed by the organization."
         }
     },
     "required": [
-        "id",
         "name",
         "description",
-        "type",
-        "isPartner",
-        "urls"
+        "apps"
     ],
     "additionalProperties": false,
     "definitions": {
         "http://nordicsemi.no/app_index/schemas/app_kind.json": {
             "$id": "http://nordicsemi.no/app_index/schemas/app_kind.json",
-            "enum": [
-                "template",
-                "sample",
-                "project"
+            "oneOf": [
+                {
+                    "const": "template",
+                    "description": "A starting point for new apps"
+                },
+                {
+                    "const": "sample",
+                    "description": "A demonstration of a concept."
+                },
+                {
+                    "const": "project",
+                    "description": "A fully-fledged project users can run on their devices."
+                }
             ]
         },
         "http://nordicsemi.no/app_index/schemas/app_tag.json": {
@@ -83,6 +53,42 @@
                 "thread",
                 "matter",
                 "bt-mesh"
+            ]
+        },
+        "http://nordicsemi.no/app_index/schemas/app_metadata.json": {
+            "$id": "http://nordicsemi.no/app_index/schemas/app_metadata.json",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the application."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Text describing the application. Inferred from the repo if missing."
+                },
+                "manifest": {
+                    "type": "string",
+                    "default": "west.yml",
+                    "description": "T"
+                },
+                "kind": {
+                    "$ref": "http://nordicsemi.no/app_index/schemas/app_kind.json",
+                    "description": "The type of application repo."
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://nordicsemi.no/app_index/schemas/app_tag.json"
+                    },
+                    "description": "An array of tags describing the application."
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "name",
+                "kind",
+                "tags"
             ]
         }
     }
