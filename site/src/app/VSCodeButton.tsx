@@ -14,7 +14,7 @@ function VSCodeButton({ app }: Props): JSX.Element {
 
     return (
         <a
-            href={`vscode://nordic-semiconductor.nrf-connect/open-application?${params.toString()}`}
+            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/get-application?${params.toString()}`}
             title="Open in nRF Connect for VS Code"
             className="button bg-[#0032A0] text-white"
         >
