@@ -10,6 +10,7 @@ function VSCodeButton({ app }: Props): JSX.Element {
         app: app.name,
         branch: app.defaultBranch,
         manifest: app.manifest ?? '',
+        repo: app.repo,
     });
 
     return (
