@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { AppIndex, validAppKinds, validTags } from './schema';
+import { AppIndex, validAppKinds, validOrgKinds, validTags } from './schema';
 
 import { faker } from '@faker-js/faker';
 
@@ -17,7 +17,7 @@ function createFakeOrg(id: string): AppIndex['orgs'][string] {
         name: faker.company.name(),
         description: faker.lorem.paragraph(),
         isPartner: faker.datatype.boolean(0.85),
-        type: faker.helpers.arrayElement(['organization', 'user']),
+        type: faker.helpers.arrayElement(validOrgKinds),
         urls: {
             support: faker.internet.url(),
             email: faker.internet.email(),

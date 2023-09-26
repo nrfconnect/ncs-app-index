@@ -1,6 +1,6 @@
 /* Copyright (c) 2023 Nordic Semiconductor ASA
  *
- * SPDX-License-Identifier: LicenseRef-Nordic-1-Clause
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 /// <reference types="next" />
