@@ -1,3 +1,8 @@
+/* Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 import { PropsWithChildren } from 'react';
 import { NormalisedApp } from '../schema';
 import CodeBlock from './CodeBlock';

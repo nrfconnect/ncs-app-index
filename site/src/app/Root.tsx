@@ -1,3 +1,8 @@
+/* Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 'use client';
 
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react';

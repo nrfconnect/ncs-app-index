@@ -1,6 +1,6 @@
 /* Copyright (c) 2023 Nordic Semiconductor ASA
  *
- * SPDX-License-Identifier: LicenseRef-Nordic-1-Clause
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 import * as fs from 'fs';
@@ -11,13 +11,13 @@ const currentYear = new Date().getFullYear();
 
 const HASH_COPYRIGHT_NOTICE = `# Copyright (c) ${currentYear} Nordic Semiconductor ASA
 #
-# SPDX-License-Identifier: LicenseRef-Nordic-1-Clause
+# SPDX-License-Identifier: BSD-3-Clause
 
 `;
 
 const SLASH_STAR_COPYRIGHT_NOTICE = `/* Copyright (c) ${currentYear} Nordic Semiconductor ASA
  *
- * SPDX-License-Identifier: LicenseRef-Nordic-1-Clause
+ * SPDX-License-Identifier: BSD-3-Clause
  */
 
 `;

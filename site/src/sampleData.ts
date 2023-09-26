@@ -1,3 +1,8 @@
+/* Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 import { AppIndex, validAppKinds, validTags } from './schema';
 
 import { faker } from '@faker-js/faker';

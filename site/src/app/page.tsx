@@ -1,3 +1,8 @@
+/* Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
 import { sampleData } from '../sampleData';
 import { NormalisedApp } from '../schema';
 import Root from './Root';
