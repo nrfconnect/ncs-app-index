@@ -1,0 +1,84 @@
+/* Copyright (c) 2023 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+    height: 100%;
+}
+
+@font-face {
+    font-family: GT-Eesti-Display-Regular;
+    src: url('/fonts/GT-Eesti-Display-Regular.ttf');
+}
+
+@font-face {
+    font-family: GT-Eesti-Display-Medium;
+    src: url('/fonts/GT-Eesti-Display-Medium.ttf');
+}
+
+@font-face {
+    font-family: GT-Eesti-Display-Thin;
+    src: url('/fonts/GT-Eesti-Display-Thin.ttf');
+}
+
+@font-face {
+    font-family: GT-Eesti-Display-Thin-Italic;
+    src: url('/fonts/GT-Eesti-Display-Thin-Italic.ttf');
+}
+
+.header {
+    background: linear-gradient(to bottom, #00a9ce, #0077c8 99%);
+    background-blend-mode: lighten;
+    transition: all 0.2s ease-in-out;
+    top: 0;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .header::before {
+        content: attr(data-content);
+    }
+}
+
+.header::before {
+    font-size: 50px;
+    font-family: 'Roboto Mono', monospace;
+    white-space: pre;
+    color: #ffffff4f;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -70px;
+    width: 100%;
+    height: 740px;
+    overflow: hidden;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(345deg) translateY(-155px) translateX(165px);
+    filter: blur(2px) opacity(25%);
+    pointer-events: none;
+}
+
+.font-bold {
+    font-family: GT-Eesti-Display-Medium;
+}
+
+.font-thin {
+    font-family: GT-Eesti-Display-Thin;
+}
+
+.font-thin.italic {
+    font-family: GT-Eesti-Display-Thin-Italic;
+}
+
+.button {
+    @apply flex w-fit cursor-pointer items-center gap-1 px-2 py-1 transition-opacity hover:opacity-90;
+}
+
+.hoverable-icon {
+    @apply cursor-pointer opacity-90 transition-opacity hover:opacity-100;
+}
