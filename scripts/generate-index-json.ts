@@ -33,24 +33,12 @@ function notUndefined<T>(value: T | undefined): value is T {
 }
 
 function initialiseGitHubApi() {
-    let authToken: string | undefined = undefined;
-    const args = process.argv.slice(2);
-    if (args[0] === '--authToken' && args[1]) {
-        authToken = args[1];
-    } else {
-        authToken = process.env.AUTH_TOKEN;
-    }
+    const authToken = process.env.GITHUB_TOKEN;
 
     if (!authToken) {
-        console.warn(
-            colours.yellow(
-                'No auth token was provided, so you may encounter rate limit issues when calling the GitHub API.',
-            ),
-        );
-        console.warn(
-            colours.yellow(
-                'You can provide an auth token either through the "--authToken" parameter or by setting the "AUTH_TOKEN" environment variable.\n',
-            ),
+        throw new Error(
+            'No auth token was provided, so you may encounter rate limit issues when calling the GitHub API.\n' +
+                'Provide a token by setting the "GITHUB_TOKEN" environment variable.\n',
         );
     }
 
@@ -67,7 +55,7 @@ async function readJsonFiles(): Promise<ParsedOrgFile[]> {
         indexFiles
             .filter((f) => f.endsWith('.json'))
             .map(async (f) => ({
-                id: f.replace('.json', ''),
+                id: path.basename(f, '.json'),
                 orgIndex: JSON.parse(await fs.readFile(path.join(indexDir, f), 'utf-8')),
             })),
     );
@@ -88,11 +76,9 @@ async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
 async function fetchOrgData({
     id: orgId,
     orgIndex,
-}: ParsedOrgFile): Promise<{ org: Organization; apps: Application[] } | undefined> {
+}: ParsedOrgFile): Promise<{ org: Organization; apps: Application[] }> {
     try {
         const userData = await octokit.users.getByUsername({ username: 'id' });
-
-        console.log(colours.green(`Fetched data for user ${orgId}`));
 
         const org: Organization = {
             id: orgId,
@@ -112,17 +98,18 @@ async function fetchOrgData({
 
         const apps = await Promise.all(orgIndex.apps.map((app) => fetchRepoData(orgId, app)));
 
+        console.log(colours.green(`Fetched data for user ${orgId}`));
+
         return { org, apps: apps.filter(notUndefined) };
-    } catch (e) {
-        console.warn(colours.yellow(`Failed to fetch account data for user "${orgId}"`));
-        return undefined;
+    } catch {
+        throw new Error(`Failed to fetch data for organization ${orgId}`);
     }
 }
 
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
-): Promise<AppIndex['apps'][number] | undefined> {
+): Promise<AppIndex['apps'][number]> {
     try {
         const { data: repoData } = await octokit.repos.get({
             owner: orgId,
@@ -156,9 +143,8 @@ async function fetchRepoData(
             })),
             tags: app.tags,
         };
-    } catch (e) {
-        console.warn(colours.yellow(`Failed to fetch repository data for "${orgId}/${app.name}"`));
-        return undefined;
+    } catch {
+        throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
     }
 }
 
