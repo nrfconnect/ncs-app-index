@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { sampleData } from '../sampleData';
+import { getAppIndex } from '../data';
 import { NormalisedApp } from '../schema';
 import Root from './Root';
 
@@ -15,10 +15,11 @@ export default function Page() {
 // Run once at build time to turn the JSON data into something easier
 // to work with.
 function normaliseApps(): NormalisedApp[] {
+    const appIndex = getAppIndex();
     const normalised: NormalisedApp[] = [];
 
-    for (const app of sampleData.apps) {
-        const owner = sampleData.orgs[app.owner];
+    for (const app of appIndex.apps) {
+        const owner = appIndex.orgs[app.owner];
         if (!owner) {
             console.warn(`Unknown owner "${app.owner}" in app "${app.id}"`);
             continue;
