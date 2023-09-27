@@ -14,22 +14,22 @@ body {
 
 @font-face {
     font-family: GT-Eesti-Display-Regular;
-    src: url('/fonts/GT-Eesti-Display-Regular.ttf');
+    src: url('/ncs-app-index/fonts/GT-Eesti-Display-Regular.ttf');
 }
 
 @font-face {
     font-family: GT-Eesti-Display-Medium;
-    src: url('/fonts/GT-Eesti-Display-Medium.ttf');
+    src: url('/ncs-app-index/fonts/GT-Eesti-Display-Medium.ttf');
 }
 
 @font-face {
     font-family: GT-Eesti-Display-Thin;
-    src: url('/fonts/GT-Eesti-Display-Thin.ttf');
+    src: url('/ncs-app-index/fonts/GT-Eesti-Display-Thin.ttf');
 }
 
 @font-face {
     font-family: GT-Eesti-Display-Thin-Italic;
-    src: url('/fonts/GT-Eesti-Display-Thin-Italic.ttf');
+    src: url('/ncs-app-index/fonts/GT-Eesti-Display-Thin-Italic.ttf');
 }
 
 .header {

@@ -4,11 +4,10 @@
  */
 
 import Image from 'next/image';
-import { ChangeEvent, Dispatch, useMemo } from 'react';
+import { ChangeEvent, Dispatch } from 'react';
 import { FilterAction, Filters } from './filters';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
-import debounce from 'lodash/debounce';
 
 let contents = `static void gzll_tx_result_handler(struct gzll_tx_result *tx_result)a {
     int err;
@@ -75,7 +74,7 @@ function Header(props: Props): JSX.Element {
                 <a href="https://nordicsemi.no">
                     <div className="absolute left-4 z-10 hidden h-[125px] w-[125px] items-center justify-center bg-white py-[30px] pl-[20px] pr-[14px] md:flex">
                         <Image
-                            src="/nordic.svg"
+                            src="/ncs-app-index/nordic.svg"
                             width={100}
                             height={100}
                             alt="Nordic Semiconductor Logo"

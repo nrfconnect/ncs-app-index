@@ -7,6 +7,7 @@
 // files listed under the index directory.
 
 import fs from 'fs/promises';
+import { existsSync } from 'fs';
 import path from 'path';
 import { Octokit } from '@octokit/rest';
 import fetch from 'node-fetch';
@@ -49,6 +50,10 @@ const octokit = initialiseGitHubApi();
 
 async function readJsonFiles(): Promise<ParsedOrgFile[]> {
     const indexDir = path.join(__dirname, '..', 'index');
+    if (!existsSync(indexDir)) {
+        return [];
+    }
+
     const indexFiles = await fs.readdir(indexDir);
 
     return Promise.all(
