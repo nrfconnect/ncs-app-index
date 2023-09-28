@@ -10,10 +10,7 @@ import type { FromSchema, JSONSchema } from 'json-schema-to-ts';
  * information about the organization. Served as a static schema file
  * on the GitHub page.
  */
-export type AppIndex = FromSchema<
-    typeof appIndexSchema,
-    { references: [typeof orgSchema, typeof appSchema, typeof appKindSchema, typeof appTagSchema] }
->;
+export type AppIndex = FromSchema<typeof appIndexSchema>;
 
 export type Application = AppIndex['apps'][number];
 
@@ -26,25 +23,7 @@ export type NormalisedApp = Omit<Application, 'owner'> & { owner: Organization }
  * Provided by each GitHub organization or user that contributes
  * applications to the index.
  */
-export type OrgIndex = FromSchema<
-    typeof orgIndexSchema,
-    { references: [typeof appKindSchema, typeof appTagSchema, typeof appMetadataSchema] }
->;
-
-export const SchemaIds = (() => {
-    const id = <T extends string>(name: T) =>
-        `http://nordicsemi.no/app_index/schemas/${name}.json` as const;
-
-    return {
-        AppKind: id('app_kind'),
-        AppTag: id('app_tag'),
-        AppMetadata: id('app_metadata'),
-        OrgIndex: id('org_index'),
-        Organization: id('org'),
-        Application: id('app'),
-        AppIndex: id('app_index'),
-    } as const;
-})();
+export type OrgIndex = FromSchema<typeof orgIndexSchema>;
 
 const appKinds = [
     { const: 'template', description: 'A starting point for new apps' },
@@ -65,17 +44,15 @@ export const validTags = [
 ] as const;
 
 export const appKindSchema = {
-    $id: SchemaIds.AppKind,
+    description: 'The type of the app repo.',
     oneOf: appKinds,
 } as const satisfies JSONSchema;
 
 export const appTagSchema = {
-    $id: SchemaIds.AppTag,
     enum: validTags,
 } as const satisfies JSONSchema;
 
 export const appMetadataSchema = {
-    $id: SchemaIds.AppMetadata,
     type: 'object',
     properties: {
         name: {
@@ -89,15 +66,12 @@ export const appMetadataSchema = {
         manifest: {
             type: 'string',
             default: 'west.yml',
-            description: 'T',
+            description: 'Alternative filename for the west manifest. Defaults to west.yml.',
         },
-        kind: {
-            $ref: SchemaIds.AppKind,
-            description: 'The type of the app repo.',
-        },
+        kind: appKindSchema,
         tags: {
             type: 'array',
-            items: { $ref: SchemaIds.AppTag },
+            items: appTagSchema,
             description: 'An array of tags describing the application.',
         },
     },
@@ -106,7 +80,6 @@ export const appMetadataSchema = {
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
-    $id: SchemaIds.OrgIndex,
     type: 'object',
     properties: {
         name: {
@@ -119,7 +92,7 @@ export const orgIndexSchema = {
         },
         apps: {
             type: 'array',
-            items: { $ref: SchemaIds.AppMetadata },
+            items: appMetadataSchema,
             description: 'A list of applications contributed by the organization.',
         },
     },
@@ -130,7 +103,6 @@ export const orgIndexSchema = {
 export const validOrgKinds = ['User', 'Organization'] as const;
 
 export const orgSchema = {
-    $id: SchemaIds.Organization,
     type: 'object',
     properties: {
         id: { type: 'string' },
@@ -157,7 +129,6 @@ export const orgSchema = {
 } as const satisfies JSONSchema;
 
 export const appSchema = {
-    $id: SchemaIds.Application,
     type: 'object',
     properties: {
         id: { type: 'string' },
@@ -168,8 +139,8 @@ export const appSchema = {
         isTemplate: { type: 'boolean' },
         owner: { type: 'string', description: 'The ID of the owner organization.' },
         manifest: { type: 'string' },
-        kind: { $ref: SchemaIds.AppKind },
-        tags: { type: 'array', items: { $ref: SchemaIds.AppTag } },
+        kind: appKindSchema,
+        tags: { type: 'array', items: appTagSchema },
         releases: {
             type: 'array',
             items: {
@@ -208,18 +179,15 @@ export const appSchema = {
 } as const satisfies JSONSchema;
 
 export const appIndexSchema = {
-    $id: SchemaIds.AppIndex,
     type: 'object',
     properties: {
         orgs: {
             type: 'object',
-            additionalProperties: {
-                $ref: SchemaIds.Organization,
-            },
+            additionalProperties: orgSchema,
         },
         apps: {
             type: 'array',
-            items: { $ref: SchemaIds.Application },
+            items: appSchema,
         },
     },
     required: ['orgs', 'apps'],
