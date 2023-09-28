@@ -1,18 +1,191 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "http://nordicsemi.no/app_index/schemas/app_index.json",
     "type": "object",
     "properties": {
         "orgs": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "http://nordicsemi.no/app_index/schemas/org.json"
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "User",
+                            "Organization"
+                        ]
+                    },
+                    "isPartner": {
+                        "type": "boolean"
+                    },
+                    "location": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "urls": {
+                        "type": "object",
+                        "properties": {
+                            "support": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "blog": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "twitter": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        },
+                        "required": [
+                            "support"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "type",
+                    "isPartner",
+                    "urls"
+                ],
+                "additionalProperties": false
             }
         },
         "apps": {
             "type": "array",
             "items": {
-                "$ref": "http://nordicsemi.no/app_index/schemas/app.json"
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "license": {
+                        "type": "string"
+                    },
+                    "repo": {
+                        "type": "string"
+                    },
+                    "isTemplate": {
+                        "type": "boolean"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "description": "The ID of the owner organization."
+                    },
+                    "manifest": {
+                        "type": "string"
+                    },
+                    "kind": {
+                        "description": "The type of the app repo.",
+                        "oneOf": [
+                            {
+                                "const": "template",
+                                "description": "A starting point for new apps"
+                            },
+                            {
+                                "const": "sample",
+                                "description": "A demonstration of a concept."
+                            },
+                            {
+                                "const": "project",
+                                "description": "A fully-fledged project users can run on their devices."
+                            }
+                        ]
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "enum": [
+                                "bluetooth",
+                                "zigbee",
+                                "lte",
+                                "dfu",
+                                "thread",
+                                "matter",
+                                "bt-mesh"
+                            ]
+                        }
+                    },
+                    "releases": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "tag": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string",
+                                    "format": "date"
+                                }
+                            },
+                            "required": [
+                                "tag",
+                                "name",
+                                "date"
+                            ],
+                            "additionalProperties": false
+                        },
+                        "minItems": 1
+                    },
+                    "watchers": {
+                        "type": "integer"
+                    },
+                    "forks": {
+                        "type": "integer"
+                    },
+                    "defaultBranch": {
+                        "type": "string"
+                    },
+                    "lastUpdate": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "isTemplate",
+                    "owner",
+                    "kind",
+                    "tags",
+                    "releases",
+                    "watchers",
+                    "forks",
+                    "defaultBranch",
+                    "lastUpdate",
+                    "repo"
+                ],
+                "additionalProperties": false
             }
         }
     },
@@ -20,197 +193,5 @@
         "orgs",
         "apps"
     ],
-    "additionalProperties": false,
-    "definitions": {
-        "http://nordicsemi.no/app_index/schemas/app_kind.json": {
-            "$id": "http://nordicsemi.no/app_index/schemas/app_kind.json",
-            "oneOf": [
-                {
-                    "const": "template",
-                    "description": "A starting point for new apps"
-                },
-                {
-                    "const": "sample",
-                    "description": "A demonstration of a concept."
-                },
-                {
-                    "const": "project",
-                    "description": "A fully-fledged project users can run on their devices."
-                }
-            ]
-        },
-        "http://nordicsemi.no/app_index/schemas/app_tag.json": {
-            "$id": "http://nordicsemi.no/app_index/schemas/app_tag.json",
-            "enum": [
-                "bluetooth",
-                "zigbee",
-                "lte",
-                "dfu",
-                "thread",
-                "matter",
-                "bt-mesh"
-            ]
-        },
-        "http://nordicsemi.no/app_index/schemas/org.json": {
-            "$id": "http://nordicsemi.no/app_index/schemas/org.json",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "enum": [
-                        "organization",
-                        "user"
-                    ]
-                },
-                "isPartner": {
-                    "type": "boolean"
-                },
-                "location": {
-                    "type": "string"
-                },
-                "avatar": {
-                    "type": "string",
-                    "format": "uri"
-                },
-                "urls": {
-                    "type": "object",
-                    "properties": {
-                        "support": {
-                            "type": "string",
-                            "format": "uri"
-                        },
-                        "email": {
-                            "type": "string",
-                            "format": "uri"
-                        },
-                        "blog": {
-                            "type": "string",
-                            "format": "uri"
-                        },
-                        "twitter": {
-                            "type": "string",
-                            "format": "uri"
-                        }
-                    },
-                    "required": [
-                        "support"
-                    ],
-                    "additionalProperties": false
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "description",
-                "type",
-                "isPartner",
-                "urls"
-            ],
-            "additionalProperties": false
-        },
-        "http://nordicsemi.no/app_index/schemas/app.json": {
-            "$id": "http://nordicsemi.no/app_index/schemas/app.json",
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "description": {
-                    "type": "string"
-                },
-                "license": {
-                    "type": "string"
-                },
-                "repo": {
-                    "type": "string"
-                },
-                "isTemplate": {
-                    "type": "boolean"
-                },
-                "owner": {
-                    "type": "string",
-                    "description": "The ID of the owner organization."
-                },
-                "manifest": {
-                    "type": "string"
-                },
-                "kind": {
-                    "$ref": "http://nordicsemi.no/app_index/schemas/app_kind.json"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://nordicsemi.no/app_index/schemas/app_tag.json"
-                    }
-                },
-                "releases": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "tag": {
-                                "type": "string"
-                            },
-                            "name": {
-                                "type": "string"
-                            },
-                            "date": {
-                                "type": "string",
-                                "format": "date"
-                            }
-                        },
-                        "required": [
-                            "tag",
-                            "name",
-                            "date"
-                        ],
-                        "additionalProperties": false
-                    },
-                    "minItems": 1
-                },
-                "watchers": {
-                    "type": "integer"
-                },
-                "forks": {
-                    "type": "integer"
-                },
-                "defaultBranch": {
-                    "type": "string"
-                },
-                "lastUpdate": {
-                    "type": "string",
-                    "format": "date-time"
-                }
-            },
-            "required": [
-                "id",
-                "name",
-                "description",
-                "license",
-                "isTemplate",
-                "owner",
-                "kind",
-                "tags",
-                "releases",
-                "watchers",
-                "forks",
-                "defaultBranch",
-                "lastUpdate",
-                "repo"
-            ],
-            "additionalProperties": false
-        }
-    }
+    "additionalProperties": false
 }
