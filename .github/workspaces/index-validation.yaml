@@ -1,0 +1,32 @@
+name: Validate index files
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [synchronize, opened, reopened]
+    paths:
+    - 'index/*.json'
+    - 'resources/org_index_schema.json'
+
+  workflow_dispatch:
+
+jobs:
+  validate-index:
+    name: Validate index files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate index files
+        run: npm run validate-index

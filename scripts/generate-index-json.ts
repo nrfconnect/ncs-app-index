@@ -7,7 +7,6 @@
 // files listed under the index directory.
 
 import fs from 'fs/promises';
-import { existsSync } from 'fs';
 import path from 'path';
 import { Octokit } from '@octokit/rest';
 import fetch from 'node-fetch';
@@ -20,12 +19,7 @@ import type {
     Organization,
     Application,
 } from '../site/src/schema';
-
-type ParsedOrgFile = {
-    /** GitHub user ID. */
-    id: string;
-    orgIndex: OrgIndex;
-};
+import { ParsedOrgFile, readOrgIndexFiles } from './helpers';
 
 const partnerIds: string[] = [];
 
@@ -47,24 +41,6 @@ function initialiseGitHubApi() {
 }
 
 const octokit = initialiseGitHubApi();
-
-async function readJsonFiles(): Promise<ParsedOrgFile[]> {
-    const indexDir = path.join(__dirname, '..', 'index');
-    if (!existsSync(indexDir)) {
-        return [];
-    }
-
-    const indexFiles = await fs.readdir(indexDir);
-
-    return Promise.all(
-        indexFiles
-            .filter((f) => f.endsWith('.json'))
-            .map(async (f) => ({
-                id: path.basename(f, '.json'),
-                orgIndex: JSON.parse(await fs.readFile(path.join(indexDir, f), 'utf-8')),
-            })),
-    );
-}
 
 async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
     const appIndex: AppIndex = { orgs: {}, apps: [] };
@@ -154,7 +130,7 @@ async function fetchRepoData(
 }
 
 async function run() {
-    const orgIndices = await readJsonFiles();
+    const orgIndices = await readOrgIndexFiles();
     const appIndex = await generateIndex(orgIndices);
     const stringified = JSON.stringify(appIndex, undefined, 2);
     const indexPath = path.join(__dirname, '..', 'resources', 'index.json');
