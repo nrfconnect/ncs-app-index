@@ -56,6 +56,8 @@ jobs:
         run: npm run generate-index-json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate index files
+        run: npm run validate-index
       - name: Build with Next.js
         run: npx next build
         working-directory: ./site
