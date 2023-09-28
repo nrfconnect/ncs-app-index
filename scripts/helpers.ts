@@ -13,6 +13,7 @@ export interface ParsedOrgFile {
     /** GitHub user ID. */
     id: string;
     orgIndex: OrgIndex;
+    file: string;
 }
 
 export async function readOrgIndexFiles(): Promise<ParsedOrgFile[]> {
@@ -26,9 +27,13 @@ export async function readOrgIndexFiles(): Promise<ParsedOrgFile[]> {
     return Promise.all(
         indexFiles
             .filter((f) => f.endsWith('.json'))
-            .map(async (f) => ({
-                id: path.basename(f, '.json'),
-                orgIndex: JSON.parse(await fs.readFile(path.join(indexDir, f), 'utf-8')),
-            })),
+            .map(async (f) => {
+                const file = path.join(indexDir, f);
+                return {
+                    file: file,
+                    id: path.basename(f, '.json'),
+                    orgIndex: JSON.parse(await fs.readFile(file, 'utf-8')),
+                };
+            }),
     );
 }
