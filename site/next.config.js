@@ -6,6 +6,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'export',
+    basePath: '/ncs-app-index',
 };
 
 module.exports = nextConfig;

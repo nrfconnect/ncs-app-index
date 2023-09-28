@@ -26,7 +26,7 @@ function VSCodeButton({ app }: Props): JSX.Element {
         >
             Open in
             <Image
-                src="/nrf_connect_hero.svg"
+                src="/ncs-app-index/nrf_connect_hero.svg"
                 alt="nRF Connect for VS Code Logo"
                 priority
                 draggable={false}
