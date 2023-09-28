@@ -1,0 +1,17 @@
+name: Enforce directory restrictions
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  enforce-directory-restrictions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Dump github context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
