@@ -1,8 +1,9 @@
 name: Enforce directory restrictions
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
+    branches:
+      - a
 
 jobs:
   enforce-directory-restrictions:
