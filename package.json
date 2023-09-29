@@ -6,7 +6,8 @@
         "generate-schemas": "tsx scripts/generate-schemas.ts",
         "copyright": "tsx scripts/copyright.ts",
         "generate-index-json": "tsx scripts/generate-index-json.ts",
-        "validate-index": "tsx scripts/validate-index.ts"
+        "validate-index": "tsx scripts/validate-index.ts",
+        "check-types": "tsc --noEmit"
     },
     "repository": {
         "type": "git",

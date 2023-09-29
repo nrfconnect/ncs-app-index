@@ -7,7 +7,7 @@ import Ajv, { ErrorObject } from 'ajv';
 import colours from 'ansi-colors';
 
 import orgIndexSchema from '../resources/org_index_schema.json';
-import { readOrgIndexFiles } from './helpers';
+import { readOrgIndexFiles } from './orgFiles';
 
 function reportError(file: string, error: ErrorObject) {
     const start = `Property ${error.instancePath}`.trim();

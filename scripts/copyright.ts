@@ -56,7 +56,7 @@ function hasValidCopyright(filePath: string) {
 }
 
 function main(args: string[]) {
-    const mode = args[0];
+    const mode = args[0] ?? '';
     const allowedModes = ['apply', 'check'];
     if (!allowedModes.includes(mode)) {
         console.error(`Usage: npm run copyright <mode>

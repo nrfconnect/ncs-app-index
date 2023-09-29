@@ -1,8 +1,3 @@
-/* Copyright (c) 2023 Nordic Semiconductor ASA
- *
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
 
