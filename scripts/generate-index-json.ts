@@ -19,7 +19,7 @@ import type {
     Organization,
     Application,
 } from '../site/src/schema';
-import { ParsedOrgFile, readOrgIndexFiles } from './helpers';
+import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
 
 const partnerIds: string[] = [];
 
