@@ -5,7 +5,7 @@ on:
     types: [synchronize, opened, reopened]
     paths:
     - 'index/*.json'
-    - 'resources/org_index_schema.json'
+    - 'resources/schema.json'
 
   workflow_dispatch:
 
