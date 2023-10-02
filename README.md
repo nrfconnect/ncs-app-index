@@ -4,7 +4,7 @@ An index of applications built for the nRF Connect SDK.
 
 ## App Index
 
-The app index is a JSON file containing organizations and their applications, generated from the contents of the `index` folder. Each JSON file in the folder should be named after the organization's GitHub username (e.g. `nrfconnect.json`), and contain metadata about the organization and its applications according to the schema in `resources/org_index_schema.json`.
+The app index is a JSON file containing organizations and their applications, generated from the contents of the `index` folder. Each JSON file in the folder should be named after the organization's GitHub username (e.g. `nrfconnect.json`), and contain metadata about the organization and its applications according to the schema in `resources/schema.json`.
 
 To build the index file, run `npm run generate-index-json` from the root directory.
 

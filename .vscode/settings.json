@@ -3,7 +3,7 @@
   "json.schemas": [
     {
       "fileMatch": ["index/*.json"],
-      "url": "./resources/org_index_schema.json"
+      "url": "./resources/schema.json"
     }
   ]
 }

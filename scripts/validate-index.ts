@@ -6,7 +6,7 @@
 import Ajv, { ErrorObject } from 'ajv';
 import colours from 'ansi-colors';
 
-import orgIndexSchema from '../resources/org_index_schema.json';
+import orgIndexSchema from '../resources/schema.json';
 import { readOrgIndexFiles } from './orgFiles';
 
 function reportError(file: string, error: ErrorObject) {
