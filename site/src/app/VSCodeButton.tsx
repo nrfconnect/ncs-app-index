@@ -12,6 +12,7 @@ interface Props {
 
 function VSCodeButton({ app }: Props): JSX.Element {
     const params = new URLSearchParams({
+        commandId: 'nrf-connect.openFromAppIndex',
         app: app.name,
         branch: app.defaultBranch,
         manifest: app.manifest ?? '',
@@ -20,7 +21,7 @@ function VSCodeButton({ app }: Props): JSX.Element {
 
     return (
         <a
-            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/get-application?${params.toString()}`}
+            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/execute-command?${params.toString()}`}
             title="Open in nRF Connect for VS Code"
             className="button bg-[#0032A0] text-white"
         >
