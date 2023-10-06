@@ -63,6 +63,8 @@ jobs:
       - name: Build with Next.js
         run: npx next build
         working-directory: ./site
+      - name: Copy index file to site directory
+        run: cp resources/index.json ./site/out/index.json
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
