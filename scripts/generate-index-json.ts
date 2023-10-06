@@ -59,7 +59,7 @@ async function fetchOrgData({
     orgIndex,
 }: ParsedOrgFile): Promise<{ org: Organization; apps: Application[] }> {
     try {
-        const userData = await octokit.users.getByUsername({ username: 'id' });
+        const userData = await octokit.users.getByUsername({ username: orgId });
 
         const org: Organization = {
             id: orgId,
