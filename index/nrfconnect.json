@@ -1,0 +1,12 @@
+{
+    "name": "nRF Connect",
+    "description": "Official nRF Connect SDK applications",
+    "apps": [
+        {
+            "name": "ncs-example-application",
+            "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
+            "kind": "template",
+            "tags": []
+        }
+    ]
+}
