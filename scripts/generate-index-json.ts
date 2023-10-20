@@ -68,7 +68,7 @@ async function fetchOrgData({
             isPartner: partnerIds.includes(orgId),
             type: userData.data.type as (typeof validOrgKinds)[number],
             urls: {
-                support: userData.data.url,
+                support: userData.data.html_url,
                 email: userData.data.email ?? undefined,
                 blog: userData.data.blog ?? undefined,
                 twitter: userData.data.twitter_username ?? undefined,
