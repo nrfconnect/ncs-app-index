@@ -57,7 +57,13 @@ export const appMetadataSchema = {
     properties: {
         name: {
             type: 'string',
-            description: 'The name of the application.',
+            description:
+                'The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name.',
+        },
+        title: {
+            type: 'string',
+            description:
+                'Human readable name of the repo to be shown in the UI. Defaults to the name property.',
         },
         description: {
             type: 'string',
@@ -133,6 +139,7 @@ export const appSchema = {
     properties: {
         id: { type: 'string' },
         name: { type: 'string' },
+        title: { type: 'string' },
         description: { type: 'string' },
         license: { type: 'string' },
         repo: { type: 'string' },
