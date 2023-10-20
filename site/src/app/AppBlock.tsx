@@ -30,7 +30,7 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
             <div className="flex flex-col">
                 <div className="flex flex-wrap items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <h1 className="text-xl text-gray-600">{app.name}</h1>
+                        <h1 className="text-xl text-gray-600">{app.title ?? app.name}</h1>
                         <a href={app.repo} target="_blank" title="Visit Website">
                             <ArrowTopRightOnSquareIcon
                                 className="hoverable-icon"

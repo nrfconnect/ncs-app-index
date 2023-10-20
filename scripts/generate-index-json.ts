@@ -110,6 +110,7 @@ async function fetchRepoData(
             owner: orgId,
             description: app.description ?? repoData.description ?? '',
             name: app.name,
+            title: app.title,
             defaultBranch: repoData.default_branch,
             forks: repoData.forks_count,
             isTemplate: repoData.is_template ?? false,
