@@ -48,7 +48,14 @@ export default function AboutDialog(props: { close: () => void }): JSX.Element {
                     <H2>Contributing</H2>
                     <P>
                         If you've developed an application or sample, you can apply to have it
-                        listed in this index.
+                        listed in this index. Read the{' '}
+                        <a
+                            className="text-blue-800"
+                            href="https://github.com/nrfconnect/ncs-app-index/blob/main/CONTRIBUTING.md"
+                        >
+                            contribution guidelines
+                        </a>{' '}
+                        for details.
                     </P>
                 </div>
             </div>
