@@ -4,7 +4,7 @@ An index of applications built for the nRF Connect SDK.
 
 ## Contributing
 
-If you or your organization has a project that you'd like to include in the nRF Connect SDK App Index, you can open a pull request against this repository. See the details shown in the [`CONTRIBUTING`](.github/CONTRIBUTING) file for more information.
+If you or your organization has a project that you'd like to include in the nRF Connect SDK App Index, you can open a pull request against this repository. See the details shown in the [`CONTRIBUTING`](./CONTRIBUTING.md) file for more information.
 
 ## Development
 
