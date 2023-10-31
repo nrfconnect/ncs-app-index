@@ -35,7 +35,7 @@ export function filterApps(apps: NormalisedApp[], filters: Filters): NormalisedA
     }
 
     filters = normaliseFilters(filters);
-    const fuse = new Fuse(apps, { keys: ['owner', 'description', 'name', 'tags'] });
+    const fuse = new Fuse(apps, { keys: ['owner.name', 'title', 'description', 'name', 'tags'] });
     const results = fuse.search(filters.textSearch);
     return results.map((result) => result.item);
 }
