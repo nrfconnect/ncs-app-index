@@ -1,0 +1,27 @@
+{
+    "name": "golioth",
+    "description": "Golioth Cloud platform, which includes a device SDK, example code, and Reference Designs",
+    "apps": [
+        {
+            "name": "reference-design-template",
+            "title": "The Golioth Reference Design template",
+            "description": "This starter project is a standalone application that includes databases (both stateful and time-based), Over-the-air update capabilities, settings service, remote procedure calls (RPCs)",
+            "kind": "template",
+            "tags": ["dfu","lte"]
+        },
+        {
+            "name": "reference-design-can-asset-tracker",
+            "title": "CAN / OBD-II Asset Tracker Reference Design",
+            "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see https://projects.golioth.io/reference-designs/can-asset-tracker/guide-nrf9160-dk/), but includes all code required to pass messages received on a CAN bus back to the Cloud, as well as regular GPS readings. Over-the-air updats are built in.",
+            "kind": "template",
+            "tags": ["dfu","lte"]
+        },
+        {
+            "name": "reference-design-air-quality",
+            "title": "Air Quality Monitor Reference Design",
+            "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see https://projects.golioth.io/reference-designs/air-quality-monitor/guide-nrf9160-dk), but includes all code required to monitor readings from connected air quality sensors and pass back to the Cloud. Includes remote procedure call to clean sensor, and Over-the-air updats are built in.",
+            "kind": "template",
+            "tags": ["dfu","lte"]
+        }
+    ]
+}
