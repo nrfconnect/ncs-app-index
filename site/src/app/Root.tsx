@@ -55,17 +55,25 @@ function Root(props: Props) {
     );
 
     return (
-        <main className="flex h-full flex-col gap-4 text-gray-600 md:gap-10" id="root">
+        <main className="text-gray-600" id="root">
             <Dialog ref={dialogRef}>
                 {showingApp && <InstructionsDialog app={showingApp} close={onDialogClose} />}
                 {showingAboutDialog && <AboutDialog close={onDialogClose} />}
             </Dialog>
+
             <Header
                 filters={filters}
                 dispatchFilters={dispatchFilters}
                 showAboutDialog={showAboutDialog}
             />
-            <AppList apps={props.apps} filters={filters} setShowingAppId={setShowingAppId} />
+
+            <div className="md:mt-7 lg:mt-10">
+                <AppList apps={props.apps} filters={filters} setShowingAppId={setShowingAppId} />
+            </div>
+
+            <div className="p-5 text-center font-thin text-gray-400">
+                Copyright &copy; {new Date().getFullYear()} Nordic Semiconductor
+            </div>
         </main>
     );
 }
