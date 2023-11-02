@@ -96,11 +96,12 @@ function Header(props: Props): JSX.Element {
 
                     <div className="absolute bottom-0 flex w-full justify-center">
                         <input
-                            type="text"
+                            type="search"
                             placeholder="Filter applications..."
                             value={props.filters.textSearch}
                             onChange={handleTextSearchChange}
-                            className="relative top-5 mx-4 h-14 w-full max-w-5xl p-3 pl-3 drop-shadow-md lg:mx-0 lg:w-2/3"
+                            aria-label="Filter applications"
+                            className="relative top-5 mx-4 h-14 w-full max-w-5xl p-3 pl-3 drop-shadow-md lg:mx-0 lg:w-2/3 outline-none"
                         />
                     </div>
                 </div>
