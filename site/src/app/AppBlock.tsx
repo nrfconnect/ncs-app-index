@@ -27,43 +27,50 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
 
     return (
         <li className="flex w-full max-w-5xl flex-col gap-3 border border-gray-300 bg-white p-3 lg:w-2/3">
-            <div className="flex flex-col">
-                <div className="flex flex-wrap items-center justify-between">
+            <div className="flex gap-3">
+                <img src={app.owner.avatar} className="hidden h-12 w-12 md:block" />
+
+                <div className="flex flex-grow flex-col gap-2 md:gap-0">
+                    <div className="flex flex-wrap items-center justify-between">
+                        <div className="flex items-center gap-2">
+                            <div className="flex gap-3 md:block">
+                                <img src={app.owner.avatar} className="h-12 w-12 md:hidden" />
+                                <h1 className="text-xl text-gray-600">{app.title ?? app.name}</h1>
+                            </div>
+                            <a href={app.repo} target="_blank" title="Visit Website">
+                                <ArrowTopRightOnSquareIcon
+                                    className="hoverable-icon"
+                                    width={20}
+                                    height={20}
+                                />
+                            </a>
+                        </div>
+
+                        <div className="hidden items-center gap-2 md:flex">
+                            {app.owner.isPartner && (
+                                <StarIcon
+                                    title="Official Partner"
+                                    className={classNames(smallIconClass, 'text-[#00A9CE]')}
+                                />
+                            )}
+                            <TagList app={app} />
+                        </div>
+                    </div>
+
                     <div className="flex items-center gap-2">
-                        <h1 className="text-xl text-gray-600">{app.title ?? app.name}</h1>
-                        <a href={app.repo} target="_blank" title="Visit Website">
-                            <ArrowTopRightOnSquareIcon
-                                className="hoverable-icon"
-                                width={20}
-                                height={20}
-                            />
-                        </a>
-                    </div>
+                        <h2 className="text-md text-gray-600">
+                            <a href={app.owner.urls.support}>{app.owner.name}</a>
+                        </h2>
 
-                    <div className="hidden items-center gap-2 md:flex">
-                        {app.owner.isPartner && (
-                            <StarIcon
-                                title="Official Partner"
-                                className={classNames(smallIconClass, 'text-[#00A9CE]')}
-                            />
+                        {app.owner.urls.email && (
+                            <a href={`mailto:${app.owner.urls.email}`}>
+                                <EnvelopeIcon
+                                    title="Send Email"
+                                    className={classNames(smallIconClass, 'hoverable-icon')}
+                                />
+                            </a>
                         )}
-                        <TagList app={app} />
                     </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                    <h2 className="text-md text-gray-600">
-                        <a href={app.owner.urls.support}>{app.owner.name}</a>
-                    </h2>
-
-                    {app.owner.urls.email && (
-                        <a href={`mailto:${app.owner.urls.email}`}>
-                            <EnvelopeIcon
-                                title="Send Email"
-                                className={classNames(smallIconClass, 'hoverable-icon')}
-                            />
-                        </a>
-                    )}
                 </div>
             </div>
 
