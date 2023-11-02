@@ -78,7 +78,7 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                 <TagList app={app} />
             </div>
 
-            <p className="text-sm">{app.description}</p>
+            <p>{app.description}</p>
 
             <div className="flex flex-wrap items-center gap-2">
                 <VSCodeButton app={app} />
