@@ -67,12 +67,8 @@ function Root(props: Props) {
                 showAboutDialog={showAboutDialog}
             />
 
-            <div className="md:mt-7 lg:mt-10">
+            <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
                 <AppList apps={props.apps} filters={filters} setShowingAppId={setShowingAppId} />
-            </div>
-
-            <div className="p-5 text-center font-thin text-gray-400">
-                Copyright &copy; {new Date().getFullYear()} Nordic Semiconductor
             </div>
         </main>
     );
