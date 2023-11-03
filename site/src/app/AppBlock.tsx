@@ -82,7 +82,7 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                 <TagList app={app} />
             </div>
 
-            <Markdown className="description">{app.description}</Markdown>
+            <Markdown disallowedElements={["img"]} className="description">{app.description}</Markdown>
 
             <div className="flex flex-wrap items-center gap-2">
                 <VSCodeButton app={app} />
