@@ -106,7 +106,8 @@ export const orgIndexSchema = {
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
-export const validOrgKinds = ['User', 'Organization'] as const;
+export const validOrgTypes = ['User', 'Organization'] as const;
+export const validOrgKinds = ['Nordic Semiconductor', 'Official Partner', 'External'] as const;
 
 export const orgSchema = {
     type: 'object',
@@ -114,8 +115,8 @@ export const orgSchema = {
         id: { type: 'string' },
         name: { type: 'string' },
         description: { type: 'string' },
-        type: { type: 'string', enum: validOrgKinds },
-        isPartner: { type: 'boolean' },
+        type: { type: 'string', enum: validOrgTypes },
+        kind: { type: 'string', enum: validOrgKinds },
         location: { type: 'string' },
         avatar: { type: 'string', format: 'uri' },
         urls: {
@@ -130,7 +131,7 @@ export const orgSchema = {
             additionalProperties: false,
         },
     },
-    required: ['id', 'name', 'description', 'type', 'isPartner', 'urls'],
+    required: ['id', 'name', 'description', 'type', 'kind', 'urls'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 

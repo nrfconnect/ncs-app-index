@@ -15,13 +15,14 @@ import colours from 'ansi-colors';
 import type {
     OrgIndex,
     AppIndex,
-    validOrgKinds,
+    validOrgTypes,
     Organization,
     Application,
 } from '../site/src/schema';
 import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
 
-const partnerIds: string[] = [];
+const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground'];
+const partnerOrgs: string[] = ['golioth'];
 
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
@@ -40,13 +41,22 @@ function initialiseGitHubApi() {
     return new Octokit({ request: { fetch }, auth: authToken });
 }
 
+/** Sort organizations by kind, then name */
+function compareOrgs(a: { org: Organization }, b: { org: Organization }) {
+    const kinds: Organization['kind'][] = ['Nordic Semiconductor', 'Official Partner', 'External'];
+
+    return kinds.indexOf(b.org.kind) - kinds.indexOf(a.org.kind) || b.org.name < a.org.name
+        ? -1
+        : 1;
+}
+
 const octokit = initialiseGitHubApi();
 
 async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
     const appIndex: AppIndex = { orgs: {}, apps: [] };
 
     const data = await Promise.all(orgIndices.map(fetchOrgData));
-    for (const { org, apps } of data.filter(notUndefined)) {
+    for (const { org, apps } of data.sort(compareOrgs).filter(notUndefined)) {
         appIndex.orgs[org.id] = org;
         appIndex.apps.push(...apps);
     }
@@ -61,12 +71,21 @@ async function fetchOrgData({
     try {
         const userData = await octokit.users.getByUsername({ username: orgId });
 
+        let kind: Organization['kind'];
+        if (nordicOrgs.includes(orgId)) {
+            kind = 'Nordic Semiconductor';
+        } else if (partnerOrgs.includes(orgId)) {
+            kind = 'Official Partner';
+        } else {
+            kind = 'External';
+        }
+
         const org: Organization = {
             id: orgId,
             name: orgIndex.name,
             description: orgIndex.description,
-            isPartner: partnerIds.includes(orgId),
-            type: userData.data.type as (typeof validOrgKinds)[number],
+            kind,
+            type: userData.data.type as (typeof validOrgTypes)[number],
             urls: {
                 support: userData.data.html_url,
                 email: userData.data.email ?? undefined,
