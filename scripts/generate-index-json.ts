@@ -20,6 +20,7 @@ import type {
     Application,
 } from '../site/src/schema';
 import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
+import { execSync } from 'child_process';
 
 const partnerIds: string[] = [];
 
@@ -28,7 +29,8 @@ function notUndefined<T>(value: T | undefined): value is T {
 }
 
 function initialiseGitHubApi() {
-    const authToken = process.env.GITHUB_TOKEN;
+    const authToken =
+        process.env.GITHUB_TOKEN ?? execSync('gh auth token', { encoding: 'utf-8' }).trim();
 
     if (!authToken) {
         throw new Error(
