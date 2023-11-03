@@ -7,10 +7,10 @@ import formatRelative from 'date-fns/formatRelative';
 import classNames from 'classnames';
 
 import {
-    StarIcon,
     EnvelopeIcon,
     CommandLineIcon,
     ArrowTopRightOnSquareIcon,
+    CheckBadgeIcon,
 } from '@heroicons/react/20/solid';
 
 import { NormalisedApp } from '../schema';
@@ -23,7 +23,7 @@ interface Props {
 }
 
 function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
-    const smallIconClass = 'w-5 h-5 md:w-3 md:h-3';
+    const smallIconClass = 'w-5 h-5 md:w-4 md:h-4';
 
     return (
         <li className="flex w-full max-w-5xl flex-col gap-3 border border-gray-300 bg-white p-3 lg:w-2/3">
@@ -47,20 +47,23 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                         </div>
 
                         <div className="hidden items-center gap-2 md:flex">
-                            {app.owner.isPartner && (
-                                <StarIcon
-                                    title="Official Partner"
-                                    className={classNames(smallIconClass, 'text-[#00A9CE]')}
-                                />
-                            )}
                             <TagList app={app} />
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                         <h2 className="text-md text-gray-600">
                             <a href={app.owner.urls.support}>{app.owner.name}</a>
                         </h2>
+
+                        {app.owner.kind !== 'External' && (
+                            <CheckBadgeIcon
+                                title={app.owner.kind}
+                                className={classNames(smallIconClass, {
+                                    'text-[#00A9CE]': app.owner.kind === 'Nordic Semiconductor',
+                                })}
+                            />
+                        )}
 
                         {app.owner.urls.email && (
                             <a href={`mailto:${app.owner.urls.email}`}>

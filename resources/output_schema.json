@@ -23,8 +23,13 @@
                             "Organization"
                         ]
                     },
-                    "isPartner": {
-                        "type": "boolean"
+                    "kind": {
+                        "type": "string",
+                        "enum": [
+                            "Nordic Semiconductor",
+                            "Official Partner",
+                            "External"
+                        ]
                     },
                     "location": {
                         "type": "string"
@@ -64,7 +69,7 @@
                     "name",
                     "description",
                     "type",
-                    "isPartner",
+                    "kind",
                     "urls"
                 ],
                 "additionalProperties": false
