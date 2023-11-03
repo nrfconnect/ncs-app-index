@@ -5,6 +5,7 @@
 
 import formatRelative from 'date-fns/formatRelative';
 import classNames from 'classnames';
+import Markdown from 'react-markdown';
 
 import {
     EnvelopeIcon,
@@ -81,7 +82,7 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                 <TagList app={app} />
             </div>
 
-            <p>{app.description}</p>
+            <Markdown disallowedElements={["img"]} className="description">{app.description}</Markdown>
 
             <div className="flex flex-wrap items-center gap-2">
                 <VSCodeButton app={app} />
