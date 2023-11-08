@@ -12,6 +12,7 @@ import {
     CommandLineIcon,
     ArrowTopRightOnSquareIcon,
     CheckBadgeIcon,
+    ScaleIcon,
 } from '@heroicons/react/20/solid';
 
 import { NormalisedApp } from '../schema';
@@ -82,7 +83,9 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                 <TagList app={app} />
             </div>
 
-            <Markdown disallowedElements={["img"]} className="description">{app.description}</Markdown>
+            <Markdown disallowedElements={['img']} className="description">
+                {app.description}
+            </Markdown>
 
             <div className="flex flex-wrap items-center gap-2">
                 <VSCodeButton app={app} />
@@ -94,10 +97,18 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                     Instructions <CommandLineIcon width={20} height={20} />
                 </button>
             </div>
-
-            <p className="float-right text-xs font-thin italic text-gray-600">
-                Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
-            </p>
+            <div className="flex justify-between gap-4 text-xs text-gray-600">
+                <span className="flex gap-1">
+                    {app.license && (
+                        <>
+                            <ScaleIcon className={smallIconClass} /> {app.license}
+                        </>
+                    )}
+                </span>
+                <span className="float-right font-thin italic">
+                    Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
+                </span>
+            </div>
         </li>
     );
 }
