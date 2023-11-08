@@ -137,7 +137,7 @@ async function fetchRepoData(
             isTemplate: repoData.is_template ?? false,
             kind: app.kind,
             lastUpdate: repoData.updated_at,
-            license: repoData.license?.spdx_id ?? undefined,
+            license: app.license ?? repoData.license?.name ?? undefined,
             watchers: repoData.watchers_count,
             releases: releases.data.map((release) => ({
                 date: release.created_at,

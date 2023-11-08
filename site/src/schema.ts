@@ -80,6 +80,11 @@ export const appMetadataSchema = {
             items: appTagSchema,
             description: 'An array of tags describing the application.',
         },
+        license: {
+            type: 'string',
+            description:
+                'The name of the application license, e.g. "Apache 2.0". Inferred from the repo if missing.',
+        },
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags'],

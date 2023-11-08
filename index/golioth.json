@@ -14,6 +14,7 @@
             "title": "CAN / OBD-II Asset Tracker Reference Design",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/can-asset-tracker/guide-nrf9160-dk/](https://projects.golioth.io/reference-designs/can-asset-tracker/guide-nrf9160-dk/), but includes all code required to pass messages received on a CAN bus back to the Cloud, as well as regular GPS readings. Over-the-air updates are built in.",
             "kind": "template",
+            "license": "Apache 2.0",
             "tags": ["dfu","lte"]
         },
         {
@@ -21,6 +22,7 @@
             "title": "Air Quality Monitor Reference Design",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/air-quality-monitor/guide-nrf9160-dk](https://projects.golioth.io/reference-designs/air-quality-monitor/guide-nrf9160-dk/), but includes all code required to monitor readings from connected air quality sensors and pass back to the Cloud. Includes remote procedure call to clean sensor, and Over-the-air updates are built in.",
             "kind": "template",
+            "license": "Apache 2.0",
             "tags": ["dfu","lte"]
         }
     ]
