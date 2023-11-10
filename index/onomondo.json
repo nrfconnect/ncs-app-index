@@ -1,0 +1,12 @@
+{
+    "name": "Onomondo",
+    "description": "Mobile operator for IoT",
+    "apps": [
+        {
+            "name": "nrf-softsim",
+            "description": "Manifest repo for integrating SoftSIM and nrf-sdk",
+            "kind": "sample",
+            "tags": ["lte"]
+        }
+    ]
+}
