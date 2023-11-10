@@ -1,0 +1,13 @@
+{
+    "name": "Circuit Dojo",
+    "description": "",
+    "apps": [
+        {
+            "name": "nrf9160-feather-examples-and-drivers",
+            "title": "nRF9160 Feather Examples and Drivers",
+            "description": "Zephyr examples and drivers for the [nRF9160 Feather](https://docs.circuitdojo.com/nrf9160-getting-started.html)",
+            "kind": "sample",
+            "tags": ["lte"]
+        }
+    ]
+}
