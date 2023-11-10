@@ -167,6 +167,9 @@
                     "watchers": {
                         "type": "integer"
                     },
+                    "stars": {
+                        "type": "integer"
+                    },
                     "forks": {
                         "type": "integer"
                     },
@@ -188,6 +191,7 @@
                     "tags",
                     "releases",
                     "watchers",
+                    "stars",
                     "forks",
                     "defaultBranch",
                     "lastUpdate",

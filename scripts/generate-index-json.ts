@@ -43,25 +43,24 @@ function initialiseGitHubApi() {
     return new Octokit({ request: { fetch }, auth: authToken });
 }
 
-/** Sort organizations by kind, then name */
-function compareOrgs(a: { org: Organization }, b: { org: Organization }) {
-    const kinds: Organization['kind'][] = ['Nordic Semiconductor', 'Official Partner', 'External'];
-
-    return kinds.indexOf(b.org.kind) - kinds.indexOf(a.org.kind) || b.org.name < a.org.name
-        ? -1
-        : 1;
-}
-
 const octokit = initialiseGitHubApi();
 
 async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
     const appIndex: AppIndex = { orgs: {}, apps: [] };
 
     const data = await Promise.all(orgIndices.map(fetchOrgData));
-    for (const { org, apps } of data.sort(compareOrgs).filter(notUndefined)) {
+    for (const { org, apps } of data.filter(notUndefined)) {
         appIndex.orgs[org.id] = org;
         appIndex.apps.push(...apps);
     }
+
+    appIndex.apps = appIndex.apps.sort((a, b) => {
+        if (a.stars === b.stars) {
+            return a.name < b.name ? -1 : 1;
+        }
+
+        return a.stars > b.stars ? -1 : 1;
+    });
 
     return appIndex;
 }
@@ -133,12 +132,13 @@ async function fetchRepoData(
             name: app.name,
             title: app.title,
             defaultBranch: repoData.default_branch,
-            forks: repoData.forks_count,
             isTemplate: repoData.is_template ?? false,
             kind: app.kind,
             lastUpdate: repoData.updated_at,
             license: app.license ?? repoData.license?.name ?? undefined,
             watchers: repoData.watchers_count,
+            stars: repoData.stargazers_count,
+            forks: repoData.forks_count,
             releases: releases.data.map((release) => ({
                 date: release.created_at,
                 name: release.name ?? release.tag_name,

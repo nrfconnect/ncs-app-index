@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+import { CheckIcon } from '@primer/octicons-react';
 import { useState } from 'react';
-import { CheckIcon } from '@heroicons/react/20/solid';
 
 interface Props {
     text: string;
@@ -28,7 +28,7 @@ function CodeBlock(props: Props): JSX.Element {
                 {isTextCopied ? (
                     <div className="flex items-center gap-1 text-green-800">
                         <span>Copied</span>
-                        <CheckIcon className="" width={10} height={10} />
+                        <CheckIcon />
                     </div>
                 ) : (
                     <span>Copy to clipboard</span>
