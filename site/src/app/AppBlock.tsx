@@ -7,9 +7,12 @@ import formatRelative from 'date-fns/formatRelative';
 import classNames from 'classnames';
 import Markdown from 'react-markdown';
 import {
+    EyeIcon,
     LawIcon,
     LinkExternalIcon,
     MailIcon,
+    RepoForkedIcon,
+    StarIcon,
     TerminalIcon,
     VerifiedIcon,
 } from '@primer/octicons-react';
@@ -85,17 +88,24 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
                     Instructions <TerminalIcon size={20} />
                 </button>
             </div>
-            <div className="flex justify-between gap-4 text-xs text-gray-600">
-                <span className="flex gap-1">
-                    {app.license && (
-                        <>
-                            <LawIcon /> {app.license}
-                        </>
-                    )}
-                </span>
-                <span className="float-right font-thin italic">
+            <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
+                <div className="flex items-center gap-1" title={`${app.stars} stars`}>
+                    <StarIcon /> {app.stars}
+                </div>
+                <div className="flex items-center gap-1" title={`${app.watchers} watching`}>
+                    <EyeIcon /> {app.watchers}
+                </div>
+                <div className="flex items-center gap-1" title={`${app.forks} forks`}>
+                    <RepoForkedIcon /> {app.forks}
+                </div>
+                {app.license && (
+                    <div className="flex items-center gap-1">
+                        <LawIcon /> {app.license}
+                    </div>
+                )}
+                <div className="flex-1 text-right font-thin italic">
                     Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
-                </span>
+                </div>
             </div>
         </li>
     );
