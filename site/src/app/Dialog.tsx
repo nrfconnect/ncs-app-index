@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { XMarkIcon } from '@heroicons/react/20/solid';
+import { XIcon } from '@primer/octicons-react';
 import { ForwardedRef, HTMLProps, PropsWithChildren, forwardRef } from 'react';
 
 function Dialog(
@@ -27,7 +27,9 @@ export function DialogTitle(props: { title: string; onClose: () => void }) {
     return (
         <div className="flex items-center justify-between border-b border-gray-300 bg-gray-50 p-3 ">
             <h1 className="text-xl text-gray-700">{props.title}</h1>
-            <XMarkIcon width={25} height={25} className="cursor-pointer" onClick={props.onClose} />
+            <div onClick={props.onClose}>
+                <XIcon size={25} className="cursor-pointer" />
+            </div>
         </div>
     );
 }

@@ -3,8 +3,6 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { XMarkIcon } from '@heroicons/react/20/solid';
-
 import { PropsWithChildren } from 'react';
 import { DialogTitle } from './Dialog';
 

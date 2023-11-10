@@ -6,8 +6,8 @@
 import Image from 'next/image';
 import { ChangeEvent, Dispatch } from 'react';
 import { FilterAction, Filters } from './filters';
-import { QuestionMarkCircleIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
+import { QuestionIcon } from '@primer/octicons-react';
 
 let contents = `static void gzll_tx_result_handler(struct gzll_tx_result *tx_result)a {
     int err;
@@ -44,13 +44,12 @@ function Header(props: Props): JSX.Element {
     }
 
     const aboutIcon = (
-        <QuestionMarkCircleIcon
-            title="About"
-            onClick={props.showAboutDialog}
-            width={32}
-            height={32}
-            className="cursor-pointer text-white text-opacity-95 drop-shadow transition-opacity hover:text-opacity-100"
-        />
+        <div title="About" onClick={props.showAboutDialog}>
+            <QuestionIcon
+                size={32}
+                className="cursor-pointer text-white text-opacity-95 drop-shadow transition-opacity hover:text-opacity-100"
+            />
+        </div>
     );
 
     return (
@@ -101,7 +100,7 @@ function Header(props: Props): JSX.Element {
                             value={props.filters.textSearch}
                             onChange={handleTextSearchChange}
                             aria-label="Filter applications"
-                            className="relative top-5 mx-4 h-14 w-full max-w-5xl p-3 pl-3 drop-shadow-md lg:mx-0 lg:w-2/3 outline-none"
+                            className="relative top-5 mx-4 h-14 w-full max-w-5xl p-3 pl-3 outline-none drop-shadow-md lg:mx-0 lg:w-2/3"
                         />
                     </div>
                 </div>
