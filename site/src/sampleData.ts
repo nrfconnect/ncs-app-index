@@ -42,6 +42,7 @@ function createFakeApp(): AppIndex['apps'][number] {
         license: faker.word.verb(),
         tags: faker.helpers.arrayElements(validTags),
         watchers: faker.number.int({ max: 10 }),
+        stars: faker.number.int({ max: 10 }),
         manifest: faker.lorem.word(),
         owner: faker.helpers.arrayElement(companyIds),
         repo: `https://github.com/${faker.lorem.slug()}/${id}`,
