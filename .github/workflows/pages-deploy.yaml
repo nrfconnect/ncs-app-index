@@ -4,6 +4,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+  # Run build job on pull requests. Deploy is skipped
+  pull_request:
+    types: [opened, synchronize, reopened]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -79,6 +82,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    if: success() && github.ref == 'refs/heads/main'
     needs: build
     steps:
       - name: Deploy to GitHub Pages
