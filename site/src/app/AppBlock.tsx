@@ -12,12 +12,14 @@ import {
     LinkExternalIcon,
     MailIcon,
     RepoForkedIcon,
+    RepoIcon,
+    RepoTemplateIcon,
     StarIcon,
     TerminalIcon,
     VerifiedIcon,
 } from '@primer/octicons-react';
 
-import { NormalisedApp } from '../schema';
+import { NormalisedApp, Organization } from '../schema';
 import VSCodeButton from './VSCodeButton';
 import TagList from './TagList';
 
@@ -26,11 +28,19 @@ interface Props {
     setShowingAppId: (id: string) => void;
 }
 
+function Avatar({ app }: { app: NormalisedApp }) {
+    if (app.owner.type === 'Organization') {
+        return <img src={app.owner.avatar} className="h-12 w-12" />;
+    }
+
+    return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
+}
+
 function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
     return (
         <li className="flex w-full max-w-5xl flex-col gap-3 border border-gray-300 bg-white p-3 lg:w-2/3">
             <div className="flex gap-3">
-                <img src={app.owner.avatar} className="hidden h-12 w-12 md:block" />
+                <Avatar app={app} />
 
                 <div className="flex flex-grow flex-col gap-2 md:gap-0">
                     <div className="flex flex-wrap items-center justify-between">
