@@ -85,6 +85,14 @@ export const appMetadataSchema = {
             description:
                 'The name of the application license, e.g. "Apache 2.0". Inferred from the repo if missing.',
         },
+        apps: {
+            type: 'string',
+            description: [
+                'Glob pattern to find directories containing applications.',
+                'Applications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.',
+                "By default, the VS Code extension will assume that there's just a single application sitting at the root of the repo.",
+            ].join('\n\n'),
+        },
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags'],
@@ -173,6 +181,7 @@ export const appSchema = {
         forks: { type: 'integer' },
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
+        apps: { type: 'string' },
     },
     required: [
         'id',
