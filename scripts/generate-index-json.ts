@@ -139,6 +139,7 @@ async function fetchRepoData(
             watchers: repoData.watchers_count,
             stars: repoData.stargazers_count,
             forks: repoData.forks_count,
+            apps: app.apps,
             releases: releases.data.map((release) => ({
                 date: release.created_at,
                 name: release.name ?? release.tag_name,

@@ -179,6 +179,9 @@
                     "lastUpdate": {
                         "type": "string",
                         "format": "date-time"
+                    },
+                    "apps": {
+                        "type": "string"
                     }
                 },
                 "required": [
