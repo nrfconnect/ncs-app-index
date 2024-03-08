@@ -14,7 +14,7 @@ To build the index file, run `npm run generate-index-json` from the root directo
 
 This repository includes a static website that displays the contributed applications in a searchable frontend. It's developed using the [Next.js](https://nextjs.org/) React framework, and uses [Tailwind](https://tailwindcss.com/) for styling.
 
-To launch a live server development server, run `npm run dev` inside the `site` directory. By default, the site runs on port 4000, but this can be overridden by setting the `PORT` environment variable.
+To launch a live server development server, run `npm run dev` inside the `site` directory. By default, the site runs on port 3000, but this can be overridden by setting the `PORT` environment variable.
 
 Application data is read at build time. For development purposes, sample data can be imported from `sampleData.ts`.
 
