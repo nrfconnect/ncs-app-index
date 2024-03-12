@@ -85,9 +85,9 @@ To verify your application index website locally:
    npm run dev
    ```
 
-1. Access the site in the browser by going to `localhost:3000/ncs-app-index`.
+1. Access the site in the browser by going to [localhost:3000/ncs-app-index](http://localhost:3000/ncs-app-index).
 
-1. Check if the `index.json` is available by going to `localhost:3000/ncs-app-index/index.json`.
+1. Check if the `index.json` is available by going to [localhost:3000/ncs-app-index/index.json](http://localhost:3000/ncs-app-index/index.json).
 
 #### Website customization
 
