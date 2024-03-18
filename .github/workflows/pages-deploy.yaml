@@ -57,7 +57,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          sudo apt update
+          sudo apt install west
+          npm ci
       - name: Generate application index file
         run: npm run generate-index-json
         env:
