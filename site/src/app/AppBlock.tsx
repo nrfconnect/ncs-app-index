@@ -19,9 +19,12 @@ import {
     VerifiedIcon,
 } from '@primer/octicons-react';
 
+import { useState } from 'react';
 import { NormalisedApp, Organization } from '../schema';
 import VSCodeButton from './VSCodeButton';
 import TagList from './TagList';
+import ReleasesDropDownList from './ReleasesDropDownList'
+import VSCodeQueryParams from './VSCodeQueryParams';
 
 interface Props {
     app: NormalisedApp;
@@ -37,6 +40,9 @@ function Avatar({ app }: { app: NormalisedApp }) {
 }
 
 function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
+
+    const [queryParams, setQueryParams] = useState(new VSCodeQueryParams(app));
+
     return (
         <li className="flex w-full max-w-5xl flex-col gap-3 border border-gray-300 bg-white p-3 lg:w-2/3">
             <div className="flex gap-3">
@@ -89,7 +95,14 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
             </Markdown>
 
             <div className="flex flex-wrap items-center gap-2">
-                <VSCodeButton app={app} />
+                <ReleasesDropDownList app={app}
+                    onReleaseChosen={(branch) => {
+                        const newQueryParams = new VSCodeQueryParams(app);
+                        newQueryParams.branch = branch;
+                        setQueryParams(newQueryParams);
+                }}/>
+
+                <VSCodeButton queryParams={queryParams} />
 
                 <button
                     className="button bg-[#768692] text-white"

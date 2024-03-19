@@ -27,7 +27,7 @@ const Step = ({ children }: PropsWithChildren) => (
 );
 
 function InstructionsDialog({ app, close }: Props): JSX.Element {
-    const latestRelease = app.releases.at(-1);
+    const latestRelease = app.releases.at(0)?.tag ?? app.defaultBranch;
 
     return (
         <div className="flex flex-col">
@@ -44,7 +44,7 @@ function InstructionsDialog({ app, close }: Props): JSX.Element {
 
                     <CodeBlock
                         text={`west init -m "${app.repo}" --mr ${
-                            latestRelease?.tag ?? '<latest tag>'
+                            latestRelease ?? '<latest tag>'
                         }`}
                     />
                 </Step>

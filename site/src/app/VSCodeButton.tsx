@@ -4,23 +4,16 @@
  */
 
 import Image from 'next/image';
-import { NormalisedApp } from '../schema';
+import VSCodeQueryParams from './VSCodeQueryParams';
 
 interface Props {
-    app: NormalisedApp;
+    queryParams: VSCodeQueryParams;
 }
 
-function VSCodeButton({ app }: Props): JSX.Element {
-    const params = new URLSearchParams({
-        app: app.name,
-        branch: app.defaultBranch,
-        manifest: app.manifest ?? '',
-        repo: app.repo,
-    });
-
+function VSCodeButton({ queryParams }: Props): JSX.Element {
     return (
         <a
-            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/get-application?${params.toString()}`}
+            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/get-application?${queryParams.toString()}`}
             title="Open in nRF Connect for VS Code"
             className="button bg-[#0032A0] text-white"
         >
