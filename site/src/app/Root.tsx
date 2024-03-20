@@ -49,6 +49,15 @@ function Root(props: Props) {
         return () => dialogRef.current?.removeEventListener('close', onDialogClose);
     });
 
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const appFilter = searchParams.get("app");
+
+        if (appFilter) {
+            dispatchFilters({ type: 'textSearch', payload: appFilter });
+        }
+    }, []);
+
     const showingApp = useMemo(
         () => props.apps.find((app) => app.id === showingAppId),
         [showingAppId],

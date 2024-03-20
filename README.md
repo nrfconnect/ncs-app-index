@@ -113,3 +113,12 @@ To verify that your application index is correctly picked up by the [nRF Connect
 1. In the extension's **Welcome View**, select [**Create a new application** > **Browse application index**](https://nrfconnect.github.io/vscode-nrf-connect/reference/ui_sidebar_welcome.html#create-a-new-application).
 
 Your custom `nrf-connect.appIndexUri` will be used to list the applications in the index.
+
+## Query parameters
+
+The Index exposes a number of query parameters that allows to efficiently filter the applications.
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| app  | string | Show applications that include the **app** in their name, title, description, or tags | ?app=air+quality |
+
