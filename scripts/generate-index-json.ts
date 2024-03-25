@@ -11,6 +11,8 @@ import path from 'path';
 import { Octokit } from '@octokit/rest';
 import fetch from 'node-fetch';
 import colours from 'ansi-colors';
+import * as yaml from "yaml";
+import WestEnv from './west';
 
 import type {
     OrgIndex,
@@ -24,6 +26,7 @@ import { execSync } from 'child_process';
 
 const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground'];
 const partnerOrgs: string[] = ['golioth'];
+const tempAppDir: string = 'apps';
 
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
@@ -122,6 +125,32 @@ async function fetchRepoData(
             repo: app.name,
         });
 
+        const repoUrl = `https://github.com/${orgId}/${app.name}`;
+
+        const westEnv = new WestEnv(repoUrl, repoData.default_branch, `${tempAppDir}/${app.name}`);
+
+        const ncsVersions: Map<string, string> = new Map();
+
+        try {
+            await westEnv.init();
+            const nrfRevision = await westEnv.getModuleRev("nrf");
+            ncsVersions.set(repoData.default_branch, nrfRevision ?? "");
+            console.log(`nrfRevision: ${nrfRevision}`);
+        } catch (e) {
+            console.log(`West env failed: ${e}`);
+        }
+
+        const revs = [...releases.data.map((release) => release.tag_name)];
+        for (const rev of revs) {
+            try {
+                await westEnv.checkout(rev);
+                const ncsVer = await westEnv.getModuleRev("nrf") ?? "";
+                ncsVersions.set(rev, ncsVer);
+            } catch (e) {
+                console.log(`Checkout failed: ${e}`);
+            }
+        }
+
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
@@ -132,6 +161,7 @@ async function fetchRepoData(
             name: app.name,
             title: app.title,
             defaultBranch: repoData.default_branch,
+            defaultNcs: ncsVersions.get(repoData.default_branch) ?? "",
             isTemplate: repoData.is_template ?? false,
             kind: app.kind,
             lastUpdate: repoData.updated_at,
@@ -144,11 +174,21 @@ async function fetchRepoData(
                 date: release.created_at,
                 name: release.name ?? release.tag_name,
                 tag: release.tag_name,
+                ncs: ncsVersions.get(release.tag_name) ?? ""
             })),
             tags: app.tags,
         };
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
+    }
+}
+
+async function cleanup() {
+    try {
+        await fs.access(tempAppDir);
+        await fs.rm(tempAppDir, { recursive: true});
+    } catch {
+        // No need to remove the directory
     }
 }
 
@@ -158,6 +198,7 @@ async function run() {
     const stringified = JSON.stringify(appIndex, undefined, 2);
     const indexPath = path.join(__dirname, '..', 'resources', 'index.json');
     await fs.writeFile(indexPath, stringified);
+    await cleanup();
     console.log(`\nWritten app index to ${indexPath}`);
 }
 

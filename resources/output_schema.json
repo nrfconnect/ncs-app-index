@@ -176,6 +176,9 @@
                     "defaultBranch": {
                         "type": "string"
                     },
+                    "defaultNcs" : {
+                        "type": "string"
+                    },
                     "lastUpdate": {
                         "type": "string",
                         "format": "date-time"
