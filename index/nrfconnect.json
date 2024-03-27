@@ -8,7 +8,15 @@
             "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
             "kind": "template",
             "tags": [],
-            "apps": "app"
+            "apps": "app",
+            "compatibleNcs": [
+                "main",
+                "v2.6.0",
+                "v2.5.2",
+                "v2.5.1",
+                "v2.5.0",
+                "v2.3.0"
+            ]
         }
     ]
 }

@@ -93,6 +93,10 @@ export const appMetadataSchema = {
                 "By default, the VS Code extension will assume that there's just a single application sitting at the root of the repo.",
             ].join('\n\n'),
         },
+        compatibleNcs: {
+            type: 'array',
+            description: 'An array of compatible nRF Connect SDK releases.'
+        }
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags'],
@@ -182,6 +186,7 @@ export const appSchema = {
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
+        compatibleNcs: { type: 'array', items:  { type: 'string' } }
     },
     required: [
         'id',
@@ -198,6 +203,7 @@ export const appSchema = {
         'defaultBranch',
         'lastUpdate',
         'repo',
+        'compatibleNcs'
     ],
     additionalProperties: false,
 } as const satisfies JSONSchema;

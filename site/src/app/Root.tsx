@@ -51,10 +51,15 @@ function Root(props: Props) {
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
-        const appFilter = searchParams.get("app");
+        const app = searchParams.get("app");
+        const ncs = searchParams.get("ncs");
 
-        if (appFilter) {
-            dispatchFilters({ type: 'textSearch', payload: appFilter });
+        if (app) {
+            dispatchFilters({ type: 'appSearch', payload: app });
+        }
+
+        if (ncs) {
+            dispatchFilters({ type: 'ncsSearch', payload: ncs });
         }
     }, []);
 

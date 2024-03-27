@@ -8,7 +8,8 @@
             "description": "Zephyr examples and drivers for the [nRF9160 Feather](https://docs.circuitdojo.com/nrf9160-getting-started.html)",
             "kind": "sample",
             "tags": ["lte"],
-            "apps": "samples/*"
+            "apps": "samples/*",
+            "compatibleNcs": ["v2.4.2"]
         }
     ]
 }

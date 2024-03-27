@@ -71,13 +71,18 @@
                     "apps": {
                         "type": "string",
                         "description": "Glob pattern to find directories containing applications.\n\nApplications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.\n\nBy default, the VS Code extension will assume that there's just a single application sitting at the root of the repo."
+                    },
+                    "compatibleNcs": {
+                        "type": "array",
+                        "description": "An array of compatible nRF Connect SDK releases."
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "name",
                     "kind",
-                    "tags"
+                    "tags",
+                    "compatibleNcs"
                 ]
             },
             "description": "A list of applications contributed by the organization."
