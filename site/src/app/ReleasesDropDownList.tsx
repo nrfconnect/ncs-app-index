@@ -12,18 +12,19 @@ interface Props {
 };
 
 function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
-  const releases = [{ label: app.defaultBranch, value: app.defaultBranch }, ...app.releases.map((release) => ({ label: release.name, value: release.tag ?? '' })),];
+  const releases = [{ label: app.defaultBranch, value: app.defaultBranch }, ...app.releases.map((release) => ({ label: release.tag, value: release.tag ?? '' })),];
 
   return (
-    <Select
-      instanceId={`${app.id}-release-select`}
-      defaultValue={releases[0]}
-      options={releases}
-      className="dropdown"
-      menuPlacement="auto"
-      onChange={(option) => { onReleaseChosen(option ? option.value : ""); }}
-      hideSelectedOptions={true}
-    />
+    <div className="font-thin max-w-[20%] min-w-[15%]">
+      <Select
+        instanceId={`${app.id}-release-select`}
+        defaultValue={releases[0]}
+        options={releases}
+        menuPlacement="auto"
+        onChange={(option) => { onReleaseChosen(option ? option.value : ""); }}
+        hideSelectedOptions={true}
+        />
+    </div>
   )
 }
 
