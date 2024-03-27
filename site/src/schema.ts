@@ -95,11 +95,14 @@ export const appMetadataSchema = {
         },
         compatibleNcs: {
             type: 'array',
-            description: 'An array of compatible nRF Connect SDK releases.'
+            items: {
+                type: 'string'
+            },
+            description: 'An array of compatible nRF Connect SDK releases.',
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags'],
+    required: ['name', 'kind', 'tags', 'compatibleNcs'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {

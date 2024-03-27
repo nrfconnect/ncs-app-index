@@ -74,7 +74,10 @@
                     },
                     "compatibleNcs": {
                         "type": "array",
-                        "description": "An array of compatible nRF Connect SDK releases."
+                        "description": "An array of compatible nRF Connect SDK releases.",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "additionalProperties": false,

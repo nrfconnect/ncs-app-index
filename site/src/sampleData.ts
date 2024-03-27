@@ -55,7 +55,7 @@ function createFakeApp(): AppIndex['apps'][number] {
             }),
             { count: { min: 1, max: 5 } },
         ),
-        compatibleNcs: [ faker.git.branch() ]
+        compatibleNcs: [faker.git.commitSha()]
     };
 }
 
