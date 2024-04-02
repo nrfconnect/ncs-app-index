@@ -15,18 +15,7 @@ function filterAppName(apps: NormalisedApp[], search: string): NormalisedApp[] {
 }
 
 function filterNcsVersion(apps: NormalisedApp[], search: string): NormalisedApp[] {
-    const exactMatches: NormalisedApp[] = [];
-
-    for (const app of apps) {
-        for (const ncs of app.compatibleNcs) {
-            if (ncs.includes(search)) {
-                exactMatches.push(app);
-                break;
-            }
-        }
-    }
-
-    return exactMatches;
+    return apps.filter((app) => app.compatibleNcs.some((ncs) => ncs.includes(search)));
 }
 
 export interface Filters {

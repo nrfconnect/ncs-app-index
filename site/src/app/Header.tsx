@@ -39,7 +39,7 @@ interface Props {
 }
 
 function Header(props: Props): JSX.Element {
-    function handleSearch(type: 'appSearch' | 'ncsSearch') {
+    function handleSearch(type: FilterAction['type']) {
         return (e: ChangeEvent<HTMLInputElement>) => { props.dispatchFilters({ type: type, payload: e.target.value }); }
     }
 
@@ -94,28 +94,29 @@ function Header(props: Props): JSX.Element {
                     </div>
 
                     <div className="absolute bottom-0 flex w-full justify-center">
-                        <div className="relative flex w-2/3 relative top-5 mx-4 h-14 max-w-5xl">
+                        <div className="relative flex w-full lg:w-2/3 top-5 mx-4 h-14 max-w-5xl">
                             <input
                                 type="search"
                                 placeholder="Filter applications..."
                                 value={props.filters.appSearch}
                                 onChange={handleSearch("appSearch")}
                                 aria-label="Filter applications"
-                                className="p-3 pl-3 outline-none drop-shadow-md lg:mx-0 lg:w-3/4"
+                                className="w-3/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
                             <input
                                 type="search"
                                 placeholder="NCS version..."
                                 value={props.filters.ncsSearch}
                                 onChange={handleSearch("ncsSearch")}
-                                aria-label="Filter applications"
-                                className="p-3 pl-3 outline-none drop-shadow-md lg:mx-0 lg:w-1/4"
+                                aria-label="Filter NCS version"
+                                className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
                         </div>
                     </div>
                 </div>
             </header>
 
+            {/* Mobile */}
             <div className="h-14 w-full rounded-none md:hidden">
                 <input
                     type="text"

@@ -51,7 +51,6 @@ function createFakeApp(): AppIndex['apps'][number] {
                 name: faker.system.semver(),
                 date: faker.date.recent().toString(),
                 tag: faker.git.branch(),
-                ncs: faker.git.branch(),
             }),
             { count: { min: 1, max: 5 } },
         ),

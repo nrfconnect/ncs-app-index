@@ -49,6 +49,7 @@ Your custom JSON file must include the following information:
   * `tags` are the tags that will be used to categorize the application.
   * `license` is the license type name.
   * `apps` is the global pattern to find directories containing applications.
+  * `compatibleNcs` are the NCS' versions the application is compatible with.
 
 Most of the information provided in these entries will be displayed on the application index page.
 For more information about each entry, see `appMetadataSchema` in the `resources/schema.json` file.
@@ -121,4 +122,4 @@ The Index exposes a number of query parameters that allows to efficiently filter
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|---------|
 | app  | string | Show applications that include the **app** in their name, title, description, or tags | ?app=air+quality |
-
+| ncs  | string | Show applications that are compatible with **ncs** version | ?ncs=v2.5.0 |
