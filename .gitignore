@@ -3,3 +3,4 @@ node_modules
 out
 .next
 resources/index.json
+site/public/index.json
