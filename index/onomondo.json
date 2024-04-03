@@ -7,7 +7,8 @@
             "description": "Manifest repo for integrating SoftSIM and nrf-sdk",
             "kind": "sample",
             "tags": ["lte"],
-            "apps": "samples/*"
+            "apps": "samples/*",
+            "compatibleNcs": ["v2.5.2"]
         }
     ]
 }

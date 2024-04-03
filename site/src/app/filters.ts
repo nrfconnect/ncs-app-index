@@ -7,39 +7,49 @@ import Fuse from 'fuse.js';
 
 import { NormalisedApp } from '../schema';
 
-export interface Filters {
-    textSearch: string;
+
+function filterAppName(apps: NormalisedApp[], search: string): NormalisedApp[] {
+    const fuse = new Fuse(apps, { keys: ['owner.name', 'title', 'description', 'name', 'tags'] });
+    const results = fuse.search(search);
+    return results.map((result) => result.item);
 }
 
-export const initialFilters: Filters = {
-    textSearch: '',
+function filterNcsVersion(apps: NormalisedApp[], search: string): NormalisedApp[] {
+    return apps.filter((app) => app.compatibleNcs.some((ncs) => ncs.includes(search)));
+}
+
+export interface Filters {
+    appSearch: string;
+    ncsSearch: string;
 };
 
+export const initialFilters: Filters = { appSearch: "", ncsSearch: "" };
+
 interface TextSearchAction {
-    type: 'textSearch';
+    type: 'ncsSearch' | 'appSearch';
     payload: string;
 }
 
 export type FilterAction = TextSearchAction;
 
-export function filterReducer(state: Filters, action: FilterAction): Filters {
+export function filterReducer(filters: Filters, action: FilterAction): Filters {
     switch (action.type) {
-        case 'textSearch':
-            return { ...state, textSearch: action.payload };
+        case 'appSearch':
+            return { ...filters, appSearch: action.payload};
+        case 'ncsSearch':
+            return { ...filters, ncsSearch: action.payload};
     }
 }
 
 export function filterApps(apps: NormalisedApp[], filters: Filters): NormalisedApp[] {
-    if (!filters.textSearch) {
-        return apps;
+
+    if (filters.appSearch !== '') {
+        apps = filterAppName(apps, filters.appSearch);
     }
 
-    filters = normaliseFilters(filters);
-    const fuse = new Fuse(apps, { keys: ['owner.name', 'title', 'description', 'name', 'tags'] });
-    const results = fuse.search(filters.textSearch);
-    return results.map((result) => result.item);
-}
+    if (filters.ncsSearch !== '') {
+        apps = filterNcsVersion(apps, filters.ncsSearch);
+    }
 
-function normaliseFilters(filters: Filters): Filters {
-    return { ...filters, textSearch: filters.textSearch.toLowerCase() };
+    return apps;
 }

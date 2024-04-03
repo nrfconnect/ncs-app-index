@@ -182,6 +182,12 @@
                     },
                     "apps": {
                         "type": "string"
+                    },
+                    "compatibleNcs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "required": [
@@ -198,7 +204,8 @@
                     "forks",
                     "defaultBranch",
                     "lastUpdate",
-                    "repo"
+                    "repo",
+                    "compatibleNcs"
                 ],
                 "additionalProperties": false
             }

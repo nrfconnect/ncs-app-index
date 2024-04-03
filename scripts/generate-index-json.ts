@@ -122,11 +122,13 @@ async function fetchRepoData(
             repo: app.name,
         });
 
+        const repoUrl = `https://github.com/${orgId}/${app.name}`;
+
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
             id: repoData.id.toString(),
-            repo: `https://github.com/${orgId}/${app.name}`,
+            repo: repoUrl,
             owner: orgId,
             description: app.description ?? repoData.description ?? '',
             name: app.name,
@@ -143,9 +145,10 @@ async function fetchRepoData(
             releases: releases.data.map((release) => ({
                 date: release.created_at,
                 name: release.name ?? release.tag_name,
-                tag: release.tag_name,
+                tag: release.tag_name
             })),
             tags: app.tags,
+            compatibleNcs: app.compatibleNcs
         };
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
