@@ -22,7 +22,7 @@ function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
         options={releases}
         menuPlacement="auto"
         onChange={(option) => { onReleaseChosen(option ? option.value : ""); }}
-        hideSelectedOptions={true}
+        hideSelectedOptions
         />
     </div>
   )
