@@ -19,16 +19,18 @@ interface Props {
     apps: NormalisedApp[];
 }
 
-function Root(props: Props) {
+export type AppDetails = { id: string, sha: string };
+
+function Root({ apps }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
-    const [showingAppId, setShowingAppId] = useState<string | null>(null);
+    const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     function onDialogClose() {
         dialogRef.current?.close();
-        setShowingAppId(null);
+        setShowingAppDetails(null);
         setShowingAboutDialog(false);
     }
 
@@ -37,12 +39,12 @@ function Root(props: Props) {
     }
 
     useEffect(() => {
-        if (showingAppId !== null || showingAboutDialog) {
+        if (showingAppDetails !== null || showingAboutDialog) {
             dialogRef.current?.showModal();
         } else {
             onDialogClose();
         }
-    }, [showingAppId, showingAboutDialog]);
+    }, [showingAppDetails, showingAboutDialog]);
 
     useEffect(() => {
         dialogRef.current?.addEventListener('close', onDialogClose);
@@ -64,14 +66,14 @@ function Root(props: Props) {
     }, []);
 
     const showingApp = useMemo(
-        () => props.apps.find((app) => app.id === showingAppId),
-        [showingAppId],
+        () => apps.find((app) => app.id === showingAppDetails?.id),
+        [showingAppDetails],
     );
 
     return (
         <main className="text-gray-600" id="root">
             <Dialog ref={dialogRef}>
-                {showingApp && <InstructionsDialog app={showingApp} close={onDialogClose} />}
+                {showingApp && <InstructionsDialog app={showingApp} close={onDialogClose} sha={showingAppDetails?.sha ?? showingApp.defaultBranch} />}
                 {showingAboutDialog && <AboutDialog close={onDialogClose} />}
             </Dialog>
 
@@ -82,7 +84,7 @@ function Root(props: Props) {
             />
 
             <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
-                <AppList apps={props.apps} filters={filters} setShowingAppId={setShowingAppId} />
+                <AppList apps={apps} filters={filters} setShowingAppDetails={setShowingAppDetails} />
             </div>
         </main>
     );

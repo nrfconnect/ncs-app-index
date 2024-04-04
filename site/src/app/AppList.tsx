@@ -6,20 +6,21 @@
 import { NormalisedApp } from '../schema';
 import AppBlock from './AppBlock';
 import { Filters, filterApps } from './filters';
+import { AppDetails } from './Root';
 
 interface Props {
     apps: NormalisedApp[];
     filters: Filters;
-    setShowingAppId: (id: string) => void;
+    setShowingAppDetails: (showingAppDetails: AppDetails) => void;
 }
 
-function AppList({ apps, filters, setShowingAppId }: Props): JSX.Element {
+function AppList({ apps, filters, setShowingAppDetails }: Props): JSX.Element {
     const filteredApps = filterApps(apps, filters);
 
     return (
         <div className="flex w-full flex-col items-center justify-between gap-3 p-3 lg:p-0">
             {filteredApps.map((app) => (
-                <AppBlock key={app.id} app={app} setShowingAppId={setShowingAppId} />
+                <AppBlock key={app.id} app={app} setShowingAppDetails={setShowingAppDetails} />
             ))}
 
             {!filteredApps.length && (
