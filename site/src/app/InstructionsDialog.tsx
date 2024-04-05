@@ -10,6 +10,7 @@ import { DialogTitle } from './Dialog';
 
 interface Props {
     app: NormalisedApp;
+    sha: string;
     close: () => void;
 }
 
@@ -26,9 +27,7 @@ const Step = ({ children }: PropsWithChildren) => (
     <div className="flex flex-col gap-4">{children}</div>
 );
 
-function InstructionsDialog({ app, close }: Props): JSX.Element {
-    const latestRelease = app.releases.at(0)?.tag ?? app.defaultBranch;
-
+function InstructionsDialog({ app, sha, close }: Props): JSX.Element {
     return (
         <div className="flex flex-col">
             <DialogTitle title={`Get Started with ${app.name}`} onClose={close} />
@@ -44,7 +43,7 @@ function InstructionsDialog({ app, close }: Props): JSX.Element {
 
                     <CodeBlock
                         text={`west init -m "${app.repo}" --mr ${
-                            latestRelease ?? '<latest tag>'
+                            sha ?? '<latest tag>'
                         }`}
                     />
                 </Step>

@@ -20,15 +20,16 @@ import {
 } from '@primer/octicons-react';
 
 import { useState } from 'react';
-import { NormalisedApp, Organization } from '../schema';
+import { NormalisedApp } from '../schema';
 import VSCodeButton from './VSCodeButton';
 import TagList from './TagList';
 import ReleasesDropDownList from './ReleasesDropDownList'
 import VSCodeQueryParams from './VSCodeQueryParams';
+import { AppDetails } from './Root';
 
 interface Props {
     app: NormalisedApp;
-    setShowingAppId: (id: string) => void;
+    setShowingAppDetails: (showingAppDetails: AppDetails) => void;
 }
 
 function Avatar({ app }: { app: NormalisedApp }) {
@@ -39,7 +40,7 @@ function Avatar({ app }: { app: NormalisedApp }) {
     return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
 }
 
-function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
+function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
     const [queryParams, setQueryParams] = useState(new VSCodeQueryParams(app));
 
@@ -106,7 +107,7 @@ function AppBlock({ app, setShowingAppId }: Props): JSX.Element {
 
                 <button
                     className="button bg-[#768692] text-white"
-                    onClick={() => setShowingAppId(app.id)}
+                    onClick={() => setShowingAppDetails({ id: app.id, sha: queryParams.branch })}
                 >
                     Instructions <TerminalIcon size={20} />
                 </button>
