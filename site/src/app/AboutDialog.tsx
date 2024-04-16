@@ -14,7 +14,7 @@ export default function AboutDialog(props: { close: () => void }): JSX.Element {
     return (
         <div className="flex flex-col">
             <div>
-                <DialogTitle title="About the App Index" onClose={props.close} />
+                <DialogTitle title="About the Add-Ons Index" onClose={props.close} />
             </div>
 
             <div className="p-3">

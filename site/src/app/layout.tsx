@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 import './app.css';
 
 export const metadata: Metadata = {
-    title: 'nRF Connect SDK App Index',
+    title: 'nRF Connect SDK Add-Ons Index',
     description: 'A live index of applications and samples available for the nRF Connect SDK.',
     authors: [{ name: 'Nordic Semiconductor', url: 'https://nordicsemi.com' }],
     themeColor: '#00A9CE',
