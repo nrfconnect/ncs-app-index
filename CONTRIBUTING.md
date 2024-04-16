@@ -1,6 +1,6 @@
 # Contribution guidelines
 
-If you or your organization has a project that you'd like to include in the nRF Connect SDK App Index, you can do so by opening a pull request against this repository.
+If you or your organization has a project that you'd like to include in the nRF Connect SDK Add-on index, you can do so by opening a pull request against this repository.
 
 The pull request must include a JSON file named after your GitHub account in the `index` directory (for example, `index/nrfconnect.json`).
 
@@ -13,4 +13,4 @@ If you use Visual Studio Code, the editor will automatically provide validation 
 
 ## Publishing
 
-Once your pull request is approved and merged, the application index will be rebuilt and republished automatically.
+Once your pull request is approved and merged, the add-on index will be rebuilt and published automatically.
