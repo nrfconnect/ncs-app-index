@@ -63,7 +63,7 @@ function Header(props: Props): JSX.Element {
 
                 <div className="flex w-full items-center p-3 shadow-md md:hidden">
                     <h1 className="flex-grow text-center text-xl text-white">
-                        nRF Connect SDK Add-On Index
+                        nRF Connect SDK Add-on Index
                     </h1>
                     {aboutIcon}
                 </div>
@@ -86,7 +86,7 @@ function Header(props: Props): JSX.Element {
 
                     <div className="flex flex-col items-center gap-2 px-2 md:px-0">
                         <h1 className="text-center text-4xl text-white drop-shadow">
-                            nRF Connect SDK Add-On Index
+                            nRF Connect SDK Add-on Index
                         </h1>
                         <p className="text-center text-xl font-thin text-white drop-shadow-sm">
                             Discover applications and samples built for the nRF Connect SDK
