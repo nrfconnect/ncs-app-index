@@ -9,7 +9,7 @@ import { FilterAction, Filters } from './filters';
 import classNames from 'classnames';
 import { QuestionIcon } from '@primer/octicons-react';
 
-let contents = `static void gzll_tx_result_handler(struct gzll_tx_result *tx_result)a {
+let contents = `static void gzll_tx_result_handler(struct gzll_tx_result *tx_result) {
     int err;
     bool result_value;
     uint32_t ack_payload_length = NRF_GZLL_CONST_MAX_PAYLOAD_LENGTH;
@@ -63,7 +63,7 @@ function Header(props: Props): JSX.Element {
 
                 <div className="flex w-full items-center p-3 shadow-md md:hidden">
                     <h1 className="flex-grow text-center text-xl text-white">
-                        nRF Connect SDK App Index
+                        nRF Connect SDK Add-on Index
                     </h1>
                     {aboutIcon}
                 </div>
@@ -86,7 +86,7 @@ function Header(props: Props): JSX.Element {
 
                     <div className="flex flex-col items-center gap-2 px-2 md:px-0">
                         <h1 className="text-center text-4xl text-white drop-shadow">
-                            nRF Connect SDK App Index
+                            nRF Connect SDK Add-on Index
                         </h1>
                         <p className="text-center text-xl font-thin text-white drop-shadow-sm">
                             Discover applications and samples built for the nRF Connect SDK
@@ -105,7 +105,7 @@ function Header(props: Props): JSX.Element {
                             />
                             <input
                                 type="search"
-                                placeholder="NCS version..."
+                                placeholder="nRF Connect SDK version..."
                                 value={props.filters.ncsSearch}
                                 onChange={handleSearch("ncsSearch")}
                                 aria-label="Filter NCS version"
@@ -127,7 +127,7 @@ function Header(props: Props): JSX.Element {
                 />
                 <input
                     type="text"
-                    placeholder="NCS ..."
+                    placeholder="SDK ..."
                     value={props.filters.ncsSearch}
                     onChange={handleSearch("ncsSearch")}
                     className="h-full w-1/3 border-b border-gray-300 pl-3"
