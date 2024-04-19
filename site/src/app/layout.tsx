@@ -8,8 +8,8 @@ import type { Metadata } from 'next';
 import './app.css';
 
 export const metadata: Metadata = {
-    title: 'nRF Connect SDK Add-on Index',
-    description: 'A live index of supplementary components available for the nRF Connect SDK.',
+    title: 'nRF Connect SDK Add-ons',
+    description: 'Index of supplementary components available for the nRF Connect SDK.',
     authors: [{ name: 'Nordic Semiconductor', url: 'https://nordicsemi.com' }],
     themeColor: '#00A9CE',
     appleWebApp: { capable: true },

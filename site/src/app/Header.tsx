@@ -40,7 +40,9 @@ interface Props {
 
 function Header(props: Props): JSX.Element {
     function handleSearch(type: FilterAction['type']) {
-        return (e: ChangeEvent<HTMLInputElement>) => { props.dispatchFilters({ type: type, payload: e.target.value }); }
+        return (e: ChangeEvent<HTMLInputElement>) => {
+            props.dispatchFilters({ type: type, payload: e.target.value });
+        };
     }
 
     const aboutIcon = (
@@ -63,7 +65,7 @@ function Header(props: Props): JSX.Element {
 
                 <div className="flex w-full items-center p-3 shadow-md md:hidden">
                     <h1 className="flex-grow text-center text-xl text-white">
-                        nRF Connect SDK Add-on Index
+                        nRF Connect SDK Add-ons
                     </h1>
                     {aboutIcon}
                 </div>
@@ -86,20 +88,20 @@ function Header(props: Props): JSX.Element {
 
                     <div className="flex flex-col items-center gap-2 px-2 md:px-0">
                         <h1 className="text-center text-4xl text-white drop-shadow">
-                            nRF Connect SDK Add-on Index
+                            nRF Connect SDK Add-ons
                         </h1>
                         <p className="text-center text-xl font-thin text-white drop-shadow-sm">
-                            Discover applications and samples built for the nRF Connect SDK
+                            Discover components that extend the nRF Connect SDK
                         </p>
                     </div>
 
                     <div className="absolute bottom-0 flex w-full justify-center">
-                        <div className="relative flex w-full lg:w-2/3 top-5 mx-4 h-14 max-w-5xl">
+                        <div className="relative top-5 mx-4 flex h-14 w-full max-w-5xl lg:w-2/3">
                             <input
                                 type="search"
                                 placeholder="Filter applications..."
                                 value={props.filters.appSearch}
-                                onChange={handleSearch("appSearch")}
+                                onChange={handleSearch('appSearch')}
                                 aria-label="Filter applications"
                                 className="w-3/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
@@ -107,7 +109,7 @@ function Header(props: Props): JSX.Element {
                                 type="search"
                                 placeholder="nRF Connect SDK version..."
                                 value={props.filters.ncsSearch}
-                                onChange={handleSearch("ncsSearch")}
+                                onChange={handleSearch('ncsSearch')}
                                 aria-label="Filter NCS version"
                                 className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
@@ -122,14 +124,14 @@ function Header(props: Props): JSX.Element {
                     type="text"
                     placeholder="Filter applications..."
                     value={props.filters.appSearch}
-                    onChange={handleSearch("appSearch")}
+                    onChange={handleSearch('appSearch')}
                     className="h-full w-2/3 border-b border-r border-gray-300 pl-3"
                 />
                 <input
                     type="text"
                     placeholder="SDK ..."
                     value={props.filters.ncsSearch}
-                    onChange={handleSearch("ncsSearch")}
+                    onChange={handleSearch('ncsSearch')}
                     className="h-full w-1/3 border-b border-gray-300 pl-3"
                 />
             </div>
