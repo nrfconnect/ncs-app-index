@@ -110,7 +110,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags'],
+    required: ['name', 'kind', 'tags', 'releases'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
