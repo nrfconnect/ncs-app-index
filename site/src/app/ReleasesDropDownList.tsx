@@ -12,6 +12,7 @@ interface Props {
 };
 
 function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
+  console.log(app.releases ?? `${app.name} doesn't have releases`)
   const releases = [{ label: app.defaultBranch, value: app.defaultBranch }, ...app.releases.map((release) => ({ label: release.tag, value: release.tag ?? '' })),];
 
   return (
