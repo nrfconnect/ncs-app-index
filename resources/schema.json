@@ -68,6 +68,33 @@
                         "type": "string",
                         "description": "The name of the application license, e.g. \"Apache 2.0\". Inferred from the repo if missing."
                     },
+                    "releases": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "tag": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "date": {
+                                    "type": "string"
+                                },
+                                "sdk": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "tag",
+                                "name",
+                                "date"
+                            ],
+                            "additionalProperties": false
+                        },
+                        "minItems": 1
+                    },
                     "apps": {
                         "type": "string",
                         "description": "Glob pattern to find directories containing applications.\n\nApplications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.\n\nBy default, the VS Code extension will assume that there's just a single application sitting at the root of the repo."
