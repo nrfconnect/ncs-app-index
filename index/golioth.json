@@ -8,7 +8,7 @@
             "description": "This starter project is a standalone application that includes databases (both stateful and time-based), Over-the-air update capabilities, settings service, remote procedure calls (RPCs)",
             "kind": "template",
             "tags": ["dfu","lte"],
-            "compatibleNcs": ["v2.3.0", "v2.4.1", "v2.5.0", "v2.5.1"]
+            "compatibleNcs": ["v2.3.0", "v2.4.1", "v2.5.0", "v2.5.1", "2.5.2"]
         },
         {
             "name": "reference-design-can-asset-tracker",
@@ -17,7 +17,7 @@
             "kind": "template",
             "license": "Apache 2.0",
             "tags": ["dfu","lte"],
-            "compatibleNcs": ["v2.4.1"]
+            "compatibleNcs": ["v2.4.2"]
         },
         {
             "name": "reference-design-air-quality",
@@ -26,7 +26,25 @@
             "kind": "template",
             "license": "Apache 2.0",
             "tags": ["dfu","lte"],
-            "compatibleNcs": ["v2.4.1"]
+            "compatibleNcs": ["v2.4.1", "2.5.2"]
+        },
+        {
+            "name": "reference-design-coldchain",
+            "title": "Cold Chain Asset Tracker Reference Design",
+            "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/cold-chain-tracker/](https://projects.golioth.io/reference-designs/cold-chain-tracker/), but includes all code required to monitor weather sensor (temperature) readings and pass back to the Cloud, as well as regular GPS readings. Configurable online/offline updates rates using settings subsystem. Over-the-air updates are built in.",
+            "kind": "template",
+            "license": "Apache 2.0",
+            "tags": ["dfu","lte"],
+            "compatibleNcs": ["2.5.2"]
+        },
+        {
+            "name": "reference-design-modbus-vibration-monitor",
+            "title": "Modbus Vibration Monitor Reference Design",
+            "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/modbus-vibration-monitor/guide-nrf9160-dk](https://projects.golioth.io/reference-designs/modbus-vibration-monitor/guide-nrf9160-dk), but includes all code required to communicate over RS-485 to a Modbus server (sensor) and pass back to the Cloud. Over-the-air updates are built in.",
+            "kind": "template",
+            "license": "Apache 2.0",
+            "tags": ["dfu","lte"],
+            "compatibleNcs": ["2.5.2"]
         }
     ]
 }
