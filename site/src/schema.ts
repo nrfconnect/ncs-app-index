@@ -95,13 +95,14 @@ export const appMetadataSchema = {
         },
         releases: {
             type: 'array',
+            description: 'The collection of project`s releases.',
             items: {
                 type: 'object',
                 properties: {
-                    tag: { type: 'string' },
-                    name: { type: 'string' },
-                    date: { type: 'string', format: 'date' },
-                    sdk: { type: 'string' },
+                    tag: { type: 'string', description: 'Git tag of the released version.' },
+                    name: { type: 'string', description: 'The title of the release.' },
+                    date: { type: 'string', format: 'date', description: 'The date of publishing the release.' },
+                    sdk: { type: 'string', description: 'The nRF Connect SDK version the release is compatible with.' },
                 },
                 required: ['tag', 'name', 'date', 'sdk'],
                 additionalProperties: false,
