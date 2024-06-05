@@ -15,7 +15,7 @@ function filterAppName(apps: NormalisedApp[], search: string): NormalisedApp[] {
 }
 
 function filterNcsVersion(apps: NormalisedApp[], search: string): NormalisedApp[] {
-    return apps.filter((app) => app.compatibleNcs.some((ncs) => ncs.includes(search)));
+    return apps.filter((app) => app.releases.some((release) => release?.sdk?.includes(search) ));
 }
 
 export interface Filters {

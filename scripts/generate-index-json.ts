@@ -36,7 +36,7 @@ function initialiseGitHubApi() {
     if (!authToken) {
         throw new Error(
             'No auth token was provided, so you may encounter rate limit issues when calling the GitHub API.\n' +
-                'Provide a token by setting the "GITHUB_TOKEN" environment variable.\n',
+            'Provide a token by setting the "GITHUB_TOKEN" environment variable.\n',
         );
     }
 
@@ -117,11 +117,6 @@ async function fetchRepoData(
             repo: app.name,
         });
 
-        const releases = await octokit.repos.listReleases({
-            owner: orgId,
-            repo: app.name,
-        });
-
         const repoUrl = `https://github.com/${orgId}/${app.name}`;
 
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
@@ -142,13 +137,8 @@ async function fetchRepoData(
             stars: repoData.stargazers_count,
             forks: repoData.forks_count,
             apps: app.apps,
-            releases: releases.data.map((release) => ({
-                date: release.created_at,
-                name: release.name ?? release.tag_name,
-                tag: release.tag_name
-            })),
-            tags: app.tags,
-            compatibleNcs: app.compatibleNcs
+            releases: app.releases,
+            tags: app.tags
         };
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);

@@ -9,7 +9,14 @@
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
-            "compatibleNcs": ["v2.4.2"]
+            "releases": [
+                {
+                    "date": "2023-12-20T20:37:28Z",
+                    "name": "2.4.x",
+                    "tag": "v2.4.x",
+                    "sdk": "v2.4.1"
+                }
+            ]
         }
     ]
 }

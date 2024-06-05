@@ -93,16 +93,25 @@ export const appMetadataSchema = {
                 "By default, the VS Code extension will assume that there's just a single application sitting at the root of the repo.",
             ].join('\n\n'),
         },
-        compatibleNcs: {
+        releases: {
             type: 'array',
+            description: 'The collection of project`s releases.',
             items: {
-                type: 'string'
+                type: 'object',
+                properties: {
+                    tag: { type: 'string', description: 'Git tag of the released version.' },
+                    name: { type: 'string', description: 'The title of the release.' },
+                    date: { type: 'string', format: 'date', description: 'The date of publishing the release.' },
+                    sdk: { type: 'string', description: 'The nRF Connect SDK version the release is compatible with.' },
+                },
+                required: ['tag', 'name', 'date', 'sdk'],
+                additionalProperties: false,
             },
-            description: 'An array of compatible nRF Connect SDK releases.',
+            minItems: 1,
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags', 'compatibleNcs'],
+    required: ['name', 'kind', 'tags', 'releases'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
@@ -177,8 +186,9 @@ export const appSchema = {
                     tag: { type: 'string' },
                     name: { type: 'string' },
                     date: { type: 'string', format: 'date' },
+                    sdk: { type: 'string' },
                 },
-                required: ['tag', 'name', 'date'],
+                required: ['tag', 'name', 'date', 'sdk'],
                 additionalProperties: false,
             },
             minItems: 1,
@@ -188,8 +198,7 @@ export const appSchema = {
         forks: { type: 'integer' },
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
-        apps: { type: 'string' },
-        compatibleNcs: { type: 'array', items:  { type: 'string' } }
+        apps: { type: 'string' }
     },
     required: [
         'id',
@@ -205,8 +214,7 @@ export const appSchema = {
         'forks',
         'defaultBranch',
         'lastUpdate',
-        'repo',
-        'compatibleNcs'
+        'repo'
     ],
     additionalProperties: false,
 } as const satisfies JSONSchema;

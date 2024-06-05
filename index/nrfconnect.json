@@ -9,14 +9,44 @@
             "kind": "template",
             "tags": [],
             "apps": "app",
-            "compatibleNcs": [
-                "main",
-                "v2.6.0",
-                "v2.5.2",
-                "v2.5.1",
-                "v2.5.0",
-                "v2.3.0"
-            ]
+            "releases": [
+                {
+                  "date": "2024-03-13T14:30:49Z",
+                  "name": "ncs-example-application v2.6.0",
+                  "tag": "v2.6.0",
+                  "sdk": "v2.6.0"
+                },
+                {
+                  "date": "2024-02-01T09:50:12Z",
+                  "name": "ncs-example-application v2.5.2",
+                  "tag": "v2.5.2",
+                  "sdk": "v2.5.2"
+                },
+                {
+                  "date": "2023-12-18T20:37:28Z",
+                  "name": "ncs-example-application v2.5.1",
+                  "tag": "v2.5.1",
+                  "sdk": "v2.5.1"
+                },
+                {
+                  "date": "2023-10-26T13:55:02Z",
+                  "name": "ncs-example-application v2.5.0",
+                  "tag": "v2.5.0",
+                  "sdk": "v2.5.0"
+                },
+                {
+                  "date": "2023-06-01T13:25:38Z",
+                  "name": "ncs-example-application v2.4.0",
+                  "tag": "v2.4.0",
+                  "sdk": "v2.4.0"
+                },
+                {
+                  "date": "2023-03-02T10:45:20Z",
+                  "name": "ncs-example-application v2.3.0",
+                  "tag": "v2.3.0",
+                  "sdk": "v2.3.0"
+                }
+              ]
         }
     ]
 }

@@ -48,7 +48,7 @@ Your custom JSON file must include the following information:
   * `tags` are the tags that will be used to categorize the add-on.
   * `license` is the license type name.
   * `apps` is the global pattern to find directories containing add-ons.
-  * `compatibleNcs` are the nRF Connect SDK's versions the add-on is compatible with.
+  * `releases` are the add-on versions.
 
 Most of the information provided in these entries will be displayed on the add-on index page.
 For more information about each entry, see `appMetadataSchema` in the `resources/schema.json` file.

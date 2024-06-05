@@ -153,12 +153,16 @@
                                 "date": {
                                     "type": "string",
                                     "format": "date"
+                                },
+                                "sdk": {
+                                    "type": "string"
                                 }
                             },
                             "required": [
                                 "tag",
                                 "name",
-                                "date"
+                                "date",
+                                "sdk"
                             ],
                             "additionalProperties": false
                         },
@@ -182,12 +186,6 @@
                     },
                     "apps": {
                         "type": "string"
-                    },
-                    "compatibleNcs": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        }
                     }
                 },
                 "required": [
@@ -204,8 +202,7 @@
                     "forks",
                     "defaultBranch",
                     "lastUpdate",
-                    "repo",
-                    "compatibleNcs"
+                    "repo"
                 ],
                 "additionalProperties": false
             }
