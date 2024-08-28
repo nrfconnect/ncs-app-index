@@ -30,9 +30,6 @@
                 "lora-basics-modem",
                 "CSS",
                 "FSK"
-            ],
-            "compatibleNcs": [
-                "v2.6.1"
             ]
         }
     ]
