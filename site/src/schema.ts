@@ -41,6 +41,10 @@ export const validTags = [
     'thread',
     'matter',
     'bt-mesh',
+    'sidewalk',
+    'lora-basics-modem',
+    'CSS',
+    'FSK'
 ] as const;
 
 export const appKindSchema = {

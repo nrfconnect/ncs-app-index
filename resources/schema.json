@@ -59,7 +59,11 @@
                                 "dfu",
                                 "thread",
                                 "matter",
-                                "bt-mesh"
+                                "bt-mesh",
+                                "sidewalk",
+                                "lora-basics-modem",
+                                "CSS",
+                                "FSK"
                             ]
                         },
                         "description": "An array of tags describing the application."
