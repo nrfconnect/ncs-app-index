@@ -1,21 +1,13 @@
 {
     "name": "Semtech",
     "description": "LoRa transceiver",
-    "avatar": "https://github.com/Lora-net/SWSD006/blob/v2.6.1/lora.png?raw=true",
     "apps": [
         {
-            "repo": "https://github.com/Lora-net/SWSD006",
             "description": "Software Development Kit featuring demonstrations, drivers and middleware enabling development of connectivity and geolocation applications",
             "name": "SWSD006",
             "title": "Sidewalk & LoRaWAN Mullti-stack SDK for LR11xx (SWSD006)",
-            "defaultBranch": "v2.6.1",
-            "isTemplate": false,
             "kind": "sample",
-            "lastUpdate": "2024-08-08T12:48:20Z",
             "license": "Apache License 2.0",
-            "watchers": 1,
-            "stars": 1,
-            "forks": 0,
             "apps": "samples/*",
             "releases": [
                 {
