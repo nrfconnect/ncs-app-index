@@ -1,0 +1,28 @@
+{
+    "name": "Semtech",
+    "description": "LoRa transceiver",
+    "apps": [
+        {
+            "description": "Software Development Kit featuring demonstrations, drivers and middleware enabling development of connectivity and geolocation applications",
+            "name": "SWSD006",
+            "title": "Sidewalk & LoRaWAN Mullti-stack SDK for LR11xx (SWSD006)",
+            "kind": "sample",
+            "license": "Apache License 2.0",
+            "apps": "samples/*",
+            "releases": [
+                {
+                    "date": "2024-08-08T14:30:49Z",
+                    "name": "v2.6.1",
+                    "tag": "v2.6.1",
+                    "sdk": "v2.6.1"
+                }
+            ],
+            "tags": [
+                "sidewalk",
+                "lora-basics-modem",
+                "CSS",
+                "FSK"
+            ]
+        }
+    ]
+}
