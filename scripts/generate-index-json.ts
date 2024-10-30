@@ -23,7 +23,7 @@ import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
 import { execSync } from 'child_process';
 
 const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground'];
-const partnerOrgs: string[] = ['golioth'];
+const partnerOrgs: string[] = ['golioth', 'blecon'];
 
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
