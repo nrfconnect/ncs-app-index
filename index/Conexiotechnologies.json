@@ -1,0 +1,22 @@
+{
+    "name": "Conexio Technologies",
+    "description": "NCS example applications for Conexio Stratus devices based on nRF91xx SiP",
+    "apps": [
+        {
+            "name": "conexio-firmware-sdk",
+            "title": "Conexio Stratus Firmware SDK",
+            "description": "NCS example applications for [Conexio Stratus devices](https://docs.conexiotech.com/)",
+            "kind": "sample",
+            "tags": ["lte"],
+            "apps": "samples/*",
+            "releases": [
+                {
+                    "date": "2024-09-16T02:29:37Z",
+                    "name": "v2.7.x",
+                    "tag": "v2.7.x",
+                    "sdk": "v2.7.0"
+                }
+            ]
+        }
+    ]
+}
