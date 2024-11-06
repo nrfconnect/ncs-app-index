@@ -1,0 +1,28 @@
+{
+    "name": "Blecon",
+    "description": "Blecon IoT Connectivity for Bluetooth SDK",
+    "apps": [
+        {
+            "name": "blecon-device-sdk",
+            "title": "Blecon Device SDK",
+            "description": "Enable Blecon Bluetooth to Cloud IoT Connectivity on your device using the Blecon Device SDK. This SDK includes the Blecon modem libraries and samples.",
+            "kind": "sample",
+            "license": "Apache License 2.0",
+            "apps": "examples/zephyr/*",
+            "releases": [
+                {
+                    "date": "2024-08-09T14:46:00Z",
+                    "name": "Blecon Device SDK v1.2.1",
+                    "tag": "v1.2.1",
+                    "sdk": "v2.7.0"
+                }
+            ],
+            "tags": [
+                "blecon",
+                "bluetooth",
+                "ble",
+                "connectivity"
+            ]
+        }
+    ]
+}
