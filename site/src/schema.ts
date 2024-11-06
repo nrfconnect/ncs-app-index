@@ -44,7 +44,10 @@ export const validTags = [
     'sidewalk',
     'lora-basics-modem',
     'CSS',
-    'FSK'
+    'FSK',
+    'ble',
+    'blecon',
+    'connectivity'
 ] as const;
 
 export const appKindSchema = {
