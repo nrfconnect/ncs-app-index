@@ -63,7 +63,10 @@
                                 "sidewalk",
                                 "lora-basics-modem",
                                 "CSS",
-                                "FSK"
+                                "FSK",
+                                "ble",
+                                "blecon",
+                                "connectivity"
                             ]
                         },
                         "description": "An array of tags describing the application."
