@@ -3,6 +3,23 @@
     "description": "Official nRF Connect SDK applications",
     "apps": [
         {
+            "name": "ncs-zigbee",
+            "title": "nRF Connect SDK Zigbee",
+            "description": "Nordic Semiconductor's Zigbee libraries and reference samples.",
+            "kind": "template",
+            "tags": ["zigbee", "connectivity"],
+            "apps": "samples/*",
+            "license": "Apache 2.0",
+            "releases": [
+              {
+                "name": "Latest release",
+                "tag": "main",
+                "date": "2024-11-07T14:30:49Z",
+                "sdk": "main"
+              }
+            ]
+        },
+        {
             "name": "ncs-example-application",
             "title": "nRF Connect SDK example application",
             "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
