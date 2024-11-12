@@ -1,0 +1,21 @@
+{
+    "name": "Thingy:91 X: Hello nRF Cloud firmware",
+    "description": "",
+    "apps": [
+        {
+            "title": "Thingy:91 X: Hello nRF Cloud firmware",
+            "name": "firmware",
+            "description": "This firmware is used with hello.nrfcloud.com",
+            "kind": "sample",
+            "tags": ["dfu", "lte"],
+            "releases": [
+                {
+                    "date": "2024-08-11T14:37:00Z",
+                    "name": "v2.0.1",
+                    "tag": "v2.0.1",
+                    "sdk": "v2.8.0-rc2"
+                }
+            ]
+        }
+    ]
+}
