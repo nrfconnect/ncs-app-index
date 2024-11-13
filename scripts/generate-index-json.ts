@@ -55,11 +55,16 @@ async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
     }
 
     appIndex.apps = appIndex.apps.sort((a, b) => {
-        if (a.stars === b.stars) {
+        const [updatedA, updatedB] = [
+            new Date(a.lastUpdate),
+            new Date(b.lastUpdate)
+        ];
+
+        if (updatedA === updatedB) {
             return a.name < b.name ? -1 : 1;
         }
 
-        return a.stars > b.stars ? -1 : 1;
+        return updatedA > updatedB ? -1 : 1;
     });
 
     return appIndex;
