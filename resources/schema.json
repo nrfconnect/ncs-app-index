@@ -102,6 +102,10 @@
                         },
                         "minItems": 1
                     },
+                    "defaultBranch": {
+                        "type": "string",
+                        "description": "The default git branch that the repository is checked out. Inferred from the repo if missing."
+                    },
                     "apps": {
                         "type": "string",
                         "description": "Glob pattern to find directories containing applications.\n\nApplications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.\n\nBy default, the VS Code extension will assume that there's just a single application sitting at the root of the repo."
