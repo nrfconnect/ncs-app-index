@@ -133,7 +133,7 @@ async function fetchRepoData(
             description: app.description ?? repoData.description ?? '',
             name: app.name,
             title: app.title,
-            defaultBranch: repoData.default_branch,
+            defaultBranch: app.defaultBranch ?? repoData.default_branch,
             isTemplate: repoData.is_template ?? false,
             kind: app.kind,
             lastUpdate: repoData.updated_at,

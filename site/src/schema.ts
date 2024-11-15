@@ -115,7 +115,11 @@ export const appMetadataSchema = {
                 additionalProperties: false,
             },
             minItems: 1,
-        }
+        },
+        defaultBranch: {
+            type: 'string',
+            description: 'The default git branch that the repository is checked out. Inferred from the repo if missing.'
+        },
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags', 'releases'],

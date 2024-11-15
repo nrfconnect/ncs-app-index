@@ -3,6 +3,24 @@
     "description": "Official nRF Connect SDK applications",
     "apps": [
         {
+            "name": "ncs-zigbee",
+            "title": "Zigbee",
+            "description": "The Zigbee add-on for the nRF Connect SDK provides support for developing Zigbee applications based on the third-party precompiled ZBOSS stack.",
+            "kind": "template",
+            "tags": ["zigbee", "connectivity"],
+            "apps": "samples/*",
+            "license": "Other",
+            "releases": [
+              {
+                "name": "Zigbee add-on v0.1.0",
+                "tag": "v0.1.0",
+                "date": "2024-11-15T12:47:22Z",
+                "sdk": "v2.8.0"
+              }
+            ],
+            "defaultBranch": "v0.1.0"
+        },
+        {
             "name": "ncs-example-application",
             "title": "nRF Connect SDK example application",
             "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
