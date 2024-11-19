@@ -11,10 +11,10 @@
             "apps": "examples/zephyr/*",
             "releases": [
                 {
-                    "date": "2024-08-09T14:46:00Z",
-                    "name": "Blecon Device SDK v1.2.1",
-                    "tag": "v1.2.1",
-                    "sdk": "v2.7.0"
+                    "date": "2024-11-17T15:30:00Z",
+                    "name": "Blecon Device SDK v2.0.1",
+                    "tag": "v2.0.1",
+                    "sdk": "v2.8.0"
                 }
             ],
             "tags": [
