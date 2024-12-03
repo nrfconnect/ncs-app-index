@@ -16,9 +16,15 @@
                 "tag": "v0.1.0",
                 "date": "2024-11-15T12:47:22Z",
                 "sdk": "v2.8.0"
+              },
+              {
+                "name": "Zigbee add-on v0.2.0",
+                "tag": "v0.2.0",
+                "date": "2024-12-03T10:44:00Z",
+                "sdk": "v2.8.0"
               }
             ],
-            "defaultBranch": "v0.1.0"
+            "defaultBranch": "v0.2.0"
         },
         {
             "name": "ncs-example-application",
