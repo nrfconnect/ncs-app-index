@@ -24,7 +24,8 @@
                 "sdk": "v2.8.0"
               }
             ],
-            "defaultBranch": "v0.2.0"
+            "defaultBranch": "v0.2.0",
+            "docsUrl": "https://nrfconnect.github.io/ncs-zigbee/"
         },
         {
             "name": "ncs-example-application",
