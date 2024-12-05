@@ -4,6 +4,7 @@
  */
 
 import Ajv, { ErrorObject } from 'ajv';
+import addFormats from 'ajv-formats';
 import colours from 'ansi-colors';
 
 import orgIndexSchema from '../resources/schema.json';
@@ -22,6 +23,7 @@ function reportError(file: string, error: ErrorObject) {
 
 async function run() {
     const ajv = new Ajv();
+    addFormats(ajv);
     const files = await readOrgIndexFiles();
 
     const validate = ajv.compile(orgIndexSchema);

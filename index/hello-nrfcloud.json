@@ -15,7 +15,8 @@
                     "tag": "v2.0.1",
                     "sdk": "v2.8.0-rc2"
                 }
-            ]
+            ],
+            "docsUrl": "https://hello-nrfcloud.github.io/firmware/html/index.html"
         }
     ]
 }

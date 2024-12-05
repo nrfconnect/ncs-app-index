@@ -17,6 +17,7 @@ import {
     StarIcon,
     TerminalIcon,
     VerifiedIcon,
+    BookIcon,
 } from '@primer/octicons-react';
 
 import { useState } from 'react';
@@ -101,7 +102,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         const newQueryParams = new VSCodeQueryParams(app);
                         newQueryParams.branch = branch;
                         setQueryParams(newQueryParams);
-                }}/>
+                    }} />
 
                 <VSCodeButton queryParams={queryParams} />
 
@@ -111,6 +112,17 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                 >
                     Instructions <TerminalIcon size={20} />
                 </button>
+
+                {!!app.docsUrl
+                    && <a
+                        className="button bg-[#768692] text-white"
+                        href={app.docsUrl}
+                        title={`Open documentation for ${app.name}`}
+                        target={'_blank'}
+                        rel={'noopener noreferrer'}
+                    >
+                        Documentation <BookIcon size={20} />
+                    </a>}
             </div>
             <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
                 <div className="flex items-center gap-1" title={`${app.stars} stars`}>

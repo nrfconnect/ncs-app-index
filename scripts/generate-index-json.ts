@@ -112,17 +112,36 @@ async function fetchOrgData({
     }
 }
 
+async function getReadmeUrl(orgId: string, app: OrgIndex['apps'][number]): Promise<string | undefined> {
+    let readmeUrl: string | undefined;
+
+    try {
+        const { data } = await octokit.repos.getReadme({
+            owner: orgId,
+            repo: app.name,
+        });
+
+        readmeUrl = data.html_url ?? undefined;
+    } catch {
+        readmeUrl = undefined;
+    }
+
+    return readmeUrl;
+}
+
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
 ): Promise<AppIndex['apps'][number]> {
     try {
+        const repoUrl = `https://github.com/${orgId}/${app.name}`;
+
         const { data: repoData } = await octokit.repos.get({
             owner: orgId,
             repo: app.name,
         });
 
-        const repoUrl = `https://github.com/${orgId}/${app.name}`;
+        let docsUrl = app.docsUrl ?? await getReadmeUrl(orgId, app);
 
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
@@ -143,7 +162,8 @@ async function fetchRepoData(
             forks: repoData.forks_count,
             apps: app.apps,
             releases: app.releases,
-            tags: app.tags
+            tags: app.tags,
+            docsUrl: docsUrl,
         };
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);

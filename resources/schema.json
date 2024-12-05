@@ -75,28 +75,39 @@
                         "type": "string",
                         "description": "The name of the application license, e.g. \"Apache 2.0\". Inferred from the repo if missing."
                     },
+                    "apps": {
+                        "type": "string",
+                        "description": "Glob pattern to find directories containing applications.\n\nApplications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.\n\nBy default, the VS Code extension will assume that there's just a single application sitting at the root of the repo."
+                    },
                     "releases": {
                         "type": "array",
+                        "description": "The collection of project`s releases.",
                         "items": {
                             "type": "object",
                             "properties": {
                                 "tag": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "Git tag of the released version."
                                 },
                                 "name": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The title of the release."
                                 },
                                 "date": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "The date of publishing the release."
                                 },
                                 "sdk": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "The nRF Connect SDK version the release is compatible with."
                                 }
                             },
                             "required": [
                                 "tag",
                                 "name",
-                                "date"
+                                "date",
+                                "sdk"
                             ],
                             "additionalProperties": false
                         },
@@ -106,16 +117,17 @@
                         "type": "string",
                         "description": "The default git branch that the repository is checked out. Inferred from the repo if missing."
                     },
-                    "apps": {
+                    "docsUrl": {
                         "type": "string",
-                        "description": "Glob pattern to find directories containing applications.\n\nApplications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.\n\nBy default, the VS Code extension will assume that there's just a single application sitting at the root of the repo."
+                        "description": "The url of the addon's documentation"
                     }
                 },
                 "additionalProperties": false,
                 "required": [
                     "name",
                     "kind",
-                    "tags"
+                    "tags",
+                    "releases"
                 ]
             },
             "description": "A list of applications contributed by the organization."
