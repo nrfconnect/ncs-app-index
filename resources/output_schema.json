@@ -135,7 +135,14 @@
                                 "dfu",
                                 "thread",
                                 "matter",
-                                "bt-mesh"
+                                "bt-mesh",
+                                "sidewalk",
+                                "lora-basics-modem",
+                                "CSS",
+                                "FSK",
+                                "ble",
+                                "blecon",
+                                "connectivity"
                             ]
                         }
                     },
@@ -152,7 +159,7 @@
                                 },
                                 "date": {
                                     "type": "string",
-                                    "format": "date"
+                                    "format": "date-time"
                                 },
                                 "sdk": {
                                     "type": "string"
@@ -185,6 +192,9 @@
                         "format": "date-time"
                     },
                     "apps": {
+                        "type": "string"
+                    },
+                    "docsUrl": {
                         "type": "string"
                     }
                 },

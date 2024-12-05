@@ -108,7 +108,7 @@ export const appMetadataSchema = {
                 properties: {
                     tag: { type: 'string', description: 'Git tag of the released version.' },
                     name: { type: 'string', description: 'The title of the release.' },
-                    date: { type: 'string', format: 'date', description: 'The date of publishing the release.' },
+                    date: { type: 'string', format: 'date-time', description: 'The date of publishing the release.' },
                     sdk: { type: 'string', description: 'The nRF Connect SDK version the release is compatible with.' },
                 },
                 required: ['tag', 'name', 'date', 'sdk'],
@@ -120,6 +120,10 @@ export const appMetadataSchema = {
             type: 'string',
             description: 'The default git branch that the repository is checked out. Inferred from the repo if missing.'
         },
+        docsUrl: {
+            type: 'string',
+            description: `The url of the addon's documentation`
+        }
     },
     additionalProperties: false,
     required: ['name', 'kind', 'tags', 'releases'],
@@ -196,7 +200,7 @@ export const appSchema = {
                 properties: {
                     tag: { type: 'string' },
                     name: { type: 'string' },
-                    date: { type: 'string', format: 'date' },
+                    date: { type: 'string', format: 'date-time' },
                     sdk: { type: 'string' },
                 },
                 required: ['tag', 'name', 'date', 'sdk'],
@@ -209,7 +213,8 @@ export const appSchema = {
         forks: { type: 'integer' },
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
-        apps: { type: 'string' }
+        apps: { type: 'string' },
+        docsUrl: { type: 'string' },
     },
     required: [
         'id',
