@@ -112,6 +112,23 @@ async function fetchOrgData({
     }
 }
 
+async function getReadmeUrl(orgId: string, app: OrgIndex['apps'][number]): Promise<string | undefined> {
+    let readmeUrl: string | undefined;
+
+    try {
+        const { data } = await octokit.repos.getReadme({
+            owner: orgId,
+            repo: app.name,
+        });
+
+        readmeUrl = data.html_url ?? undefined;
+    } catch {
+        readmeUrl = undefined;
+    }
+
+    return readmeUrl;
+}
+
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
@@ -124,15 +141,7 @@ async function fetchRepoData(
             repo: app.name,
         });
 
-        let docsUrl = app.docsUrl;
-        if (docsUrl === undefined) {
-            const { data } = await octokit.repos.getReadme({
-                owner: orgId,
-                repo: app.name,
-            });
-
-            docsUrl = data.html_url ?? repoUrl;
-        }
+        let docsUrl = app.docsUrl ?? await getReadmeUrl(orgId, app);
 
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
