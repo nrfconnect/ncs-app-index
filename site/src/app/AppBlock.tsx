@@ -98,11 +98,13 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
             <div className="flex flex-wrap items-center gap-2">
                 <ReleasesDropDownList app={app}
-                    onReleaseChosen={(branch) => {
+                    onReleaseChosen={
+                    (branch) => {
                         const newQueryParams = new VSCodeQueryParams(app);
-                        newQueryParams.branch = branch;
+                        newQueryParams.branch = branch!;
                         setQueryParams(newQueryParams);
-                    }} />
+                    }}
+                />
 
                 <VSCodeButton queryParams={queryParams} />
 
