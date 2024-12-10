@@ -4,9 +4,9 @@
  */
 
 import { NormalisedApp } from '../schema';
-import Select, {components, ControlProps, CSSObjectWithLabel, DropdownIndicatorProps } from 'react-select';
+import Select, {components, ControlProps, CSSObjectWithLabel, DropdownIndicatorProps, MenuProps } from 'react-select';
 import { GitBranchIcon } from '@primer/octicons-react';
-import { visible } from 'ansi-colors';
+import { useState } from 'react';
 
 interface Props {
   app: NormalisedApp;
@@ -34,7 +34,6 @@ function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
 
   const releases: ReleaseOption[] = [{ label: app.defaultBranch, value: app.defaultBranch },
           ...app.releases.map((release) => ({ label: release.tag, value: release.tag ?? '' }))];
-
   const selectStyles = {
     control: (base: CSSObjectWithLabel, state: ControlProps<ReleaseOption>) => ({
       ...base,
@@ -42,7 +41,7 @@ function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
       borderRadius: 0,
       minHeight: '30px',
       height: '33px',
-      paddingLeft: state.isFocused ? 12 : 8,
+      paddingLeft: 8,
       alignContent: 'center',
     }),
     dropdownIndicator: (base: CSSObjectWithLabel, state: DropdownIndicatorProps<ReleaseOption, false>) => ({
@@ -50,24 +49,33 @@ function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
       paddingTop: 0,
       paddingBottom: 4,
       display: !state.isFocused ? 'block' : 'none',
+      scale: '0.7'
     }),
+    menu: (base: CSSObjectWithLabel, state: MenuProps<ReleaseOption, false>) => ({
+      ...base,
+      marginTop: 2,
+      marginBottom: 2,
+      borderRadius: 0
+    })
   };
 
+  const [selectedRelease, setSelectedRelease] = useState(releases[0]?.label);
+
   return (
-    <div className="font-thin max-w-[15%] min-w-[15%]">
+    <div className="font-thin max-w-[15%] min-w-[15%]" title={`Release '${selectedRelease}' selected`}>
       <Select
         styles={selectStyles}
         instanceId={`${app.id}-release-select`}
-        noOptionsMessage={() => 'No other releases'}
+        noOptionsMessage={() => 'No more releases'}
         isMulti={false}
         menuPlacement="auto"
         defaultValue={releases[0]}
         options={releases}
-        onChange={(newValue) => onReleaseChosen(newValue?.label) }
+        onChange={(newValue) => { onReleaseChosen(newValue?.label); setSelectedRelease(newValue?.label); }}
         hideSelectedOptions
         components={{ Control: Control, IndicatorSeparator: HiddenComponent }}
         isSearchable={false}
-        />
+      />
     </div>
   )
 }

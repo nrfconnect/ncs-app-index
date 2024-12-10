@@ -111,6 +111,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                 <button
                     className="button bg-[#768692] text-white"
                     onClick={() => setShowingAppDetails({ id: app.id, sha: queryParams.branch })}
+                    title={`Open a guide for the '${app.name}'`}
                 >
                     Instructions <TerminalIcon size={20} />
                 </button>
