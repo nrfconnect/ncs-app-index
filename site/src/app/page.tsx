@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { getAppIndex } from '../data';
+import { getAppIndex, importDocs } from '../data';
 import { NormalisedApp } from '../schema';
 import Root from './Root';
 
 export default function Page() {
     const apps = normaliseApps();
-    return <Root apps={apps} />;
+    const docs = importDocs();
+    return <Root apps={apps} docs={docs} />;
 }
 
 // Run once at build time to turn the JSON data into something easier

@@ -14,14 +14,17 @@ import { filterReducer, initialFilters } from './filters';
 import Dialog from './Dialog';
 import InstructionsDialog from './InstructionsDialog';
 import AboutDialog from './AboutDialog';
+import ReactMarkdown from 'react-markdown';
+import { DocsType } from '../data';
 
 interface Props {
     apps: NormalisedApp[];
+    docs: DocsType;
 }
 
 export type AppDetails = { id: string, sha: string };
 
-function Root({ apps }: Props) {
+function Root({ apps, docs }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
@@ -93,7 +96,12 @@ function Root({ apps }: Props) {
             }
             {!showingAppsList &&
                 <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
-                    <p>These are the docs. Have fun! </p>
+                    {
+                        Object.values(docs).map((v) => {
+                                return <ReactMarkdown>{v}</ReactMarkdown>
+                            }
+                        )
+                    }
                 </div>
             }
         </main>
