@@ -16,3 +16,21 @@ export function getAppIndex(): AppIndex {
     const appIndexRaw = fs.readFileSync(indexFilePath, 'utf8');
     return JSON.parse(appIndexRaw);
 }
+
+export type DocsType = Record<string, string>;
+
+export function importDocs(): DocsType {
+    const docsPath = path.join(__dirname, '..', '..', '..', '..', 'docs');
+    const docsDir = fs.readdirSync(docsPath);
+    const docs: Record<string, string> = {};
+
+    docsDir.forEach((f) => {
+        const filePath = path.parse(path.join(docsPath, f));
+        console.log(filePath)
+        if (filePath.ext === '.md') {
+            docs[filePath.name] = fs.readFileSync(path.join(docsPath, f), 'utf-8').toString();
+        }
+    });
+
+    return docs;
+}
