@@ -4,10 +4,11 @@
  */
 
 import Image from 'next/image';
-import { ChangeEvent, Dispatch } from 'react';
+import { ChangeEvent, Dispatch, useState } from 'react';
 import { FilterAction, Filters } from './filters';
 import classNames from 'classnames';
 import { QuestionIcon } from '@primer/octicons-react';
+import { Menu, type Props as MenuProps, type MenuStateType } from './Menu';
 
 let contents = `static void gzll_tx_result_handler(struct gzll_tx_result *tx_result) {
     int err;
@@ -36,6 +37,8 @@ interface Props {
     filters: Filters;
     dispatchFilters: Dispatch<FilterAction>;
     showAboutDialog(): void;
+    displayDocs(): void;
+    displayApps(): void;
 }
 
 function Header(props: Props): JSX.Element {
@@ -53,6 +56,14 @@ function Header(props: Props): JSX.Element {
             />
         </div>
     );
+
+    const onMenuChanged = (state: MenuStateType) => {
+        if (state === 'apps') {
+            props.displayApps();
+        } else {
+            props.displayDocs();
+        }
+    };
 
     return (
         <div>
@@ -113,6 +124,10 @@ function Header(props: Props): JSX.Element {
                                 aria-label="Filter NCS version"
                                 className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
+                            <div className='bg-none w-1/12'></div>
+                            <div className='w-1/4'>
+                                <Menu onStateChanged={(state) => onMenuChanged(state)} />
+                            </div>
                         </div>
                     </div>
                 </div>
