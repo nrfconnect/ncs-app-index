@@ -25,6 +25,7 @@ function Root({ apps }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
+    const [showingAppsList, setShowingAppsList] = useState(true);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -81,11 +82,20 @@ function Root({ apps }: Props) {
                 filters={filters}
                 dispatchFilters={dispatchFilters}
                 showAboutDialog={showAboutDialog}
+                displayApps={() => setShowingAppsList(true)}
+                displayDocs={() => setShowingAppsList(false)}
             />
 
-            <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
-                <AppList apps={apps} filters={filters} setShowingAppDetails={setShowingAppDetails} />
-            </div>
+            {showingAppsList &&
+                <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
+                    <AppList apps={apps} filters={filters} setShowingAppDetails={setShowingAppDetails} />
+                </div>
+            }
+            {!showingAppsList &&
+                <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
+                    <p>These are the docs. Have fun! </p>
+                </div>
+            }
         </main>
     );
 }
