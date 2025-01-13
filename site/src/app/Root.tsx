@@ -95,10 +95,10 @@ function Root({ apps, docs }: Props) {
                 </div>
             }
             {!showingAppsList &&
-                <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
+                <div className="markdown-container">
                     {
                         Object.values(docs).map((v) => {
-                                return <ReactMarkdown>{v}</ReactMarkdown>
+                                return <ReactMarkdown className={'markdown-item'}>{v}</ReactMarkdown>
                             }
                         )
                     }
