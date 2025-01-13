@@ -22,9 +22,15 @@
                 "tag": "v0.2.0",
                 "date": "2024-12-03T10:44:00Z",
                 "sdk": "v2.8.0"
+              },
+              {
+                "name": "Zigbee add-on v0.3.0",
+                "tag": "v0.3.0",
+                "date": "2025-01-13T12:20:00Z",
+                "sdk": "v2.9.0"
               }
             ],
-            "defaultBranch": "v0.2.0",
+            "defaultBranch": "v0.3.0",
             "docsUrl": "https://nrfconnect.github.io/ncs-zigbee/"
         },
         {
