@@ -56,6 +56,7 @@ function Header(props: Props): JSX.Element {
             />
         </div>
     );
+    const [menuState, setMenuState] = useState('apps');
 
     const onMenuChanged = (state: MenuStateType) => {
         if (state === 'apps') {
@@ -63,6 +64,7 @@ function Header(props: Props): JSX.Element {
         } else {
             props.displayDocs();
         }
+        setMenuState(state);
     };
 
     return (
@@ -111,24 +113,30 @@ function Header(props: Props): JSX.Element {
                             <div className='w-1/4'>
                                 <Menu onStateChanged={(state) => onMenuChanged(state)} />
                             </div>
-                            <div className='bg-none w-1/12 bg-white drop-shadow-md'></div>
-                            <input
-                                type="search"
-                                placeholder="Filter applications..."
-                                value={props.filters.appSearch}
-                                onChange={handleSearch('appSearch')}
-                                aria-label="Filter applications"
-                                className="w-3/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
-                            />
-                            <input
-                                type="search"
-                                placeholder="nRF Connect SDK version..."
-                                value={props.filters.ncsSearch}
-                                onChange={handleSearch('ncsSearch')}
-                                aria-label="Filter NCS version"
-                                className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
-                            />
-                        </div>
+                            {menuState === 'apps' && <>
+                                <input
+                                    type="search"
+                                    placeholder="Filter applications..."
+                                    value={props.filters.appSearch}
+                                    onChange={handleSearch('appSearch')}
+                                    aria-label="Filter applications"
+                                    className="w-3/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
+                                />
+                                <input
+                                    type="search"
+                                    placeholder="nRF Connect SDK version..."
+                                    value={props.filters.ncsSearch}
+                                    onChange={handleSearch('ncsSearch')}
+                                    aria-label="Filter NCS version"
+                                    className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
+                                />
+                            </>
+                            }
+                            {menuState === 'docs' &&
+                            <>
+                                <div className="bg-none w-full bg-white drop-shadow-md"></div>
+                            </>}
+                    </div>
                     </div>
                 </div>
             </header>

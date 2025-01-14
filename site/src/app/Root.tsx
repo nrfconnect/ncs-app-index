@@ -16,6 +16,7 @@ import InstructionsDialog from './InstructionsDialog';
 import AboutDialog from './AboutDialog';
 import Markdown from 'react-markdown';
 import { DocsType } from '../data';
+import { Docs } from './Docs';
 
 interface Props {
     apps: NormalisedApp[];
@@ -96,14 +97,7 @@ function Root({ apps, docs }: Props) {
             }
             {!showingAppsList &&
                 <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
-                    <div className="markdown-container">
-                        {
-                            Object.values(docs).map((v) => {
-                                    return <Markdown className={'markdown-item'}>{v}</Markdown>
-                                }
-                            )
-                        }
-                    </div>
+                    <Docs docs={docs}/>
                 </div>
             }
         </main>
