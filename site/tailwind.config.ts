@@ -16,6 +16,11 @@ const config: Config = {
         fontFamily: {
             sans: ['GT-Eesti-Display-Regular', 'sans-serif'],
         },
+        extend: {
+            colors: {
+                'light-gray': '#768692',
+            }
+        }
     },
     plugins: [],
 };

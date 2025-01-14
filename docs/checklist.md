@@ -1,4 +1,6 @@
-### Addon Contributors' Checklist
+# Addon Contributors' Checklist
+
+---
 
 The following criteria need to be met in order to contribute a new addon.
 

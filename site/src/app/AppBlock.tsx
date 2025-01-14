@@ -109,7 +109,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                 <VSCodeButton queryParams={queryParams} />
 
                 <button
-                    className="button bg-[#768692] text-white"
+                    className="button bg-light-gray text-white"
                     onClick={() => setShowingAppDetails({ id: app.id, sha: queryParams.branch })}
                     title={`Open a guide for the '${app.name}'`}
                 >
@@ -118,7 +118,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
                 {!!app.docsUrl
                     && <a
-                        className="button bg-[#768692] text-white"
+                        className="button bg-light-gray text-white"
                         href={app.docsUrl}
                         title={`Open documentation for ${app.name}`}
                         target={'_blank'}

@@ -14,7 +14,7 @@ import { filterReducer, initialFilters } from './filters';
 import Dialog from './Dialog';
 import InstructionsDialog from './InstructionsDialog';
 import AboutDialog from './AboutDialog';
-import ReactMarkdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import { DocsType } from '../data';
 
 interface Props {
@@ -95,13 +95,15 @@ function Root({ apps, docs }: Props) {
                 </div>
             }
             {!showingAppsList &&
-                <div className="markdown-container">
-                    {
-                        Object.values(docs).map((v) => {
-                                return <ReactMarkdown className={'markdown-item'}>{v}</ReactMarkdown>
-                            }
-                        )
-                    }
+                <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
+                    <div className="markdown-container">
+                        {
+                            Object.values(docs).map((v) => {
+                                    return <Markdown className={'markdown-item'}>{v}</Markdown>
+                                }
+                            )
+                        }
+                    </div>
                 </div>
             }
         </main>

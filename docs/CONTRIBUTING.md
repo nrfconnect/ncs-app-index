@@ -1,5 +1,7 @@
 # Contribution guidelines
 
+---
+
 If you or your organization has a project that you'd like to include in the nRF Connect SDK Add-on index, you can do so by opening a pull request against this repository.
 
 The pull request must include a JSON file named after your GitHub account in the `index` directory (for example, `index/nrfconnect.json`).

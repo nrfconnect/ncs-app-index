@@ -1,5 +1,7 @@
 # nRF Connect SDK Add-on index
 
+---
+
 This repository includes a collection of index pages for publicly available nRF Connect SDK Add-ons, which are supplementary components that extend the [nRF Connect SDK](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/index.html). You can access the index from the [nRF Connect for VS Code extension](https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html), and browse it on [its webpage](https://nrfconnect.github.io/ncs-app-index/).
 ----
 

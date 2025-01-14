@@ -108,6 +108,10 @@ function Header(props: Props): JSX.Element {
 
                     <div className="absolute bottom-0 flex w-full justify-center">
                         <div className="relative top-5 mx-4 flex h-14 w-full max-w-5xl lg:w-2/3">
+                            <div className='w-1/4'>
+                                <Menu onStateChanged={(state) => onMenuChanged(state)} />
+                            </div>
+                            <div className='bg-none w-1/12 bg-white drop-shadow-md'></div>
                             <input
                                 type="search"
                                 placeholder="Filter applications..."
@@ -124,10 +128,6 @@ function Header(props: Props): JSX.Element {
                                 aria-label="Filter NCS version"
                                 className="w-1/4 p-3 pl-3 outline-none drop-shadow-md lg:mx-0"
                             />
-                            <div className='bg-none w-1/12'></div>
-                            <div className='w-1/4'>
-                                <Menu onStateChanged={(state) => onMenuChanged(state)} />
-                            </div>
                         </div>
                     </div>
                 </div>
