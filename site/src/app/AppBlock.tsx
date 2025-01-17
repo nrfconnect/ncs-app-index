@@ -18,6 +18,7 @@ import {
     TerminalIcon,
     VerifiedIcon,
     BookIcon,
+    LockIcon,
 } from '@primer/octicons-react';
 
 import { useState } from 'react';
@@ -59,6 +60,11 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             <a href={app.repo} target="_blank" title="Visit Website">
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
+                            {app.restricted && 
+                                <div title="This addon requires additional permissions.">
+                                    <LockIcon className="hoverable-icon" size={20}/>
+                                </div>
+                            }
                         </div>
 
                         <div className="hidden items-center gap-2 md:flex">
