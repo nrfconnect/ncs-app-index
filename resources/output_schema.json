@@ -196,6 +196,10 @@
                     },
                     "docsUrl": {
                         "type": "string"
+                    },
+                    "restricted": {
+                        "type": "boolean",
+                        "default": false
                     }
                 },
                 "required": [
