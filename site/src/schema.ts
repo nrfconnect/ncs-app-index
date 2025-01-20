@@ -122,7 +122,12 @@ export const appMetadataSchema = {
         },
         docsUrl: {
             type: 'string',
-            description: `The url of the addon's documentation`
+            description: `The URL of the add-on's documentation`
+        },
+        restricted: {
+            type: 'boolean',
+            description: 'Mark the restricted access to any of the dependencies.',
+            default: false
         }
     },
     additionalProperties: false,
@@ -215,6 +220,7 @@ export const appSchema = {
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
         docsUrl: { type: 'string' },
+        restricted: { type: 'boolean', default: false },
     },
     required: [
         'id',
