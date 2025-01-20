@@ -61,7 +61,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
                             {app.restricted && 
-                                <div title="This addon requires additional permissions.">
+                                <div title="This add-on requires additional permissions.">
                                     <LockIcon className="hoverable-icon" size={20}/>
                                 </div>
                             }
