@@ -48,6 +48,36 @@
             "apps": "app",
             "releases": [
                 {
+                  "date": "2024-12-17T16:52:00Z",
+                  "name": "ncs-example-application v2.9.0",
+                  "tag": "v2.9.0",
+                  "sdk": "v2.9.0"
+                },
+                {
+                  "date": "2024-11-14T13:52:00Z",
+                  "name": "ncs-example-application v2.8.0",
+                  "tag": "v2.8.0",
+                  "sdk": "v2.8.0"
+                },
+                {
+                  "date": "2024-07-04T19:19:00Z",
+                  "name": "ncs-example-application v2.7.0",
+                  "tag": "v2.7.0",
+                  "sdk": "v2.7.0"
+                },
+                {
+                  "date": "2024-09-17T10:54:00Z",
+                  "name": "ncs-example-application v2.6.2",
+                  "tag": "v2.6.2",
+                  "sdk": "v2.6.2"
+                },
+                {
+                  "date": "2024-04-25T13:53:00Z",
+                  "name": "ncs-example-application v2.6.1",
+                  "tag": "v2.6.1",
+                  "sdk": "v2.6.1"
+                },
+                {
                   "date": "2024-03-13T14:30:49Z",
                   "name": "ncs-example-application v2.6.0",
                   "tag": "v2.6.0",
