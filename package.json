@@ -7,7 +7,8 @@
         "copyright": "tsx scripts/copyright.ts",
         "generate-index-json": "tsx scripts/generate-index-json.ts",
         "validate-index": "tsx scripts/validate-index.ts",
-        "check-types": "tsc --noEmit"
+        "check-types": "tsc --noEmit",
+        "generate-readme": "tsx scripts/readme.ts"
     },
     "repository": {
         "type": "git",
