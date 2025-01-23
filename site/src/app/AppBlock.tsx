@@ -60,10 +60,13 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             <a href={app.repo} target="_blank" title="Visit Website">
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
-                            {app.restricted && 
-                                <div title="This add-on requires additional permissions.">
-                                    <LockIcon className="hoverable-icon" size={20}/>
-                                </div>
+                            {app.restricted &&
+                                <a href={app.restricted.detailsUrl}
+                                   target="_blank"
+                                   rel={'noopener noreferrer'} 
+                                   title="This add-on requires additional permissions.">
+                                   <LockIcon className="hoverable-icon" size={20}/>
+                                </a>
                             }
                         </div>
 

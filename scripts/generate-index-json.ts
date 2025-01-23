@@ -144,8 +144,6 @@ async function fetchRepoData(
 
         let docsUrl = app.docsUrl ?? await getReadmeUrl(orgId, app);
 
-        const restricted = app.restricted ? app.restricted : appIndexSchema.properties.apps.items.properties.restricted?.default;
-
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
@@ -167,7 +165,7 @@ async function fetchRepoData(
             releases: app.releases,
             tags: app.tags,
             docsUrl: docsUrl,
-            restricted: restricted,
+            restricted: app.restricted,
         };
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
