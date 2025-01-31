@@ -122,9 +122,17 @@
                         "description": "The URL of the add-on's documentation"
                     },
                     "restricted": {
-                        "type": "boolean",
+                        "type": "object",
+                        "properties": {
+                            "detailsUrl": {
+                                "type": "string",
+                                "description": "The URL of the documentation that explains how to grant access."
+                            }
+                        },
                         "description": "Mark the restricted access to any of the dependencies.",
-                        "default": false
+                        "required": [
+                            "detailsUrl"
+                        ]
                     }
                 },
                 "additionalProperties": false,
