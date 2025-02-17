@@ -105,7 +105,7 @@ To verify that your add-on index is correctly picked up by the [nRF Connect for 
 
 1. Add the following line to the file:
    ```
-   "nrf-connect.appIndexUri": "http://localhost:3000/",
+   "nrf-connect.appIndexUri": "http://localhost:3000/ncs-app-index",
    ```
 
 1. Save your changes.
