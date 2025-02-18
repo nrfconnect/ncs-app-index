@@ -6,6 +6,7 @@
 'use client';
 
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { SearchEvent } from './telemetryEvents';
 
 import AppList from './AppList';
 import { NormalisedApp } from '../schema';
@@ -27,7 +28,7 @@ function Root({ apps }: Props) {
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
 
-    let telemetry;
+    let telemetry: Telemetry;
 
     useEffect(() => {
         telemetry = new Telemetry('InstrumentationKey=ae2167fd-0823-49e0-91a4-b6ec5a598490;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=bbb09627-f57e-40d4-a59a-50c1e0243bae');
@@ -69,6 +70,10 @@ function Root({ apps }: Props) {
 
         if (ncs) {
             dispatchFilters({ type: 'ncsSearch', payload: ncs });
+        }
+
+        if (app || ncs) {
+            telemetry.trackEvent(new SearchEvent(ncs ?? undefined, app ?? undefined));
         }
     }, []);
 

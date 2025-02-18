@@ -7,7 +7,9 @@ import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 export interface TelemetryEvent {
     id: string;
-    props?: string[];
+    props?: {
+        [prop: string]: string
+    };
 };
 
 export class Telemetry {
