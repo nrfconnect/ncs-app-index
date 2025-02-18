@@ -14,6 +14,7 @@ import { filterReducer, initialFilters } from './filters';
 import Dialog from './Dialog';
 import InstructionsDialog from './InstructionsDialog';
 import AboutDialog from './AboutDialog';
+import { Telemetry } from './telemetry';
 
 interface Props {
     apps: NormalisedApp[];
@@ -25,6 +26,12 @@ function Root({ apps }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
+
+    let telemetry;
+
+    useEffect(() => {
+        telemetry = new Telemetry('InstrumentationKey=ae2167fd-0823-49e0-91a4-b6ec5a598490;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=bbb09627-f57e-40d4-a59a-50c1e0243bae');
+    }, []);
 
     const dialogRef = useRef<HTMLDialogElement>(null);
 
