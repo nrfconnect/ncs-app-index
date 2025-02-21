@@ -22,3 +22,17 @@ export class SearchEvent extends NCSAddonsEvent {
         this.props = { app: app, ncs: ncs };
     }
 };
+
+export class ShowAppGuideEvent extends NCSAddonsEvent {
+    constructor(app: string, revision: string, org: string) {
+        super('showAppGuide');
+        this.props = { app: app, revision: revision, org: org };
+    }
+};
+
+export class OpenDocsEvent extends NCSAddonsEvent {
+    constructor(app: string, org: string) {
+        super('openDocsEvent');
+        this.props = { app: app, org: org };
+    }
+};

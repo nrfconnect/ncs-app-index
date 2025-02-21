@@ -28,6 +28,8 @@ import TagList from './TagList';
 import ReleasesDropDownList from './ReleasesDropDownList'
 import VSCodeQueryParams from './VSCodeQueryParams';
 import { AppDetails } from './Root';
+import { telemetry } from './telemetry';
+import { ShowAppGuideEvent, OpenDocsEvent } from './telemetryEvents';
 
 interface Props {
     app: NormalisedApp;
@@ -119,7 +121,10 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
                 <button
                     className="button bg-[#768692] text-white"
-                    onClick={() => setShowingAppDetails({ id: app.id, sha: queryParams.branch })}
+                    onClick={() => {
+                        telemetry.trackEvent(new ShowAppGuideEvent(app.name, queryParams.branch, app.owner.name));
+                        setShowingAppDetails({ id: app.id, sha: queryParams.branch });
+                    }}
                     title={`Open a guide for the '${app.name}'`}
                 >
                     Instructions <TerminalIcon size={20} />
@@ -132,6 +137,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         title={`Open documentation for ${app.name}`}
                         target={'_blank'}
                         rel={'noopener noreferrer'}
+                        onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
                     >
                         Documentation <BookIcon size={20} />
                     </a>}
