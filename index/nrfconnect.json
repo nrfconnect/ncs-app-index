@@ -4,7 +4,7 @@
     "apps": [
         {
             "name": "ncs-zigbee",
-            "title": "Zigbee",
+            "title": "Zigbee R23",
             "description": "The Zigbee add-on for the nRF Connect SDK provides support for developing Zigbee applications based on the third-party precompiled ZBOSS stack.",
             "kind": "template",
             "tags": ["zigbee", "connectivity"],
