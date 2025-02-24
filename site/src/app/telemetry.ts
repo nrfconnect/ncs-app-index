@@ -30,4 +30,5 @@ class Telemetry {
     }
 };
 
+/* Always create an object to count the visitors */
 export const telemetry = new Telemetry('InstrumentationKey=ae2167fd-0823-49e0-91a4-b6ec5a598490;IngestionEndpoint=https://northeurope-2.in.applicationinsights.azure.com/;LiveEndpoint=https://northeurope.livediagnostics.monitor.azure.com/;ApplicationId=bbb09627-f57e-40d4-a59a-50c1e0243bae');
