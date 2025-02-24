@@ -6,6 +6,7 @@
 'use client';
 
 import { useEffect, useMemo, useReducer, useRef, useState } from 'react';
+import { SearchEvent } from './telemetryEvents';
 
 import AppList from './AppList';
 import { NormalisedApp } from '../schema';
@@ -14,6 +15,7 @@ import { filterReducer, initialFilters } from './filters';
 import Dialog from './Dialog';
 import InstructionsDialog from './InstructionsDialog';
 import AboutDialog from './AboutDialog';
+import { telemetry } from './telemetry';
 
 interface Props {
     apps: NormalisedApp[];
@@ -25,7 +27,6 @@ function Root({ apps }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
-
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     function onDialogClose() {
@@ -62,6 +63,10 @@ function Root({ apps }: Props) {
 
         if (ncs) {
             dispatchFilters({ type: 'ncsSearch', payload: ncs });
+        }
+
+        if (app || ncs) {
+            telemetry.trackEvent(new SearchEvent(ncs ?? undefined, app ?? undefined));
         }
     }, []);
 
