@@ -37,18 +37,20 @@ To generate an `index.json` template file:
 To create an `index.json` of your own, you can either [generate a template](#generating-indexjson) or create a custom file from scratch.
 Your custom JSON file must include the following information:
 
-* Information about your account or organization (`name` and `description`).
-* Inside the `apps` array, an entry for each add-on you want to be shown in the index:
-
-  * `name` must match the add-on's GitHub repository in your account.
-  * `title` is the human-readable name of the repository.
-  * `description` is the short description of the add-on.
-  * `manifest` is the alternative name of the west manifest. Defaults to `west.yml`.
-  * `kind` is the type of add-on.
-  * `tags` are the tags that will be used to categorize the add-on.
-  * `license` is the license type name.
-  * `apps` is the global pattern to find directories containing add-ons.
-  * `releases` are the add-on versions.
+| Property | Requirement | Description |
+| -------- | ------------ | ----------- |
+| name | Required | The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name.|
+| kind | Required | The type of the app repo.|
+| tags | Required | An array of tags describing the application.|
+| releases | Required | The collection of project`s releases.|
+| title | Optional | Human readable name of the repo to be shown in the UI. Defaults to the name property.|
+| description | Optional | Text describing the application. Inferred from the repo if missing.|
+| manifest | Optional | Alternative filename for the west manifest. Defaults to west.yml.|
+| license | Optional | The name of the application license, e.g. "Apache 2.0". Inferred from the repo if missing.|
+| apps | Optional | Glob pattern to find directories containing applications.Applications need a *.conf file and a CMakeLists.txt file at their root. The glob expressions are used to match directories, so no file pattern is necessary.By default, the VS Code extension will assume that there's just a single application sitting at the root of the repo.|
+| defaultBranch | Optional | The default git branch that the repository is checked out. Inferred from the repo if missing.|
+| docsUrl | Optional | The URL of the add-on's documentation|
+| restricted | Optional | Mark the restricted access to any of the dependencies.|
 
 Most of the information provided in these entries will be displayed on the add-on index page.
 For more information about each entry, see `appMetadataSchema` in the `resources/schema.json` file.
