@@ -7,6 +7,7 @@
 const nextConfig = {
     output: 'export',
     basePath: '/ncs-app-index',
+    devIndicators: false
 };
 
 module.exports = nextConfig;
