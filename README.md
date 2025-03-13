@@ -1,6 +1,7 @@
 # nRF Connect SDK Add-on index
 
 This repository includes a collection of index pages for publicly available nRF Connect SDK Add-ons, which are supplementary components that extend the [nRF Connect SDK](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/index.html). You can access the index from the [nRF Connect for VS Code extension](https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html), and browse it on [its webpage](https://nrfconnect.github.io/ncs-app-index/).
+
 ----
 
 ## Contributing
@@ -49,6 +50,9 @@ Your custom JSON file must include the following information:
   * `license` is the license type name.
   * `apps` is the global pattern to find directories containing add-ons.
   * `releases` are the add-on versions.
+  * `restricted` indicates if the access to the add-on or any of its dependencies is restricted to a specific audience.
+    This field requires providing an URL to a page that explains how to get access.
+    If this field is used, the add-on entry will be marked with a padlock on the index page.
 
 Most of the information provided in these entries will be displayed on the add-on index page.
 For more information about each entry, see `appMetadataSchema` in the `resources/schema.json` file.
