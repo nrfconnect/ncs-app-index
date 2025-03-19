@@ -81,6 +81,14 @@ export const appMetadataSchema = {
             default: 'west.yml',
             description: 'Alternative filename for the west manifest. Defaults to west.yml.',
         },
+        avatar: {
+            type: 'string',
+            description: 'An url of an avatar displayed next to an Add-on.'
+        },
+        readme: {
+            type: 'string',
+            description: 'Url pointing to an application`s README'
+        },
         kind: appKindSchema,
         tags: {
             type: 'array',
@@ -137,7 +145,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags', 'releases'],
+    required: ['name', 'kind', 'tags', 'releases', 'license'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
@@ -151,13 +159,28 @@ export const orgIndexSchema = {
             type: 'string',
             description: 'A short sentence describing the organization.',
         },
+        avatar: {
+            type: 'string',
+            description: 'An url of an avatar displayed next to an Add-on.'
+        },
+        urls: {
+            type: 'object',
+            properties: {
+                devzoneUsername: { 
+                    type: 'string', 
+                    description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
+                },
+            },
+            required: ['devzoneUsername'],
+            additionalProperties: false,
+        },
         apps: {
             type: 'array',
             items: appMetadataSchema,
             description: 'A list of applications contributed by the organization.',
         },
     },
-    required: ['name', 'description', 'apps'],
+    required: ['name', 'description', 'apps', 'urls'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
@@ -172,17 +195,16 @@ export const orgSchema = {
         description: { type: 'string' },
         type: { type: 'string', enum: validOrgTypes },
         kind: { type: 'string', enum: validOrgKinds },
-        location: { type: 'string' },
         avatar: { type: 'string', format: 'uri' },
         urls: {
             type: 'object',
             properties: {
-                support: { type: 'string', format: 'uri' },
-                email: { type: 'string', format: 'uri' },
-                blog: { type: 'string', format: 'uri' },
-                twitter: { type: 'string', format: 'uri' },
+                devzoneUsername: { 
+                    type: 'string', 
+                    description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
+                },
             },
-            required: ['support'],
+            required: ['devzoneUsername'],
             additionalProperties: false,
         },
     },
@@ -199,7 +221,6 @@ export const appSchema = {
         description: { type: 'string' },
         license: { type: 'string' },
         repo: { type: 'string' },
-        isTemplate: { type: 'boolean' },
         owner: { type: 'string', description: 'The ID of the owner organization.' },
         manifest: { type: 'string' },
         kind: appKindSchema,
@@ -219,9 +240,6 @@ export const appSchema = {
             },
             minItems: 1,
         },
-        watchers: { type: 'integer' },
-        stars: { type: 'integer' },
-        forks: { type: 'integer' },
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
@@ -242,7 +260,6 @@ export const appSchema = {
         'id',
         'name',
         'description',
-        'isTemplate',
         'owner',
         'kind',
         'tags',

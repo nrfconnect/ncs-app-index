@@ -36,7 +36,6 @@ function createFakeApp(): AppIndex['apps'][number] {
         description: faker.lorem.paragraph(),
         defaultBranch: faker.git.branch(),
         forks: faker.number.int({ max: 200 }),
-        isTemplate: faker.helpers.arrayElement([true, false]),
         kind: faker.helpers.arrayElement(validAppKinds),
         lastUpdate: faker.date.recent().toString(),
         license: faker.word.verb(),
