@@ -18,7 +18,7 @@ function createFakeOrg(id: string): AppIndex['orgs'][string] {
         description: faker.lorem.paragraph(),
         kind: 'External',
         type: faker.helpers.arrayElement(validOrgTypes),
-        urls: {
+        contact: {
             devzoneUsername: faker.internet.email(),
         },
     };

@@ -163,16 +163,19 @@ export const orgIndexSchema = {
             type: 'string',
             description: 'An url of an avatar displayed next to an Add-on.'
         },
-        urls: {
+        contact: {
             type: 'object',
             properties: {
                 devzoneUsername: { 
                     type: 'string', 
                     description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
                 },
+                email: {
+                    type: 'string',
+                    description: 'The email that the Nordic Semiconductor DevZone account is registered with.'
+                }
             },
             required: ['devzoneUsername'],
-            additionalProperties: false,
         },
         apps: {
             type: 'array',
@@ -180,7 +183,7 @@ export const orgIndexSchema = {
             description: 'A list of applications contributed by the organization.',
         },
     },
-    required: ['name', 'description', 'apps', 'urls'],
+    required: ['name', 'description', 'apps', 'contact'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
@@ -196,19 +199,23 @@ export const orgSchema = {
         type: { type: 'string', enum: validOrgTypes },
         kind: { type: 'string', enum: validOrgKinds },
         avatar: { type: 'string', format: 'uri' },
-        urls: {
+        contact: {
             type: 'object',
             properties: {
                 devzoneUsername: { 
                     type: 'string', 
                     description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
                 },
+                email: {
+                    type: 'string',
+                    description: 'The email that the Nordic Semiconductor DevZone account is registered with.'
+                }
             },
             required: ['devzoneUsername'],
             additionalProperties: false,
-        },
+        }
     },
-    required: ['id', 'name', 'description', 'type', 'kind', 'urls'],
+    required: ['id', 'name', 'description', 'type', 'kind', 'contact'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 

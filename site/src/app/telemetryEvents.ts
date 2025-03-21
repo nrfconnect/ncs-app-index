@@ -36,3 +36,10 @@ export class OpenDocsEvent extends NCSAddonsEvent {
         this.props = { app: app, org: org };
     }
 };
+
+export class ShowSupportInfoEvent extends NCSAddonsEvent {
+    constructor(app: string, revision: string, org: string) {
+        super('showSupportInfo');
+        this.props = { app: app, revision: revision, org: org };
+    }
+};

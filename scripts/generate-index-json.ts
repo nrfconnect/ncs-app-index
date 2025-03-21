@@ -59,7 +59,7 @@ async function fetchOrgData({
             description: orgIndex.description,
             kind,
             type: 'Organization' as (typeof validOrgTypes)[number],
-            urls: orgIndex.urls,
+            contact: orgIndex.contact,
             avatar: orgIndex.avatar,
         };
 

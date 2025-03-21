@@ -14,6 +14,7 @@ import Header from './Header';
 import { filterReducer, initialFilters } from './filters';
 import Dialog from './Dialog';
 import InstructionsDialog from './InstructionsDialog';
+import SupportDialog from './SupportDialog';
 import AboutDialog from './AboutDialog';
 import { telemetry } from './telemetry';
 
@@ -21,18 +22,20 @@ interface Props {
     apps: NormalisedApp[];
 }
 
-export type AppDetails = { id: string, sha: string };
+export type AppDetails = { id: string, sha: string, type: 'instruction' | 'support' };
 
 function Root({ apps }: Props) {
     const [filters, dispatchFilters] = useReducer(filterReducer, initialFilters);
     const [showingAppDetails, setShowingAppDetails] = useState<AppDetails | null>(null);
     const [showingAboutDialog, setShowingAboutDialog] = useState(false);
+    const [showingSupportInfo, setShowingSupportInfo] = useState<AppDetails | null>(null);
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     function onDialogClose() {
         dialogRef.current?.close();
         setShowingAppDetails(null);
         setShowingAboutDialog(false);
+        setShowingSupportInfo(null);
     }
 
     function showAboutDialog() {
@@ -71,13 +74,24 @@ function Root({ apps }: Props) {
         }
     }
 
+    function setShowingDialog(app: AppDetails | null) {
+        switch (app?.type) {
+            case 'instruction':
+                setShowingAppDetails(app);
+                break;
+            case 'support':
+                setShowingSupportInfo(app);
+                break;
+        }
+    }
+
     useEffect(() => {
-        if (showingAppDetails !== null || showingAboutDialog) {
+        if (showingSupportInfo !== null || showingAppDetails !== null || showingAboutDialog) {
             dialogRef.current?.showModal();
         } else {
             onDialogClose();
         }
-    }, [showingAppDetails, showingAboutDialog]);
+    }, [showingAppDetails, showingAboutDialog, showingSupportInfo]);
 
     useEffect(() => {
         dialogRef.current?.addEventListener('close', onDialogClose);
@@ -94,11 +108,17 @@ function Root({ apps }: Props) {
         [showingAppDetails],
     );
 
+    const showingSupportApp = useMemo(
+        () => apps.find((app) => app.id === showingSupportInfo?.id),
+        [showingSupportInfo],
+    );
+
     return (
         <main className="text-gray-600" id="root">
             <Dialog ref={dialogRef}>
                 {showingApp && <InstructionsDialog app={showingApp} close={onDialogClose} sha={showingAppDetails?.sha ?? showingApp.defaultBranch} />}
                 {showingAboutDialog && <AboutDialog close={onDialogClose} />}
+                {showingSupportApp && <SupportDialog app={showingSupportApp} close={onDialogClose}/>}
             </Dialog>
 
             <Header
@@ -108,7 +128,7 @@ function Root({ apps }: Props) {
             />
 
             <div className="md:mt-7 lg:mt-10 pb-0 lg:pb-10">
-                <AppList apps={apps} filters={filters} setShowingAppDetails={setShowingAppDetails} />
+                <AppList apps={apps} filters={filters} setShowingAppDetails={setShowingDialog} />
             </div>
         </main>
     );

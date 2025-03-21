@@ -35,12 +35,16 @@
                         "type": "string",
                         "format": "uri"
                     },
-                    "urls": {
+                    "contact": {
                         "type": "object",
                         "properties": {
                             "devzoneUsername": {
                                 "type": "string",
                                 "description": "Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons."
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "The email that the Nordic Semiconductor DevZone account is registered with."
                             }
                         },
                         "required": [
@@ -55,7 +59,7 @@
                     "description",
                     "type",
                     "kind",
-                    "urls"
+                    "contact"
                 ],
                 "additionalProperties": false
             }

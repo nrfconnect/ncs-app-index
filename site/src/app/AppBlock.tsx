@@ -12,7 +12,8 @@ import {
     VerifiedIcon,
     BookIcon,
     LockIcon,
-    RepoIcon
+    RepoIcon,
+    OrganizationIcon
 } from '@primer/octicons-react';
 import Image from 'next/image';
 
@@ -24,7 +25,7 @@ import ReleasesDropDownList from './ReleasesDropDownList'
 import VSCodeQueryParams from './VSCodeQueryParams';
 import { AppDetails } from './Root';
 import { telemetry } from './telemetry';
-import { ShowAppGuideEvent, OpenDocsEvent } from './telemetryEvents';
+import { ShowAppGuideEvent, OpenDocsEvent, ShowSupportInfoEvent } from './telemetryEvents';
 
 interface Props {
     app: NormalisedApp;
@@ -39,10 +40,6 @@ function Avatar({ app }: { app: NormalisedApp }) {
     }
 
     return <RepoIcon size={48} />;
-    // if (app.owner.type === 'Organization') {
-    // }
-
-    // return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
 }
 
 function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
@@ -90,17 +87,6 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                                 })}
                             />
                         )}
-
-                        {app.owner.urls && (
-                            <a href={`mailto:${app.owner.urls.devzoneUsername}`}>
-                                <Image
-                                    src="/ncs-app-index/devzone.png"
-                                    width={24}
-                                    height={24}
-                                    alt="Nordic Semiconductor DevZone Logo"
-                                />
-                            </a>
-                        )}
                     </div>
                 </div>
             </div>
@@ -129,7 +115,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     className="button bg-[#768692] text-white"
                     onClick={() => {
                         telemetry.trackEvent(new ShowAppGuideEvent(app.name, queryParams.branch, app.owner.name));
-                        setShowingAppDetails({ id: app.id, sha: queryParams.branch });
+                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'instruction' });
                     }}
                     title={`Open a guide for the '${app.name}'`}
                 >
@@ -147,6 +133,17 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     >
                         Documentation <BookIcon size={20} />
                     </a>}
+
+                <button
+                    className="button bg-[#768692] text-white"
+                    onClick={() => {
+                        telemetry.trackEvent(new ShowSupportInfoEvent(app.name, queryParams.branch, app.owner.name));
+                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'support' });
+                    }}
+                    title={`Show support info '${app.name}'`}
+                >
+                    Support <OrganizationIcon size={20} />
+                </button>
             </div>
             <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
                 {app.license && (

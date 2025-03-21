@@ -14,18 +14,21 @@
             "type": "string",
             "description": "An url of an avatar displayed next to an Add-on."
         },
-        "urls": {
+        "contact": {
             "type": "object",
             "properties": {
                 "devzoneUsername": {
                     "type": "string",
                     "description": "Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons."
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email that the Nordic Semiconductor DevZone account is registered with."
                 }
             },
             "required": [
                 "devzoneUsername"
-            ],
-            "additionalProperties": false
+            ]
         },
         "apps": {
             "type": "array",
@@ -175,7 +178,7 @@
         "name",
         "description",
         "apps",
-        "urls"
+        "contact"
     ],
     "additionalProperties": false
 }
