@@ -39,20 +39,21 @@ function Root({ apps }: Props) {
         setShowingAboutDialog(true);
     }
 
-    useEffect(() => {
-        if (showingAppDetails !== null || showingAboutDialog) {
-            dialogRef.current?.showModal();
-        } else {
-            onDialogClose();
+    function setupTelemetry() {
+        const hostname = window.location.hostname;
+        let enableTelemetry = true;
+
+        // Do not send telemetry events from an instance running on a localhost
+        if (hostname === 'localhost' ||
+            hostname === '[::1]' ||
+            hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)) {
+            enableTelemetry = false;
         }
-    }, [showingAppDetails, showingAboutDialog]);
 
-    useEffect(() => {
-        dialogRef.current?.addEventListener('close', onDialogClose);
-        return () => dialogRef.current?.removeEventListener('close', onDialogClose);
-    });
+        telemetry.activate(enableTelemetry);
+    }
 
-    useEffect(() => {
+    function resolveUrlParams() {
         const searchParams = new URLSearchParams(window.location.search);
         const app = searchParams.get("app");
         const ncs = searchParams.get("ncs");
@@ -68,6 +69,24 @@ function Root({ apps }: Props) {
         if (app || ncs) {
             telemetry.trackEvent(new SearchEvent(ncs ?? undefined, app ?? undefined));
         }
+    }
+
+    useEffect(() => {
+        if (showingAppDetails !== null || showingAboutDialog) {
+            dialogRef.current?.showModal();
+        } else {
+            onDialogClose();
+        }
+    }, [showingAppDetails, showingAboutDialog]);
+
+    useEffect(() => {
+        dialogRef.current?.addEventListener('close', onDialogClose);
+        return () => dialogRef.current?.removeEventListener('close', onDialogClose);
+    });
+
+    useEffect(() => {
+        setupTelemetry();
+        resolveUrlParams();
     }, []);
 
     const showingApp = useMemo(
