@@ -10,6 +10,23 @@
             "type": "string",
             "description": "A short sentence describing the organization."
         },
+        "avatar": {
+            "type": "string",
+            "description": "An url of an avatar displayed next to an Add-on."
+        },
+        "urls": {
+            "type": "object",
+            "properties": {
+                "devzoneUsername": {
+                    "type": "string",
+                    "description": "Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons."
+                }
+            },
+            "required": [
+                "devzoneUsername"
+            ],
+            "additionalProperties": false
+        },
         "apps": {
             "type": "array",
             "items": {
@@ -31,6 +48,14 @@
                         "type": "string",
                         "default": "west.yml",
                         "description": "Alternative filename for the west manifest. Defaults to west.yml."
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "description": "An url of an avatar displayed next to an Add-on."
+                    },
+                    "readme": {
+                        "type": "string",
+                        "description": "Url pointing to an application`s README"
                     },
                     "kind": {
                         "description": "The type of the app repo.",
@@ -149,7 +174,8 @@
     "required": [
         "name",
         "description",
-        "apps"
+        "apps",
+        "urls"
     ],
     "additionalProperties": false
 }

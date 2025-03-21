@@ -1,6 +1,7 @@
 {
     "name": "golioth",
     "description": "Golioth Cloud platform, which includes a device SDK, example code, and Reference Designs",
+    "avatar": "https://avatars.githubusercontent.com/u/58146410?s=48&v=4",
     "apps": [
         {
             "name": "reference-design-template",
@@ -8,6 +9,7 @@
             "description": "This starter project is a standalone application that includes databases (both stateful and time-based), Over-the-air update capabilities, settings service, remote procedure calls (RPCs)",
             "kind": "template",
             "tags": ["dfu","lte"],
+            "avatar": "https://avatars.githubusercontent.com/u/58146410?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-02-21T21:05:15Z",

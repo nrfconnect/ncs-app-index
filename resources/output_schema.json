@@ -31,9 +31,6 @@
                             "External"
                         ]
                     },
-                    "location": {
-                        "type": "string"
-                    },
                     "avatar": {
                         "type": "string",
                         "format": "uri"
@@ -41,25 +38,13 @@
                     "urls": {
                         "type": "object",
                         "properties": {
-                            "support": {
+                            "devzoneUsername": {
                                 "type": "string",
-                                "format": "uri"
-                            },
-                            "email": {
-                                "type": "string",
-                                "format": "uri"
-                            },
-                            "blog": {
-                                "type": "string",
-                                "format": "uri"
-                            },
-                            "twitter": {
-                                "type": "string",
-                                "format": "uri"
+                                "description": "Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons."
                             }
                         },
                         "required": [
-                            "support"
+                            "devzoneUsername"
                         ],
                         "additionalProperties": false
                     }
@@ -97,9 +82,6 @@
                     },
                     "repo": {
                         "type": "string"
-                    },
-                    "isTemplate": {
-                        "type": "boolean"
                     },
                     "owner": {
                         "type": "string",
@@ -175,15 +157,6 @@
                         },
                         "minItems": 1
                     },
-                    "watchers": {
-                        "type": "integer"
-                    },
-                    "stars": {
-                        "type": "integer"
-                    },
-                    "forks": {
-                        "type": "integer"
-                    },
                     "defaultBranch": {
                         "type": "string"
                     },
@@ -209,20 +182,20 @@
                         "required": [
                             "detailsUrl"
                         ]
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "description": "An image displayed next to an Add-on"
                     }
                 },
                 "required": [
                     "id",
                     "name",
                     "description",
-                    "isTemplate",
                     "owner",
                     "kind",
                     "tags",
                     "releases",
-                    "watchers",
-                    "stars",
-                    "forks",
                     "defaultBranch",
                     "lastUpdate",
                     "repo"

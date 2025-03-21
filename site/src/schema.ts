@@ -145,7 +145,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags', 'releases', 'license'],
+    required: ['name', 'kind', 'tags', 'releases'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
@@ -254,6 +254,10 @@ export const appSchema = {
                 },
             },
             required: ['detailsUrl'],
+        },
+        avatar: { 
+            type: 'string',
+            description: 'An image displayed next to an Add-on',
         }
     },
     required: [
@@ -264,9 +268,6 @@ export const appSchema = {
         'kind',
         'tags',
         'releases',
-        'watchers',
-        'stars',
-        'forks',
         'defaultBranch',
         'lastUpdate',
         'repo'

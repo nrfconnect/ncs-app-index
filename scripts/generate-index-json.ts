@@ -95,8 +95,26 @@ async function fetchRepoData(
     app: OrgIndex['apps'][number],
 ): Promise<Application> {
     try {
+        // TODO - add a field in the schema to provide a link to the repository
         const repoUrl = `https://github.com/${orgId}/${app.name}`;
         const docsUrl = app.docsUrl ?? app.readme;
+
+        try {
+            app.releases = app.releases.sort((a, b) => {
+                const [updatedA, updatedB] = [
+                    new Date(a.date),
+                    new Date(b.date)
+                ];
+
+                if (updatedA === updatedB) {
+                    return a.name < b.name ? -1 : 1;
+                }
+
+                return updatedA > updatedB ? -1 : 1;
+            });
+        } catch {
+            console.log(`failed to parse ${app.name}`)
+        }
 
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
@@ -107,14 +125,15 @@ async function fetchRepoData(
             description: app.description ?? '',
             name: app.name,
             title: app.title,
-            defaultBranch: app.defaultBranch,
+            defaultBranch: app.defaultBranch ?? app.releases[0]?.tag,
             kind: app.kind,
-            license: app.license,
+            license: app.license ?? 'Other License',
             apps: app.apps,
             releases: app.releases,
             tags: app.tags,
             docsUrl: docsUrl,
             restricted: app.restricted,
+            avatar: app.avatar,
         } as Application;
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);

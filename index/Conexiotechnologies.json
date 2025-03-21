@@ -9,6 +9,7 @@
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/79224914?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-09-16T02:29:37Z",

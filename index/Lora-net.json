@@ -9,6 +9,7 @@
             "kind": "sample",
             "license": "Apache License 2.0",
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/5756403?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-08-08T14:30:49Z",

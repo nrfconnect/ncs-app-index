@@ -3,23 +3,18 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import formatRelative from 'date-fns/formatRelative';
 import classNames from 'classnames';
 import Markdown from 'react-markdown';
 import {
-    EyeIcon,
     LawIcon,
     LinkExternalIcon,
-    MailIcon,
-    RepoForkedIcon,
-    RepoIcon,
-    RepoTemplateIcon,
-    StarIcon,
     TerminalIcon,
     VerifiedIcon,
     BookIcon,
     LockIcon,
+    RepoIcon
 } from '@primer/octicons-react';
+import Image from 'next/image';
 
 import { useState } from 'react';
 import { NormalisedApp } from '../schema';
@@ -37,11 +32,17 @@ interface Props {
 }
 
 function Avatar({ app }: { app: NormalisedApp }) {
-    if (app.owner.type === 'Organization') {
-        return <img src={app.owner.avatar} className="h-12 w-12" />;
+    const src = app.avatar ?? app.owner.avatar;
+
+    if (src) {
+        return <img src={src} className="h-12 w-12" />
     }
 
-    return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
+    return <RepoIcon size={48} />;
+    // if (app.owner.type === 'Organization') {
+    // }
+
+    // return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
 }
 
 function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
@@ -62,7 +63,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             <a href={app.repo} target="_blank" title="Visit Website">
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
-                            {app.restricted?.detailsUrl &&
+                            {app.restricted &&
                                 <a href={app.restricted.detailsUrl}
                                    target="_blank"
                                    rel={'noopener noreferrer'} 
@@ -79,7 +80,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
                     <div className="flex items-center gap-1">
                         <h2 className="text-md text-gray-600" title={app.owner.kind}>
-                            <a href={app.owner.urls.support}>{app.owner.name}</a>
+                            <a href={app.owner.id}>{app.owner.name}</a>
                         </h2>
 
                         {app.owner.kind !== 'External' && (
@@ -90,9 +91,14 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             />
                         )}
 
-                        {app.owner.urls.email && (
-                            <a href={`mailto:${app.owner.urls.email}`}>
-                                <MailIcon className={classNames('hoverable-icon')} />
+                        {app.owner.urls && (
+                            <a href={`mailto:${app.owner.urls.devzoneUsername}`}>
+                                <Image
+                                    src="/ncs-app-index/devzone.png"
+                                    width={24}
+                                    height={24}
+                                    alt="Nordic Semiconductor DevZone Logo"
+                                />
                             </a>
                         )}
                     </div>
@@ -143,23 +149,14 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     </a>}
             </div>
             <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
-                <div className="flex items-center gap-1" title={`${app.stars} stars`}>
-                    <StarIcon /> {app.stars}
-                </div>
-                <div className="flex items-center gap-1" title={`${app.watchers} watching`}>
-                    <EyeIcon /> {app.watchers}
-                </div>
-                <div className="flex items-center gap-1" title={`${app.forks} forks`}>
-                    <RepoForkedIcon /> {app.forks}
-                </div>
                 {app.license && (
                     <div className="flex items-center gap-1">
                         <LawIcon /> {app.license}
                     </div>
                 )}
-                <div className="flex-1 text-right font-thin italic">
+                {/* <div className="flex-1 text-right font-thin italic">
                     Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
-                </div>
+                </div> */}
             </div>
         </li>
     );

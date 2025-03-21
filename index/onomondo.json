@@ -8,6 +8,7 @@
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/13015261?s=48&v=4",
             "releases": [
                 {
                   "date": "2024-02-20T12:00:50Z",
