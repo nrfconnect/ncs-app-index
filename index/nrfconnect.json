@@ -69,6 +69,7 @@
             "tags": [],
             "apps": "app",
             "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+            "readmeUrl": "https://github.com/nrfconnect/ncs-example-application/blob/main/README.md",
             "releases": [
                 {
                   "date": "2024-12-17T16:52:00Z",

@@ -85,7 +85,7 @@ export const appMetadataSchema = {
             type: 'string',
             description: 'An url of an avatar displayed next to an Add-on.'
         },
-        readme: {
+        readmeUrl: {
             type: 'string',
             description: 'Url pointing to an application`s README'
         },
@@ -251,6 +251,10 @@ export const appSchema = {
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
         docsUrl: { type: 'string' },
+        readmeUrl: {
+            type: 'string',
+            description: 'Url pointing to an application`s README'
+        },
         restricted: {
             type: 'object',
             description: 'Mark the restricted access to any of the dependencies.',

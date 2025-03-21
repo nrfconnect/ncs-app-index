@@ -25,7 +25,7 @@ const Warning = ({warningText}: {warningText: string}) => {
 function SupportDialog({ app, close }: Props): JSX.Element {
     return (
         <div className="flex flex-col">
-            <DialogTitle title={`Contact ${app.owner.name} ${app.owner.contact}`} onClose={close} />
+            <DialogTitle title={`Contact ${app.owner.name}`} onClose={close} />
 
             <div className="flex flex-col gap-5 p-3">
                 <p className="text-base font-extralight ">

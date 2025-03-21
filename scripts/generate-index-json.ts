@@ -73,23 +73,6 @@ async function fetchOrgData({
     }
 }
 
-// async function getReadmeUrl(orgId: string, app: OrgIndex['apps'][number]): Promise<string | undefined> {
-//     let readmeUrl: string | undefined;
-
-//     try {
-//         const { data } = await octokit.repos.getReadme({
-//             owner: orgId,
-//             repo: app.name,
-//         });
-
-//         readmeUrl = data.html_url ?? undefined;
-//     } catch {
-//         readmeUrl = undefined;
-//     }
-
-//     return readmeUrl;
-// }
-
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
@@ -97,7 +80,7 @@ async function fetchRepoData(
     try {
         // TODO - add a field in the schema to provide a link to the repository
         const repoUrl = `https://github.com/${orgId}/${app.name}`;
-        const docsUrl = app.docsUrl ?? app.readme;
+        const docsUrl = app.docsUrl ?? app.readmeUrl;
 
         try {
             app.releases = app.releases.sort((a, b) => {
@@ -134,6 +117,7 @@ async function fetchRepoData(
             docsUrl: docsUrl,
             restricted: app.restricted,
             avatar: app.avatar,
+            readmeUrl: app.readmeUrl,
         } as Application;
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);

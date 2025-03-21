@@ -56,7 +56,7 @@
                         "type": "string",
                         "description": "An url of an avatar displayed next to an Add-on."
                     },
-                    "readme": {
+                    "readmeUrl": {
                         "type": "string",
                         "description": "Url pointing to an application`s README"
                     },

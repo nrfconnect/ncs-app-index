@@ -132,7 +132,21 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
                     >
                         Documentation <BookIcon size={20} />
-                    </a>}
+                    </a>
+                }
+
+                {!!app.readmeUrl
+                    && <a
+                        className="button bg-[#768692] text-white"
+                        href={app.readmeUrl}
+                        title={`Open README for ${app.name}`}
+                        target={'_blank'}
+                        rel={'noopener noreferrer'}
+                        onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
+                    >
+                        README <BookIcon size={20} />
+                    </a>
+                }
 
                 <button
                     className="button bg-[#768692] text-white"
@@ -145,15 +159,13 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     Support <OrganizationIcon size={20} />
                 </button>
             </div>
+
             <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
                 {app.license && (
                     <div className="flex items-center gap-1">
                         <LawIcon /> {app.license}
                     </div>
                 )}
-                {/* <div className="flex-1 text-right font-thin italic">
-                    Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
-                </div> */}
             </div>
         </li>
     );
