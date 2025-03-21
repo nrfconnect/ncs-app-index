@@ -4,6 +4,7 @@
     "apps": [
         {
             "title": "Thingy:91 X: Hello nRF Cloud firmware",
+            "repoUrl": "https://github.com/hello-nrfcloud/firmware",            
             "name": "firmware",
             "description": "This firmware is used with hello.nrfcloud.com",
             "kind": "sample",

@@ -67,6 +67,10 @@ export const appMetadataSchema = {
             description:
                 'The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name.',
         },
+        repoUrl: { 
+            type: 'string',
+            description: 'The Url of an Add-on repository',
+        },
         title: {
             type: 'string',
             description:
@@ -84,10 +88,6 @@ export const appMetadataSchema = {
         avatar: {
             type: 'string',
             description: 'An url of an avatar displayed next to an Add-on.'
-        },
-        readmeUrl: {
-            type: 'string',
-            description: 'Url pointing to an application`s README'
         },
         kind: appKindSchema,
         tags: {
@@ -145,7 +145,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags', 'releases'],
+    required: ['name', 'kind', 'repoUrl', 'description', 'tags', 'releases', 'docsUrl'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
@@ -223,6 +223,7 @@ export const appSchema = {
     type: 'object',
     properties: {
         id: { type: 'string' },
+        repoUrl: { type: 'string', description: 'The Url of an Add-on repository' },
         name: { type: 'string' },
         title: { type: 'string' },
         description: { type: 'string' },
@@ -251,10 +252,6 @@ export const appSchema = {
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
         docsUrl: { type: 'string' },
-        readmeUrl: {
-            type: 'string',
-            description: 'Url pointing to an application`s README'
-        },
         restricted: {
             type: 'object',
             description: 'Mark the restricted access to any of the dependencies.',
@@ -274,6 +271,7 @@ export const appSchema = {
     required: [
         'id',
         'name',
+        'repoUrl',
         'description',
         'owner',
         'kind',
@@ -281,6 +279,7 @@ export const appSchema = {
         'releases',
         'defaultBranch',
         'lastUpdate',
+        'docsUrl',
         'repo'
     ],
     additionalProperties: false,

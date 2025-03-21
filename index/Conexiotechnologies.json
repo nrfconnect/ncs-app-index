@@ -4,6 +4,8 @@
     "apps": [
         {
             "name": "conexio-firmware-sdk",
+            "repoUrl": "https://github.com/Conexiotechnologies/conexio-firmware-sdk",
+            "docsUrl": "https://github.com/Conexiotechnologies/conexio-firmware-sdk/blob/main/README.md",
             "title": "Conexio Stratus Firmware SDK",
             "description": "NCS example applications for [Conexio Stratus devices](https://docs.conexiotech.com/)",
             "kind": "sample",

@@ -27,6 +27,12 @@
             "script": "generate-index-json",
             "group": "build",
             "label": "Generate index.json"
+        },
+        {
+            "type": "npm",
+            "script": "generate-schemas",
+            "group": "build",
+            "label": "Generate json schemas from schema.ts"
         }
     ]
 }

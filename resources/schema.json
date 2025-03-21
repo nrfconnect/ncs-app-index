@@ -39,6 +39,10 @@
                         "type": "string",
                         "description": "The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name."
                     },
+                    "repoUrl": {
+                        "type": "string",
+                        "description": "The Url of an Add-on repository"
+                    },
                     "title": {
                         "type": "string",
                         "description": "Human readable name of the repo to be shown in the UI. Defaults to the name property."
@@ -55,10 +59,6 @@
                     "avatar": {
                         "type": "string",
                         "description": "An url of an avatar displayed next to an Add-on."
-                    },
-                    "readmeUrl": {
-                        "type": "string",
-                        "description": "Url pointing to an application`s README"
                     },
                     "kind": {
                         "description": "The type of the app repo.",
@@ -167,8 +167,11 @@
                 "required": [
                     "name",
                     "kind",
+                    "repoUrl",
+                    "description",
                     "tags",
-                    "releases"
+                    "releases",
+                    "docsUrl"
                 ]
             },
             "description": "A list of applications contributed by the organization."

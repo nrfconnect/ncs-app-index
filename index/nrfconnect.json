@@ -8,6 +8,7 @@
         {
             "name": "ncs-zigbee",
             "title": "Zigbee R23",
+            "repoUrl": "https://github.com/nrfconnect/ncs-zigbee",
             "description": "The Zigbee R23 add-on for the nRF Connect SDK provides support for developing Zigbee R23 applications based on the third-party precompiled ZBOSS R23 stack.",
             "kind": "template",
             "tags": ["zigbee", "connectivity"],
@@ -44,6 +45,7 @@
         },
         {
           "name": "ncs-zigbee-r22",
+          "repoUrl": "https://github.com/nrfconnect/ncs-zigbee-r22",
           "title": "Zigbee R22",
           "description": "The Zigbee R22 add-on for the nRF Connect SDK provides support for developing Zigbee R22 applications based on the third-party precompiled ZBOSS R22 stack.",
           "kind": "template",
@@ -63,13 +65,14 @@
         },
         {
             "name": "ncs-example-application",
+            "repoUrl": "https://github.com/nrfconnect/ncs-example-application",
             "title": "nRF Connect SDK example application",
             "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
             "kind": "template",
             "tags": [],
             "apps": "app",
             "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-            "readmeUrl": "https://github.com/nrfconnect/ncs-example-application/blob/main/README.md",
+            "docsUrl": "https://github.com/nrfconnect/ncs-example-application/blob/main/README.md",
             "releases": [
                 {
                   "date": "2024-12-17T16:52:00Z",

@@ -72,6 +72,10 @@
                     "id": {
                         "type": "string"
                     },
+                    "repoUrl": {
+                        "type": "string",
+                        "description": "The Url of an Add-on repository"
+                    },
                     "name": {
                         "type": "string"
                     },
@@ -174,10 +178,6 @@
                     "docsUrl": {
                         "type": "string"
                     },
-                    "readmeUrl": {
-                        "type": "string",
-                        "description": "Url pointing to an application`s README"
-                    },
                     "restricted": {
                         "type": "object",
                         "description": "Mark the restricted access to any of the dependencies.",
@@ -199,6 +199,7 @@
                 "required": [
                     "id",
                     "name",
+                    "repoUrl",
                     "description",
                     "owner",
                     "kind",
@@ -206,6 +207,7 @@
                     "releases",
                     "defaultBranch",
                     "lastUpdate",
+                    "docsUrl",
                     "repo"
                 ],
                 "additionalProperties": false

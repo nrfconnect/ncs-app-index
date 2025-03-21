@@ -135,19 +135,6 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     </a>
                 }
 
-                {!!app.readmeUrl
-                    && <a
-                        className="button bg-[#768692] text-white"
-                        href={app.readmeUrl}
-                        title={`Open README for ${app.name}`}
-                        target={'_blank'}
-                        rel={'noopener noreferrer'}
-                        onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
-                    >
-                        README <BookIcon size={20} />
-                    </a>
-                }
-
                 <button
                     className="button bg-[#768692] text-white"
                     onClick={() => {

@@ -78,10 +78,6 @@ async function fetchRepoData(
     app: OrgIndex['apps'][number],
 ): Promise<Application> {
     try {
-        // TODO - add a field in the schema to provide a link to the repository
-        const repoUrl = `https://github.com/${orgId}/${app.name}`;
-        const docsUrl = app.docsUrl ?? app.readmeUrl;
-
         try {
             app.releases = app.releases.sort((a, b) => {
                 const [updatedA, updatedB] = [
@@ -102,10 +98,10 @@ async function fetchRepoData(
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
-            id: repoUrl,
-            repo: repoUrl,
+            id: app.repoUrl,
+            repo: app.repoUrl,
             owner: orgId,
-            description: app.description ?? '',
+            description: app.description,
             name: app.name,
             title: app.title,
             defaultBranch: app.defaultBranch ?? app.releases[0]?.tag,
@@ -114,10 +110,9 @@ async function fetchRepoData(
             apps: app.apps,
             releases: app.releases,
             tags: app.tags,
-            docsUrl: docsUrl,
+            docsUrl: app.docsUrl,
             restricted: app.restricted,
             avatar: app.avatar,
-            readmeUrl: app.readmeUrl,
         } as Application;
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
