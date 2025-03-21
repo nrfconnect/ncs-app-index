@@ -5,7 +5,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
+    // output: 'export',
     basePath: '/ncs-app-index',
     devIndicators: false
 };

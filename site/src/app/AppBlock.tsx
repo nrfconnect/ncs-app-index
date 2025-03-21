@@ -3,22 +3,17 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import formatRelative from 'date-fns/formatRelative';
 import classNames from 'classnames';
 import Markdown from 'react-markdown';
 import {
-    EyeIcon,
     LawIcon,
     LinkExternalIcon,
-    MailIcon,
-    RepoForkedIcon,
-    RepoIcon,
-    RepoTemplateIcon,
-    StarIcon,
     TerminalIcon,
     VerifiedIcon,
     BookIcon,
     LockIcon,
+    RepoIcon,
+    OrganizationIcon
 } from '@primer/octicons-react';
 
 import { useState } from 'react';
@@ -29,7 +24,7 @@ import ReleasesDropDownList from './ReleasesDropDownList'
 import VSCodeQueryParams from './VSCodeQueryParams';
 import { AppDetails } from './Root';
 import { telemetry } from './telemetry';
-import { ShowAppGuideEvent, OpenDocsEvent } from './telemetryEvents';
+import { ShowAppGuideEvent, OpenDocsEvent, ShowSupportInfoEvent } from './telemetryEvents';
 
 interface Props {
     app: NormalisedApp;
@@ -37,11 +32,13 @@ interface Props {
 }
 
 function Avatar({ app }: { app: NormalisedApp }) {
-    if (app.owner.type === 'Organization') {
-        return <img src={app.owner.avatar} className="h-12 w-12" />;
+    const src = app.avatar ?? app.owner.avatar;
+
+    if (src) {
+        return <img src={src} className="h-12 w-12" />
     }
 
-    return app.isTemplate ? <RepoTemplateIcon size={48} /> : <RepoIcon size={48} />;
+    return <RepoIcon size={48} />;
 }
 
 function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
@@ -79,7 +76,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
                     <div className="flex items-center gap-1">
                         <h2 className="text-md text-gray-600" title={app.owner.kind}>
-                            <a href={app.owner.urls.support}>{app.owner.name}</a>
+                            {app.owner.name}
                         </h2>
 
                         {app.owner.kind !== 'External' && (
@@ -88,12 +85,6 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                                     'text-[#00A9CE]': app.owner.kind === 'Nordic Semiconductor',
                                 })}
                             />
-                        )}
-
-                        {app.owner.urls.email && (
-                            <a href={`mailto:${app.owner.urls.email}`}>
-                                <MailIcon className={classNames('hoverable-icon')} />
-                            </a>
                         )}
                     </div>
                 </div>
@@ -123,7 +114,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                     className="button bg-[#768692] text-white"
                     onClick={() => {
                         telemetry.trackEvent(new ShowAppGuideEvent(app.name, queryParams.branch, app.owner.name));
-                        setShowingAppDetails({ id: app.id, sha: queryParams.branch });
+                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'instruction' });
                     }}
                     title={`Open a guide for the '${app.name}'`}
                 >
@@ -140,26 +131,27 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
                     >
                         Documentation <BookIcon size={20} />
-                    </a>}
+                    </a>
+                }
+
+                <button
+                    className="button bg-[#768692] text-white"
+                    onClick={() => {
+                        telemetry.trackEvent(new ShowSupportInfoEvent(app.name, queryParams.branch, app.owner.name));
+                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'support' });
+                    }}
+                    title={`Show support info '${app.name}'`}
+                >
+                    Support <OrganizationIcon size={20} />
+                </button>
             </div>
+
             <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
-                <div className="flex items-center gap-1" title={`${app.stars} stars`}>
-                    <StarIcon /> {app.stars}
-                </div>
-                <div className="flex items-center gap-1" title={`${app.watchers} watching`}>
-                    <EyeIcon /> {app.watchers}
-                </div>
-                <div className="flex items-center gap-1" title={`${app.forks} forks`}>
-                    <RepoForkedIcon /> {app.forks}
-                </div>
                 {app.license && (
                     <div className="flex items-center gap-1">
                         <LawIcon /> {app.license}
                     </div>
                 )}
-                <div className="flex-1 text-right font-thin italic">
-                    Last updated {formatRelative(new Date(app.lastUpdate), new Date())}
-                </div>
             </div>
         </li>
     );

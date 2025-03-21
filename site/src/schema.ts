@@ -67,6 +67,10 @@ export const appMetadataSchema = {
             description:
                 'The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name.',
         },
+        repoUrl: { 
+            type: 'string',
+            description: 'The Url of an Add-on repository',
+        },
         title: {
             type: 'string',
             description:
@@ -80,6 +84,10 @@ export const appMetadataSchema = {
             type: 'string',
             default: 'west.yml',
             description: 'Alternative filename for the west manifest. Defaults to west.yml.',
+        },
+        avatar: {
+            type: 'string',
+            description: 'An url of an avatar displayed next to an Add-on.'
         },
         kind: appKindSchema,
         tags: {
@@ -137,7 +145,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'tags', 'releases'],
+    required: ['name', 'kind', 'repoUrl', 'description', 'tags', 'releases', 'docsUrl'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {
@@ -151,13 +159,31 @@ export const orgIndexSchema = {
             type: 'string',
             description: 'A short sentence describing the organization.',
         },
+        avatar: {
+            type: 'string',
+            description: 'An url of an avatar displayed next to an Add-on.'
+        },
+        contact: {
+            type: 'object',
+            properties: {
+                devzoneUsername: { 
+                    type: 'string', 
+                    description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
+                },
+                email: {
+                    type: 'string',
+                    description: 'The email that the Nordic Semiconductor DevZone account is registered with.'
+                }
+            },
+            required: ['devzoneUsername'],
+        },
         apps: {
             type: 'array',
             items: appMetadataSchema,
             description: 'A list of applications contributed by the organization.',
         },
     },
-    required: ['name', 'description', 'apps'],
+    required: ['name', 'description', 'apps', 'contact'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
@@ -172,21 +198,24 @@ export const orgSchema = {
         description: { type: 'string' },
         type: { type: 'string', enum: validOrgTypes },
         kind: { type: 'string', enum: validOrgKinds },
-        location: { type: 'string' },
         avatar: { type: 'string', format: 'uri' },
-        urls: {
+        contact: {
             type: 'object',
             properties: {
-                support: { type: 'string', format: 'uri' },
-                email: { type: 'string', format: 'uri' },
-                blog: { type: 'string', format: 'uri' },
-                twitter: { type: 'string', format: 'uri' },
+                devzoneUsername: { 
+                    type: 'string', 
+                    description: 'Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons.',
+                },
+                email: {
+                    type: 'string',
+                    description: 'The email that the Nordic Semiconductor DevZone account is registered with.'
+                }
             },
-            required: ['support'],
+            required: ['devzoneUsername'],
             additionalProperties: false,
-        },
+        }
     },
-    required: ['id', 'name', 'description', 'type', 'kind', 'urls'],
+    required: ['id', 'name', 'description', 'type', 'kind', 'contact'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
@@ -194,12 +223,12 @@ export const appSchema = {
     type: 'object',
     properties: {
         id: { type: 'string' },
+        repoUrl: { type: 'string', description: 'The Url of an Add-on repository' },
         name: { type: 'string' },
         title: { type: 'string' },
         description: { type: 'string' },
         license: { type: 'string' },
         repo: { type: 'string' },
-        isTemplate: { type: 'boolean' },
         owner: { type: 'string', description: 'The ID of the owner organization.' },
         manifest: { type: 'string' },
         kind: appKindSchema,
@@ -219,9 +248,6 @@ export const appSchema = {
             },
             minItems: 1,
         },
-        watchers: { type: 'integer' },
-        stars: { type: 'integer' },
-        forks: { type: 'integer' },
         defaultBranch: { type: 'string' },
         lastUpdate: { type: 'string', format: 'date-time' },
         apps: { type: 'string' },
@@ -236,22 +262,24 @@ export const appSchema = {
                 },
             },
             required: ['detailsUrl'],
+        },
+        avatar: { 
+            type: 'string',
+            description: 'An image displayed next to an Add-on',
         }
     },
     required: [
         'id',
         'name',
+        'repoUrl',
         'description',
-        'isTemplate',
         'owner',
         'kind',
         'tags',
         'releases',
-        'watchers',
-        'stars',
-        'forks',
         'defaultBranch',
         'lastUpdate',
+        'docsUrl',
         'repo'
     ],
     additionalProperties: false,

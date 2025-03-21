@@ -31,35 +31,24 @@
                             "External"
                         ]
                     },
-                    "location": {
-                        "type": "string"
-                    },
                     "avatar": {
                         "type": "string",
                         "format": "uri"
                     },
-                    "urls": {
+                    "contact": {
                         "type": "object",
                         "properties": {
-                            "support": {
+                            "devzoneUsername": {
                                 "type": "string",
-                                "format": "uri"
+                                "description": "Nordic Semiconductor devzone`s account registered as responsible for providing the support for the Add-ons."
                             },
                             "email": {
                                 "type": "string",
-                                "format": "uri"
-                            },
-                            "blog": {
-                                "type": "string",
-                                "format": "uri"
-                            },
-                            "twitter": {
-                                "type": "string",
-                                "format": "uri"
+                                "description": "The email that the Nordic Semiconductor DevZone account is registered with."
                             }
                         },
                         "required": [
-                            "support"
+                            "devzoneUsername"
                         ],
                         "additionalProperties": false
                     }
@@ -70,7 +59,7 @@
                     "description",
                     "type",
                     "kind",
-                    "urls"
+                    "contact"
                 ],
                 "additionalProperties": false
             }
@@ -82,6 +71,10 @@
                 "properties": {
                     "id": {
                         "type": "string"
+                    },
+                    "repoUrl": {
+                        "type": "string",
+                        "description": "The Url of an Add-on repository"
                     },
                     "name": {
                         "type": "string"
@@ -97,9 +90,6 @@
                     },
                     "repo": {
                         "type": "string"
-                    },
-                    "isTemplate": {
-                        "type": "boolean"
                     },
                     "owner": {
                         "type": "string",
@@ -175,15 +165,6 @@
                         },
                         "minItems": 1
                     },
-                    "watchers": {
-                        "type": "integer"
-                    },
-                    "stars": {
-                        "type": "integer"
-                    },
-                    "forks": {
-                        "type": "integer"
-                    },
                     "defaultBranch": {
                         "type": "string"
                     },
@@ -209,22 +190,24 @@
                         "required": [
                             "detailsUrl"
                         ]
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "description": "An image displayed next to an Add-on"
                     }
                 },
                 "required": [
                     "id",
                     "name",
+                    "repoUrl",
                     "description",
-                    "isTemplate",
                     "owner",
                     "kind",
                     "tags",
                     "releases",
-                    "watchers",
-                    "stars",
-                    "forks",
                     "defaultBranch",
                     "lastUpdate",
+                    "docsUrl",
                     "repo"
                 ],
                 "additionalProperties": false
