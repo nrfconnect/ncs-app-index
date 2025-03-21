@@ -15,7 +15,6 @@ import {
     RepoIcon,
     OrganizationIcon
 } from '@primer/octicons-react';
-import Image from 'next/image';
 
 import { useState } from 'react';
 import { NormalisedApp } from '../schema';
@@ -77,7 +76,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
 
                     <div className="flex items-center gap-1">
                         <h2 className="text-md text-gray-600" title={app.owner.kind}>
-                            <a href={app.owner.id}>{app.owner.name}</a>
+                            {app.owner.name}
                         </h2>
 
                         {app.owner.kind !== 'External' && (
