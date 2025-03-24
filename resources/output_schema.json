@@ -58,8 +58,7 @@
                     "name",
                     "description",
                     "type",
-                    "kind",
-                    "contact"
+                    "kind"
                 ],
                 "additionalProperties": false
             }

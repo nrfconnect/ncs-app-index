@@ -183,7 +183,7 @@ export const orgIndexSchema = {
             description: 'A list of applications contributed by the organization.',
         },
     },
-    required: ['name', 'description', 'apps', 'contact'],
+    required: ['name', 'description', 'apps'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 
@@ -215,7 +215,7 @@ export const orgSchema = {
             additionalProperties: false,
         }
     },
-    required: ['id', 'name', 'description', 'type', 'kind', 'contact'],
+    required: ['id', 'name', 'description', 'type', 'kind'],
     additionalProperties: false,
 } as const satisfies JSONSchema;
 

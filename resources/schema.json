@@ -180,8 +180,7 @@
     "required": [
         "name",
         "description",
-        "apps",
-        "contact"
+        "apps"
     ],
     "additionalProperties": false
 }
