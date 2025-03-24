@@ -2,6 +2,26 @@
   "name": "nRF Connect",
   "description": "Official nRF Connect SDK applications",
   "apps": [
+      {
+        "name": "sdk-sidewalk",
+        "title": "Amazon Sidewalk Add-on",
+        "repo": "https://github.com/nrfconnect/sdk-sidewalk",
+        "description": "Amazon Sidewalk is a shared network designed to provide a stable and reliable connection at your home and outside of it. Is is based on two variants, one using Bluetooth® LE (more suited for home applications) and the other one using sub-GHz with the Semtech radio transceiver (for applications requiring longer range).",
+        "kind": "template",
+        "tags": ["sidewalk", "connectivity"],
+        "apps": "samples/*",
+        "license": "Other",
+        "releases": [
+          {
+            "name": "Amazon Sidewalk add-on v0.1.0",
+            "tag": "v0.1.0-add-on",
+            "date": "2025-03-21T10:00:00Z",
+            "sdk": "10dd3ddbf2560aba2da99a2dc2536b177a1498d7"
+          }
+        ],
+        "defaultBranch": "main",
+        "docsUrl": "https://docs.nordicsemi.com/bundle/sidewalk_latest/page/index.html"
+    },
     {
       "name": "ncs-zigbee-r22",
       "title": "Zigbee R22",
