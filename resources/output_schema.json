@@ -71,10 +71,6 @@
                     "id": {
                         "type": "string"
                     },
-                    "repoUrl": {
-                        "type": "string",
-                        "description": "The Url of an Add-on repository"
-                    },
                     "name": {
                         "type": "string"
                     },
@@ -198,7 +194,6 @@
                 "required": [
                     "id",
                     "name",
-                    "repoUrl",
                     "description",
                     "owner",
                     "kind",

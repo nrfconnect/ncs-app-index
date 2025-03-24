@@ -56,7 +56,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             <div className="flex gap-3 md:block">
                                 <h1 className="text-xl text-gray-600">{app.title ?? app.name}</h1>
                             </div>
-                            <a href={app.repoUrl} target="_blank" title="Visit Website">
+                            <a href={app.repo} target="_blank" title="Visit Website">
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
                             {app.restricted &&

@@ -30,7 +30,6 @@ function createFakeApp(): AppIndex['apps'][number] {
     return {
         id,
         name: faker.commerce.productName(),
-        repoUrl: faker.internet.url(),
         docsUrl: faker.internet.url(),
         description: faker.lorem.paragraph(),
         defaultBranch: faker.git.branch(),

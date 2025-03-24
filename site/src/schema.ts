@@ -223,7 +223,6 @@ export const appSchema = {
     type: 'object',
     properties: {
         id: { type: 'string' },
-        repoUrl: { type: 'string', description: 'The Url of an Add-on repository' },
         name: { type: 'string' },
         title: { type: 'string' },
         description: { type: 'string' },
@@ -271,7 +270,6 @@ export const appSchema = {
     required: [
         'id',
         'name',
-        'repoUrl',
         'description',
         'owner',
         'kind',
