@@ -194,6 +194,7 @@
                 "required": [
                     "id",
                     "name",
+                    "repo",
                     "description",
                     "owner",
                     "kind",
@@ -201,8 +202,7 @@
                     "releases",
                     "defaultBranch",
                     "lastUpdate",
-                    "docsUrl",
-                    "repo"
+                    "docsUrl"
                 ],
                 "additionalProperties": false
             }

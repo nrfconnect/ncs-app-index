@@ -166,11 +166,11 @@
                 "additionalProperties": false,
                 "required": [
                     "name",
-                    "kind",
                     "repo",
-                    "description",
+                    "kind",
                     "tags",
                     "releases",
+                    "description",
                     "docsUrl"
                 ]
             },
