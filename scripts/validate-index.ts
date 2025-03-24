@@ -35,6 +35,7 @@ async function run() {
         if (!isValid) {
             validate.errors?.forEach((error) => reportError(file, error));
             isError = true;
+            break;
         }
     }
 

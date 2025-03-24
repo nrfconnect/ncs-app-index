@@ -1,9 +1,6 @@
 {
     "name": "nRF Connect",
     "description": "Official nRF Connect SDK applications",
-    "contact": {
-      "devzoneUsername": "nordicSemiconductor"
-    },
     "apps": [
         {
             "name": "ncs-zigbee",
