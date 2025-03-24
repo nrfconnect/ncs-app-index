@@ -67,7 +67,7 @@ export const appMetadataSchema = {
             description:
                 'The name of the application repo. Should be the repo-name in the GitHub URL: https://github.com/org/repo-name.',
         },
-        repoUrl: { 
+        repo: { 
             type: 'string',
             description: 'The Url of an Add-on repository',
         },
@@ -145,7 +145,7 @@ export const appMetadataSchema = {
         }
     },
     additionalProperties: false,
-    required: ['name', 'kind', 'repoUrl', 'description', 'tags', 'releases', 'docsUrl'],
+    required: ['name', 'kind', 'repo', 'description', 'tags', 'releases', 'docsUrl'],
 } as const satisfies JSONSchema;
 
 export const orgIndexSchema = {

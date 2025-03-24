@@ -4,7 +4,7 @@
     "apps": [
         {
             "name": "blecon-device-sdk",
-            "repoUrl": "https://github.com/blecon/blecon-device-sdk",
+            "repo": "https://github.com/blecon/blecon-device-sdk",
             "docsUrl": "https://github.com/blecon/blecon-device-sdk/blob/main/README.md",
             "title": "Blecon Device SDK",
             "description": "Enable Blecon Bluetooth to Cloud IoT Connectivity on your device using the Blecon Device SDK. This SDK includes the Blecon modem libraries and samples.",

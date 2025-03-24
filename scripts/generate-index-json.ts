@@ -98,8 +98,8 @@ async function fetchRepoData(
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
-            id: app.repoUrl,
-            repo: app.repoUrl,
+            id: app.repo,
+            repo: app.repo,
             owner: orgId,
             description: app.description,
             name: app.name,

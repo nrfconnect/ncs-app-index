@@ -5,7 +5,7 @@
     "apps": [
         {
             "name": "reference-design-template",
-            "repoUrl": "https://github.com/golioth/reference-design-template",
+            "repo": "https://github.com/golioth/reference-design-template",
             "docsUrl": "https://github.com/golioth/reference-design-template/blob/main/README.md",
             "title": "The Golioth Reference Design template",
             "description": "This starter project is a standalone application that includes databases (both stateful and time-based), Over-the-air update capabilities, settings service, remote procedure calls (RPCs)",
@@ -41,7 +41,7 @@
         },
         {
             "name": "reference-design-can-asset-tracker",
-            "repoUrl": "https://github.com/golioth/reference-design-can-asset-tracker",
+            "repo": "https://github.com/golioth/reference-design-can-asset-tracker",
             "docsUrl": "https://github.com/golioth/reference-design-can-asset-tracker/blob/main/README.md",
             "title": "CAN / OBD-II Asset Tracker Reference Design",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/can-asset-tracker/guide-nrf9160-dk/](https://projects.golioth.io/reference-designs/can-asset-tracker/guide-nrf9160-dk/), but includes all code required to pass messages received on a CAN bus back to the Cloud, as well as regular GPS readings. Over-the-air updates are built in.",
@@ -59,7 +59,7 @@
         },
         {
             "name": "reference-design-air-quality",
-            "repoUrl": "https://github.com/golioth/reference-design-air-quality",
+            "repo": "https://github.com/golioth/reference-design-air-quality",
             "docsUrl": "https://github.com/golioth/reference-design-air-quality/blob/main/README.md",
             "title": "Air Quality Monitor Reference Design",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/air-quality-monitor/guide-nrf9160-dk](https://projects.golioth.io/reference-designs/air-quality-monitor/guide-nrf9160-dk/), but includes all code required to monitor readings from connected air quality sensors and pass back to the Cloud. Includes remote procedure call to clean sensor, and Over-the-air updates are built in.",
@@ -78,7 +78,7 @@
         {
             "name": "reference-design-coldchain",
             "title": "Cold Chain Asset Tracker Reference Design",
-            "repoUrl": "https://github.com/golioth/reference-design-coldchain",
+            "repo": "https://github.com/golioth/reference-design-coldchain",
             "docsUrl": "https://github.com/golioth/reference-design-coldchain/blob/main/README.md",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/cold-chain-tracker/](https://projects.golioth.io/reference-designs/cold-chain-tracker/), but includes all code required to monitor weather sensor (temperature) readings and pass back to the Cloud, as well as regular GPS readings. Configurable online/offline updates rates using settings subsystem. Over-the-air updates are built in.",
             "kind": "template",
@@ -95,7 +95,7 @@
         },
         {
             "name": "reference-design-modbus-vibration-monitor",
-            "repoUrl": "https://github.com/golioth/reference-design-modbus-vibration-monitor",
+            "repo": "https://github.com/golioth/reference-design-modbus-vibration-monitor",
             "docsUrl": "https://github.com/golioth/reference-design-modbus-vibration-monitor/blob/main/README.md",
             "title": "Modbus Vibration Monitor Reference Design",
             "description": "This Reference Design requires external hardware on top of an nRF9160-DK (see [https://projects.golioth.io/reference-designs/modbus-vibration-monitor/guide-nrf9160-dk](https://projects.golioth.io/reference-designs/modbus-vibration-monitor/guide-nrf9160-dk), but includes all code required to communicate over RS-485 to a Modbus server (sensor) and pass back to the Cloud. Over-the-air updates are built in.",
