@@ -99,7 +99,7 @@ async function fetchRepoData(
 
         return {
             id: app.repoUrl,
-            repo: app.repoUrl,
+            repoUrl: app.repoUrl,
             owner: orgId,
             description: app.description,
             name: app.name,
