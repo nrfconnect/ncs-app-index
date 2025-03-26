@@ -140,7 +140,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         telemetry.trackEvent(new ShowSupportInfoEvent(app.name, queryParams.branch, app.owner.name));
                         setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'support' });
                     }}
-                    title={`Show support info '${app.name}'`}
+                    title={`Show support information for the ${app.title ?? app.name}`}
                 >
                     Support <OrganizationIcon size={20} />
                 </button>

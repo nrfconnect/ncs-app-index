@@ -20,7 +20,7 @@
             "type": "npm",
             "script": "validate-index",
             "group": "build",
-            "label": "Validate index.json"
+            "label": "Validate index files.",
         },
         {
             "type": "npm",
