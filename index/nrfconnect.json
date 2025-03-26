@@ -152,6 +152,21 @@
                   "sdk": "v2.3.0"
                 }
               ]
+        },
+        {
+            "name": "asset-tracker-template",
+            "title": "Asset Tracker Template",
+            "description": "A template for asset tracking applications using the nRF Connect SDK",
+            "kind": "template",
+            "tags": ["asset-tracking", "lte", "gps"],
+            "releases": [
+                {
+                    "date": "2025-04-01T00:00:00Z",
+                    "name": "Asset Tracker Template v1.0.0",
+                    "tag": "v1.0.0",
+                    "sdk": "v2.9.0"
+                }
+            ]
         }
     ]
 }
