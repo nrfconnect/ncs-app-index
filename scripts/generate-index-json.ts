@@ -86,7 +86,7 @@ async function fetchRepoData(
                 ];
 
                 if (updatedA === updatedB) {
-                    return a.name < b.name ? -1 : 1;
+                    return a.name.localeCompare(b.name);
                 }
 
                 return updatedA > updatedB ? -1 : 1;
