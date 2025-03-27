@@ -4,10 +4,13 @@
     "apps": [
         {
             "name": "nrf-softsim",
+            "repo": "https://github.com/onomondo/nrf-softsim",
+            "docsUrl": "https://github.com/onomondo/nrf-softsim/blob/master/README.md",
             "description": "Manifest repo for integrating SoftSIM and nrf-sdk",
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/13015261?s=48&v=4",
             "releases": [
                 {
                   "date": "2024-02-20T12:00:50Z",

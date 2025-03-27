@@ -8,10 +8,7 @@
 
 import fs from 'fs/promises';
 import path from 'path';
-import { Octokit } from '@octokit/rest';
-import fetch from 'node-fetch';
 import colours from 'ansi-colors';
-
 import type {
     OrgIndex,
     AppIndex,
@@ -19,9 +16,7 @@ import type {
     Organization,
     Application,
 } from '../site/src/schema';
-import { appIndexSchema } from '../site/src/schema';
 import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
-import { execSync } from 'child_process';
 
 const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground', 'hello-nrfcloud'];
 const partnerOrgs: string[] = ['golioth', 'blecon'];
@@ -29,22 +24,6 @@ const partnerOrgs: string[] = ['golioth', 'blecon'];
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
 }
-
-function initialiseGitHubApi() {
-    const authToken =
-        process.env.GITHUB_TOKEN ?? execSync('gh auth token', { encoding: 'utf-8' }).trim();
-
-    if (!authToken) {
-        throw new Error(
-            'No auth token was provided, so you may encounter rate limit issues when calling the GitHub API.\n' +
-            'Provide a token by setting the "GITHUB_TOKEN" environment variable.\n',
-        );
-    }
-
-    return new Octokit({ request: { fetch }, auth: authToken });
-}
-
-const octokit = initialiseGitHubApi();
 
 async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
     const appIndex: AppIndex = { orgs: {}, apps: [] };
@@ -55,18 +34,7 @@ async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
         appIndex.apps.push(...apps);
     }
 
-    appIndex.apps = appIndex.apps.sort((a, b) => {
-        const [updatedA, updatedB] = [
-            new Date(a.lastUpdate),
-            new Date(b.lastUpdate)
-        ];
-
-        if (updatedA === updatedB) {
-            return a.name < b.name ? -1 : 1;
-        }
-
-        return updatedA > updatedB ? -1 : 1;
-    });
+    appIndex.apps = appIndex.apps.sort((a, b) => a.name < b.name ? -1 : 1);
 
     return appIndex;
 }
@@ -76,8 +44,6 @@ async function fetchOrgData({
     orgIndex,
 }: ParsedOrgFile): Promise<{ org: Organization; apps: Application[] }> {
     try {
-        const userData = await octokit.users.getByUsername({ username: orgId });
-
         let kind: Organization['kind'];
         if (nordicOrgs.includes(orgId)) {
             kind = 'Nordic Semiconductor';
@@ -92,15 +58,9 @@ async function fetchOrgData({
             name: orgIndex.name,
             description: orgIndex.description,
             kind,
-            type: userData.data.type as (typeof validOrgTypes)[number],
-            urls: {
-                support: userData.data.html_url,
-                email: userData.data.email ?? undefined,
-                blog: userData.data.blog ?? undefined,
-                twitter: userData.data.twitter_username ?? undefined,
-            },
-            avatar: userData.data.avatar_url,
-            location: userData.data.location ?? undefined,
+            type: 'Organization' as (typeof validOrgTypes)[number],
+            contact: orgIndex.contact,
+            avatar: orgIndex.avatar,
         };
 
         const apps = await Promise.all(orgIndex.apps.map((app) => fetchRepoData(orgId, app)));
@@ -113,60 +73,47 @@ async function fetchOrgData({
     }
 }
 
-async function getReadmeUrl(orgId: string, app: OrgIndex['apps'][number]): Promise<string | undefined> {
-    let readmeUrl: string | undefined;
-
-    try {
-        const { data } = await octokit.repos.getReadme({
-            owner: orgId,
-            repo: app.name,
-        });
-
-        readmeUrl = data.html_url ?? undefined;
-    } catch {
-        readmeUrl = undefined;
-    }
-
-    return readmeUrl;
-}
-
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
-): Promise<AppIndex['apps'][number]> {
+): Promise<Application> {
     try {
-        const repoUrl = `https://github.com/${orgId}/${app.name}`;
+        try {
+            app.releases = app.releases.sort((a, b) => {
+                const [updatedA, updatedB] = [
+                    new Date(a.date),
+                    new Date(b.date)
+                ];
 
-        const { data: repoData } = await octokit.repos.get({
-            owner: orgId,
-            repo: app.name,
-        });
+                if (updatedA === updatedB) {
+                    return a.name.localeCompare(b.name);
+                }
 
-        let docsUrl = app.docsUrl ?? await getReadmeUrl(orgId, app);
+                return updatedA > updatedB ? -1 : 1;
+            });
+        } catch {
+            console.log(`failed to parse ${app.name}`)
+        }
 
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
 
         return {
-            id: repoData.id.toString(),
-            repo: repoUrl,
+            id: app.repo,
+            repo: app.repo,
             owner: orgId,
-            description: app.description ?? repoData.description ?? '',
+            description: app.description,
             name: app.name,
             title: app.title,
-            defaultBranch: app.defaultBranch ?? repoData.default_branch,
-            isTemplate: repoData.is_template ?? false,
+            defaultBranch: app.defaultBranch ?? app.releases[0]?.tag,
             kind: app.kind,
-            lastUpdate: repoData.updated_at,
-            license: app.license ?? repoData.license?.name ?? undefined,
-            watchers: repoData.watchers_count,
-            stars: repoData.stargazers_count,
-            forks: repoData.forks_count,
+            license: app.license ?? 'Other License',
             apps: app.apps,
             releases: app.releases,
             tags: app.tags,
-            docsUrl: docsUrl,
+            docsUrl: app.docsUrl,
             restricted: app.restricted,
-        };
+            avatar: app.avatar,
+        } as Application;
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
     }

@@ -33,7 +33,7 @@
         "fuse.js": "^6.6.2",
         "json-schema-to-ts": "^2.9.2",
         "lodash": "^4.17.21",
-        "next": "^15.2.2",
+        "next": "^15.2.4",
         "node-fetch": "^3.3.2",
         "octokit": "^4.1.2",
         "react": "^18.2.0",

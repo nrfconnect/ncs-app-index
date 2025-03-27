@@ -4,11 +4,14 @@
     "apps": [
         {
             "name": "nrf9160-feather-examples-and-drivers",
+            "repo": "https://github.com/circuitdojo/nrf9160-feather-examples-and-drivers",
+            "docsUrl": "https://github.com/circuitdojo/nrf9160-feather-examples-and-drivers/blob/v2.4.x/README.md",
             "title": "nRF9160 Feather Examples and Drivers",
             "description": "Zephyr examples and drivers for the [nRF9160 Feather](https://docs.circuitdojo.com/nrf9160-getting-started.html)",
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/34612814?s=48&v=4",
             "releases": [
                 {
                     "date": "2023-12-20T20:37:28Z",

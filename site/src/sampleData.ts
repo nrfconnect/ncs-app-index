@@ -18,11 +18,8 @@ function createFakeOrg(id: string): AppIndex['orgs'][string] {
         description: faker.lorem.paragraph(),
         kind: 'External',
         type: faker.helpers.arrayElement(validOrgTypes),
-        urls: {
-            support: faker.internet.url(),
-            email: faker.internet.email(),
-            twitter: faker.helpers.maybe(() => faker.internet.displayName()),
-            blog: faker.helpers.maybe(() => faker.internet.url()),
+        contact: {
+            devzoneUsername: faker.internet.email(),
         },
     };
 }
@@ -33,16 +30,13 @@ function createFakeApp(): AppIndex['apps'][number] {
     return {
         id,
         name: faker.commerce.productName(),
+        docsUrl: faker.internet.url(),
         description: faker.lorem.paragraph(),
         defaultBranch: faker.git.branch(),
-        forks: faker.number.int({ max: 200 }),
-        isTemplate: faker.helpers.arrayElement([true, false]),
         kind: faker.helpers.arrayElement(validAppKinds),
         lastUpdate: faker.date.recent().toString(),
         license: faker.word.verb(),
         tags: faker.helpers.arrayElements(validTags),
-        watchers: faker.number.int({ max: 10 }),
-        stars: faker.number.int({ max: 10 }),
         manifest: faker.lorem.word(),
         owner: faker.helpers.arrayElement(companyIds),
         repo: `https://github.com/${faker.lorem.slug()}/${id}`,

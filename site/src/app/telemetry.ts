@@ -13,20 +13,39 @@ export interface TelemetryEvent {
 };
 
 class Telemetry {
-    private appInsights: ApplicationInsights;
+    private appInsights: ApplicationInsights | undefined;
+    private enabled = false;
+    private activated = false;
 
-    constructor(private connectionString: string) {
-        this.appInsights = new ApplicationInsights({
-            config: {
-                connectionString: this.connectionString,
-            }
-        });
+    constructor(private connectionString: string) {}
 
-        this.appInsights.loadAppInsights();
+    activate(enabled: boolean) {
+        if (this.activated) {
+            return;
+        }
+
+        if (this.enabled) {
+            this.appInsights = new ApplicationInsights({
+                config: {
+                    connectionString: this.connectionString,
+                }
+            });
+
+            this.appInsights.loadAppInsights();
+        }
+
+        this.activated = true;
+        this.enabled = enabled;
+    }
+
+    private get canSend() {
+        return this.activated && this.enabled && this.appInsights;
     }
 
     trackEvent<T extends TelemetryEvent>(e: T) {
-        this.appInsights.trackEvent({name: e.id, properties: e.props});
+        if (this.canSend) {
+            this.appInsights?.trackEvent({name: e.id, properties: e.props});
+        }
     }
 };
 
