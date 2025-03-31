@@ -1,0 +1,24 @@
+{
+    "name": "SmartThingsCommunity",
+    "description": "",
+    "apps": [
+        {
+            "name": "st-device-sdk-c-ref",
+            "title": "SmartThings Find Device SDK",
+            "description": "SmartThings Find Device SDK is the core device library that makes BLE device to work with SmartThings Find Service. It would supply ready-to-use port code for nRF chipsets. You may simply build your own device firmware with given application example.",
+            "kind": "sample",
+            "tags": [
+                "ble"
+            ],
+            "releases": [
+                {
+                    "date": "2024-03-21T12:00:00Z",
+                    "name": "v2.0.3",
+                    "tag": "v2.0.3",
+                    "sdk": "v2.5.2"
+                }
+            ],
+            "docsUrl": "https://developer.smartthings.com/docs/devices/mobile-connected/get-started/"
+        }
+    ]
+}
