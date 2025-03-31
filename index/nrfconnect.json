@@ -53,9 +53,15 @@
                 "tag": "v0.3.1",
                 "date": "2025-01-14T03:13:00Z",
                 "sdk": "v2.9.0"
+              },
+              {
+                "name": "Zigbee add-on v0.4.0",
+                "tag": "v0.4.0",
+                "date": "2025-03-31T10:40:00Z",
+                "sdk": "v2.9.0"
               }
             ],
-            "defaultBranch": "v0.3.1",
+            "defaultBranch": "v0.4.0",
             "docsUrl": "https://docs.nordicsemi.com/bundle?cluster=true&exclude_metadata_filter.field=display-type&exclude_metadata_filter.value=inline&labelkey=addon-zigbee-r23&rpp=10&sort.field=last_uploaded&sort.value=desc"
         },
         {
