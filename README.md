@@ -12,11 +12,11 @@ If you or your organization has a project that you'd like to include in this rep
 
 ## Development
 
-To create an add-on index page of your own, you need to generate a new, custom `index.json` file and [contribute it](./CONTRIBUTING.md) to this repository (using a different name). Use the information in the following sections to make sure that the JSON file is set up correctly.
+To create an add-on index page of your own, you need to generate a new, custom JSON file and [contribute it](./CONTRIBUTING.md) to this repository. Use the information in the following sections to make sure that the JSON file is set up correctly.
 
-### Generating index.json
+### Generating index.json template file
 
-To generate an `index.json` template file:
+To generate an `index.json` template file, complete the following steps:
 
 1. Open a command terminal in the `ncs-app-index` root directory.
 
@@ -35,13 +35,26 @@ To generate an `index.json` template file:
 
 ### Creating a custom index.json
 
-To create an `index.json` of your own, you can either [generate a template](#generating-indexjson) or create a custom file from scratch.
-Your custom JSON file must include the following information:
+To create an JSON of your own, you can either [generate a template](#generating-indexjson) or create a custom file from scratch.
 
-* Information about your account or organization (`name` and `description`).
+The name of the JSON file is not required to be `index.json`. The common practice is to name it after the contributor's organization.
+
+The following requirements apply to the JSON file:
+
+* The file must include the `repo` field, which points to the URL of your repository.
+* The file must include the `docsUrl` field inside the `apps` array, which points to the URL of your add-on documentation.
+
+The following information is optional:
+
+* Information about your organization:
+
+  * `name` and `description`
+  * `avatar` - Image or icon for your organization
+  * `contact` (recommended) - Support information displayed via the 'Support' button
+
 * Inside the `apps` array, an entry for each add-on you want to be shown in the index:
 
-  * `name` must match the add-on's GitHub repository in your account.
+  * `name` must match the add-on's repository name.
   * `title` is the human-readable name of the repository.
   * `description` is the short description of the add-on.
   * `manifest` is the alternative name of the west manifest. Defaults to `west.yml`.
@@ -50,6 +63,7 @@ Your custom JSON file must include the following information:
   * `license` is the license type name.
   * `apps` is the global pattern to find directories containing add-ons.
   * `releases` are the add-on versions.
+  * `avatar` - Image or icon for the add-on.
   * `restricted` indicates if the access to the add-on or any of its dependencies is restricted to a specific audience.
     This field requires providing an URL to a page that explains how to get access.
     If this field is used, the add-on entry will be marked with a padlock on the index page.
@@ -91,7 +105,7 @@ To verify your application index website locally:
 
 1. Access the site in the browser by going to [localhost:3000/ncs-app-index](http://localhost:3000/ncs-app-index).
 
-1. Check if the `index.json` is available by going to [localhost:3000/ncs-app-index/index.json](http://localhost:3000/ncs-app-index/index.json).
+1. Check if the JSON file is available by going to [localhost:3000/ncs-app-index/index.json](http://localhost:3000/ncs-app-index/index.json), where `index.json` is the name of your JSON file.
 
 #### Website customization
 
