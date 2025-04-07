@@ -2,21 +2,26 @@
 
 This repository includes a collection of index pages for publicly available nRF Connect SDK Add-ons, which are supplementary components that extend the [nRF Connect SDK](https://docs.nordicsemi.com/bundle/ncs-latest/page/nrf/index.html). You can access the index from the [nRF Connect for VS Code extension](https://docs.nordicsemi.com/bundle/nrf-connect-vscode/page/index.html), and browse it on [its webpage](https://nrfconnect.github.io/ncs-app-index/).
 
-----
-
-## Contributing
-
-If you or your organization has a project that you'd like to include in this repository, open a pull request against it. Read the [`CONTRIBUTING`](./CONTRIBUTING.md) file for more information.
+The Add-on index includes files contributed by different organizations.
 
 ----
 
-## Development
+## Contributing an Add-on
 
-To create an add-on index page of your own, you need to generate a new, custom `index.json` file and [contribute it](./CONTRIBUTING.md) to this repository (using a different name). Use the information in the following sections to make sure that the JSON file is set up correctly.
+If your organization has a project that you would like to include in this repository, read the [`CONTRIBUTING`](./CONTRIBUTING.md) and [`CONTRIBUTION CHECKLIST`](./docs/ContributionChecklist.md) for more information.
 
-### Generating index.json
 
-To generate an `index.json` template file:
+----
+
+## Development of an Add-on index
+
+This and following sections describe how to build and run the nRF Connect SDK Add-on index in the local environment. If you wish to just publish an nRF Connect SDK Add-on, please refer to [`Contributing an Add-on`](#contributing-an-add-on).
+
+To create an Add-on index page of your own, you need to start with cloning this repository and generating a new index JSON file. Use the information in the following sections to make sure that the JSON file is set up correctly.
+
+### Generating index.json file
+
+To generate an `index.json` file, complete the following steps:
 
 1. Open a command terminal in the `ncs-app-index` root directory.
 
@@ -33,37 +38,51 @@ To generate an `index.json` template file:
 
 1. Copy `index.json` to `./site/public/`.
 
-### Creating a custom index.json
+The `index.json` is compiled from the files in the `ncs-app-index/index` directory. To add your Add-on to the index you can either [create](#adding-your-organization-to-the-index) or modify existing file of your organization in `ncs-app-index/index` directory.
 
-To create an `index.json` of your own, you can either [generate a template](#generating-indexjson) or create a custom file from scratch.
-Your custom JSON file must include the following information:
+### Adding your organization to the index
 
-* Information about your account or organization (`name` and `description`).
-* Inside the `apps` array, an entry for each add-on you want to be shown in the index:
-
-  * `name` must match the add-on's GitHub repository in your account.
-  * `title` is the human-readable name of the repository.
-  * `description` is the short description of the add-on.
-  * `manifest` is the alternative name of the west manifest. Defaults to `west.yml`.
-  * `kind` is the type of add-on.
-  * `tags` are the tags that will be used to categorize the add-on.
-  * `license` is the license type name.
-  * `apps` is the global pattern to find directories containing add-ons.
-  * `releases` are the add-on versions.
-  * `restricted` indicates if the access to the add-on or any of its dependencies is restricted to a specific audience.
-    This field requires providing an URL to a page that explains how to get access.
-    If this field is used, the add-on entry will be marked with a padlock on the index page.
-
-Most of the information provided in these entries will be displayed on the add-on index page.
-For more information about each entry, see `appMetadataSchema` in the `resources/schema.json` file.
-
-#### Schemas
+To add your organization to the index, create an JSON of your own. The common practice is to name that file after the contributor's organization. The file is required to be located in `ncs-app-index/index` directory and follow the [`JSON schema`](./resources/schema.json).
 
 JSON schemas are provided to enforce the shape of the data in the index. They are located in the `resources` directory. To edit the schemas, make any changes in `site/src/schema.ts` and run `npm run generate-schemas` from the root directory.
+
+The following represents an example of the organization's index file:
+
+```
+{
+    "name": "Application maker",
+    "description": "A company that makes applications.",
+    "apps": [
+        {
+            "title": "Application #1",
+            "name": "application_1",
+            "description": "The first application",
+            "kind": "sample",
+            "tags": ["ble", "dfu"],
+            "avatar": "https://link-to-avatar
+            "releases": [
+                {
+                    "date": "2024-08-11T14:37:00Z",
+                    "name": "v2.0.1",
+                    "tag": "v2.0.1",
+                    "sdk": "v2.8.0"
+                }
+            ],
+            "docsUrl": "https://link-to-docs"
+        }
+    ]
+}
+
+```
+
+For more information about each entry, see `resources/schema.json` file.
+
 
 ### Serving a local server
 
 Once you have your `index.json` file, you can set up a local server to test it:
+
+1. Copy `index.json` to `./site/public/`.
 
 1. Go to the `site` directory.
 
@@ -91,7 +110,7 @@ To verify your application index website locally:
 
 1. Access the site in the browser by going to [localhost:3000/ncs-app-index](http://localhost:3000/ncs-app-index).
 
-1. Check if the `index.json` is available by going to [localhost:3000/ncs-app-index/index.json](http://localhost:3000/ncs-app-index/index.json).
+1. Check if the JSON file is available by going to [localhost:3000/ncs-app-index/index.json](http://localhost:3000/ncs-app-index/index.json), where `index.json` is the name of your JSON file.
 
 #### Website customization
 
