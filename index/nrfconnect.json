@@ -1,163 +1,176 @@
 {
-    "name": "nRF Connect",
-    "description": "Official nRF Connect SDK applications",
-    "apps": [
+  "name": "nRF Connect",
+  "description": "Official nRF Connect SDK applications",
+  "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+  "apps": [
+      {
+        "name": "sdk-sidewalk",
+        "title": "Amazon Sidewalk Add-on",
+        "repo": "https://github.com/nrfconnect/sdk-sidewalk",
+        "description": "Amazon Sidewalk is a shared network designed to provide a stable and reliable connection at your home and outside of it. Is is based on two variants, one using Bluetooth® LE (more suited for home applications) and the other one using sub-GHz with the Semtech radio transceiver (for applications requiring longer range).",
+        "kind": "template",
+        "tags": ["sidewalk", "connectivity"],
+        "apps": "samples/*",
+        "license": "Other",
+        "releases": [
           {
-            "name": "sdk-sidewalk",
-            "title": "Amazon Sidewalk Add-on",
-            "description": "Amazon Sidewalk is a shared network designed to provide a stable and reliable connection at your home and outside of it. Is is based on two variants, one using Bluetooth® LE (more suited for home applications) and the other one using sub-GHz with the Semtech radio transceiver (for applications requiring longer range).",
-            "kind": "template",
-            "tags": ["sidewalk", "connectivity"],
-            "apps": "samples/*",
-            "license": "Other",
-            "releases": [
-              {
-                "name": "Amazon Sidewalk add-on v0.1.0",
-                "tag": "v0.1.0-add-on",
-                "date": "2025-03-21T10:00:00Z",
-                "sdk": "10dd3ddbf2560aba2da99a2dc2536b177a1498d7"
-              }
-            ],
-            "defaultBranch": "main",
-            "docsUrl": "https://docs.nordicsemi.com/bundle/sidewalk_latest/page/index.html"
-        },
+            "name": "Amazon Sidewalk add-on v0.1.0",
+            "tag": "v0.1.0-add-on",
+            "date": "2025-03-21T10:00:00Z",
+            "sdk": "10dd3ddbf2560aba2da99a2dc2536b177a1498d7"
+          }
+        ],
+        "defaultBranch": "main",
+        "docsUrl": "https://docs.nordicsemi.com/bundle/sidewalk_latest/page/index.html"
+    },
+    {
+      "name": "ncs-zigbee-r22",
+      "title": "Zigbee R22",
+      "repo": "https://github.com/nrfconnect/ncs-zigbee-r22",
+      "description": "The Zigbee R22 add-on for the nRF Connect SDK provides support for developing Zigbee R22 applications based on the third-party precompiled ZBOSS R22 stack.",
+      "kind": "template",
+      "docsUrl": "https://docs.nordicsemi.com/bundle?cluster=true&exclude_metadata_filter.field=display-type&exclude_metadata_filter.value=inline&labelkey=addon-zigbee-r22&rpp=10&sort.field=last_uploaded&sort.value=desc",
+      "tags": [
+        "zigbee",
+        "connectivity"
+      ],
+      "apps": "samples/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "defaultBranch": "v1.0.0",
+      "releases": [
         {
-            "name": "ncs-zigbee",
-            "title": "Zigbee R23",
-            "description": "The Zigbee R23 add-on for the nRF Connect SDK provides support for developing Zigbee R23 applications based on the third-party precompiled ZBOSS R23 stack.",
-            "kind": "template",
-            "tags": ["zigbee", "connectivity"],
-            "apps": "samples/*",
-            "license": "Other",
-            "releases": [
-              {
-                "name": "Zigbee add-on v0.1.0",
-                "tag": "v0.1.0",
-                "date": "2024-11-15T12:47:22Z",
-                "sdk": "v2.8.0"
-              },
-              {
-                "name": "Zigbee add-on v0.2.0",
-                "tag": "v0.2.0",
-                "date": "2024-12-03T10:44:00Z",
-                "sdk": "v2.8.0"
-              },
-              {
-                "name": "Zigbee add-on v0.3.0",
-                "tag": "v0.3.0",
-                "date": "2025-01-13T12:20:00Z",
-                "sdk": "v2.9.0"
-              },
-              {
-                "name": "Zigbee add-on v0.3.1",
-                "tag": "v0.3.1",
-                "date": "2025-01-14T03:13:00Z",
-                "sdk": "v2.9.0"
-              },
-              {
-                "name": "Zigbee add-on v0.4.0",
-                "tag": "v0.4.0",
-                "date": "2025-03-31T10:40:00Z",
-                "sdk": "v2.9.0"
-              }
-            ],
-            "defaultBranch": "v0.4.0",
-            "docsUrl": "https://docs.nordicsemi.com/bundle/addon-zigbee-r23-latest/page/index.html"
-        },
-        {
-          "name": "ncs-zigbee-r22",
-          "title": "Zigbee R22",
-          "description": "The Zigbee R22 add-on for the nRF Connect SDK provides support for developing Zigbee R22 applications based on the third-party precompiled ZBOSS R22 stack.",
-          "kind": "template",
-          "docsUrl": " https://docs.nordicsemi.com/bundle?cluster=true&exclude_metadata_filter.field=display-type&exclude_metadata_filter.value=inline&labelkey=addon-zigbee-r22&rpp=10&sort.field=last_uploaded&sort.value=desc",
-          "tags": ["zigbee", "connectivity"],
-          "apps": "samples/*",
-          "license": "Other",
-          "defaultBranch": "v1.0.0",
-          "releases": [
-            {
-              "name": "Zigbee R22 add-on v1.0.0",
-              "tag": "v1.0.0",
-              "date": "2025-03-10T13:03:00Z",
-              "sdk": "v2.8.0"
-            }
-          ]
-        },
-        {
-            "name": "ncs-example-application",
-            "title": "nRF Connect SDK example application",
-            "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
-            "kind": "template",
-            "tags": [],
-            "apps": "app",
-            "releases": [
-                {
-                  "date": "2024-12-17T16:52:00Z",
-                  "name": "ncs-example-application v2.9.0",
-                  "tag": "v2.9.0",
-                  "sdk": "v2.9.0"
-                },
-                {
-                  "date": "2024-11-14T13:52:00Z",
-                  "name": "ncs-example-application v2.8.0",
-                  "tag": "v2.8.0",
-                  "sdk": "v2.8.0"
-                },
-                {
-                  "date": "2024-07-04T19:19:00Z",
-                  "name": "ncs-example-application v2.7.0",
-                  "tag": "v2.7.0",
-                  "sdk": "v2.7.0"
-                },
-                {
-                  "date": "2024-09-17T10:54:00Z",
-                  "name": "ncs-example-application v2.6.2",
-                  "tag": "v2.6.2",
-                  "sdk": "v2.6.2"
-                },
-                {
-                  "date": "2024-04-25T13:53:00Z",
-                  "name": "ncs-example-application v2.6.1",
-                  "tag": "v2.6.1",
-                  "sdk": "v2.6.1"
-                },
-                {
-                  "date": "2024-03-13T14:30:49Z",
-                  "name": "ncs-example-application v2.6.0",
-                  "tag": "v2.6.0",
-                  "sdk": "v2.6.0"
-                },
-                {
-                  "date": "2024-02-01T09:50:12Z",
-                  "name": "ncs-example-application v2.5.2",
-                  "tag": "v2.5.2",
-                  "sdk": "v2.5.2"
-                },
-                {
-                  "date": "2023-12-18T20:37:28Z",
-                  "name": "ncs-example-application v2.5.1",
-                  "tag": "v2.5.1",
-                  "sdk": "v2.5.1"
-                },
-                {
-                  "date": "2023-10-26T13:55:02Z",
-                  "name": "ncs-example-application v2.5.0",
-                  "tag": "v2.5.0",
-                  "sdk": "v2.5.0"
-                },
-                {
-                  "date": "2023-06-01T13:25:38Z",
-                  "name": "ncs-example-application v2.4.0",
-                  "tag": "v2.4.0",
-                  "sdk": "v2.4.0"
-                },
-                {
-                  "date": "2023-03-02T10:45:20Z",
-                  "name": "ncs-example-application v2.3.0",
-                  "tag": "v2.3.0",
-                  "sdk": "v2.3.0"
-                }
-              ]
+          "name": "Zigbee R22 add-on v1.0.0",
+          "tag": "v1.0.0",
+          "date": "2025-03-10T13:03:00Z",
+          "sdk": "v2.8.0"
         }
-    ]
+      ]
+    },
+    {
+      "name": "ncs-zigbee",
+      "title": "Zigbee R23",
+      "repo": "https://github.com/nrfconnect/ncs-zigbee",
+      "description": "The Zigbee R23 add-on for the nRF Connect SDK provides support for developing Zigbee R23 applications based on the third-party precompiled ZBOSS R23 stack.",
+      "kind": "template",
+      "tags": [
+        "zigbee",
+        "connectivity"
+      ],
+      "apps": "samples/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "releases": [
+        {
+          "name": "Zigbee add-on v0.1.0",
+          "tag": "v0.1.0",
+          "date": "2024-11-15T12:47:22Z",
+          "sdk": "v2.8.0"
+        },
+        {
+          "name": "Zigbee add-on v0.2.0",
+          "tag": "v0.2.0",
+          "date": "2024-12-03T10:44:00Z",
+          "sdk": "v2.8.0"
+        },
+        {
+          "name": "Zigbee add-on v0.3.0",
+          "tag": "v0.3.0",
+          "date": "2025-01-13T12:20:00Z",
+          "sdk": "v2.9.0"
+        },
+        {
+          "name": "Zigbee add-on v0.3.1",
+          "tag": "v0.3.1",
+          "date": "2025-01-14T03:13:00Z",
+          "sdk": "v2.9.0"
+        },
+        {
+          "name": "Zigbee add-on v0.4.0",
+          "tag": "v0.4.0",
+          "date": "2025-03-31T10:40:00Z",
+          "sdk": "v2.9.0"
+        }
+      ],
+      "defaultBranch": "v0.4.0",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-zigbee-r23-latest/page/index.html"
+    },
+    {
+      "name": "ncs-example-application",
+      "repo": "https://github.com/nrfconnect/ncs-example-application",
+      "title": "nRF Connect SDK example application",
+      "description": "Official reference implementation for various out-of-tree concepts, like boards, drivers and a CI setup.",
+      "kind": "template",
+      "tags": [],
+      "apps": "app",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://github.com/nrfconnect/ncs-example-application/blob/main/README.md",
+      "releases": [
+        {
+          "date": "2024-12-17T16:52:00Z",
+          "name": "ncs-example-application v2.9.0",
+          "tag": "v2.9.0",
+          "sdk": "v2.9.0"
+        },
+        {
+          "date": "2024-11-14T13:52:00Z",
+          "name": "ncs-example-application v2.8.0",
+          "tag": "v2.8.0",
+          "sdk": "v2.8.0"
+        },
+        {
+          "date": "2024-07-04T19:19:00Z",
+          "name": "ncs-example-application v2.7.0",
+          "tag": "v2.7.0",
+          "sdk": "v2.7.0"
+        },
+        {
+          "date": "2024-09-17T10:54:00Z",
+          "name": "ncs-example-application v2.6.2",
+          "tag": "v2.6.2",
+          "sdk": "v2.6.2"
+        },
+        {
+          "date": "2024-04-25T13:53:00Z",
+          "name": "ncs-example-application v2.6.1",
+          "tag": "v2.6.1",
+          "sdk": "v2.6.1"
+        },
+        {
+          "date": "2024-03-13T14:30:49Z",
+          "name": "ncs-example-application v2.6.0",
+          "tag": "v2.6.0",
+          "sdk": "v2.6.0"
+        },
+        {
+          "date": "2024-02-01T09:50:12Z",
+          "name": "ncs-example-application v2.5.2",
+          "tag": "v2.5.2",
+          "sdk": "v2.5.2"
+        },
+        {
+          "date": "2023-12-18T20:37:28Z",
+          "name": "ncs-example-application v2.5.1",
+          "tag": "v2.5.1",
+          "sdk": "v2.5.1"
+        },
+        {
+          "date": "2023-10-26T13:55:02Z",
+          "name": "ncs-example-application v2.5.0",
+          "tag": "v2.5.0",
+          "sdk": "v2.5.0"
+        },
+        {
+          "date": "2023-06-01T13:25:38Z",
+          "name": "ncs-example-application v2.4.0",
+          "tag": "v2.4.0",
+          "sdk": "v2.4.0"
+        },
+        {
+          "date": "2023-03-02T10:45:20Z",
+          "name": "ncs-example-application v2.3.0",
+          "tag": "v2.3.0",
+          "sdk": "v2.3.0"
+        }
+      ]
+    }
+  ]
 }

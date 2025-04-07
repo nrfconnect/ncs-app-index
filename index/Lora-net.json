@@ -5,10 +5,13 @@
         {
             "description": "Software Development Kit featuring demonstrations, drivers and middleware enabling development of connectivity and geolocation applications",
             "name": "SWSD006",
+            "repo": "https://github.com/Lora-net/SWSD006",
+            "docsUrl": "https://github.com/Lora-net/SWSD006/blob/v2.6.1/README.md",
             "title": "Sidewalk & LoRaWAN Mullti-stack SDK for LR11xx (SWSD006)",
             "kind": "sample",
             "license": "Apache License 2.0",
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/5756403?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-08-08T14:30:49Z",

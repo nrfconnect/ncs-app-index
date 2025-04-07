@@ -4,11 +4,14 @@
     "apps": [
         {
             "name": "conexio-firmware-sdk",
+            "repo": "https://github.com/Conexiotechnologies/conexio-firmware-sdk",
+            "docsUrl": "https://github.com/Conexiotechnologies/conexio-firmware-sdk/blob/main/README.md",
             "title": "Conexio Stratus Firmware SDK",
             "description": "NCS example applications for [Conexio Stratus devices](https://docs.conexiotech.com/)",
             "kind": "sample",
             "tags": ["lte"],
             "apps": "samples/*",
+            "avatar": "https://avatars.githubusercontent.com/u/79224914?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-09-16T02:29:37Z",

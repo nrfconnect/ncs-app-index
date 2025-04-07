@@ -4,10 +4,12 @@
     "apps": [
         {
             "title": "Thingy:91 X: Hello nRF Cloud firmware",
+            "repo": "https://github.com/hello-nrfcloud/firmware",            
             "name": "firmware",
             "description": "This firmware is used with hello.nrfcloud.com",
             "kind": "sample",
             "tags": ["dfu", "lte"],
+            "avatar": "https://avatars.githubusercontent.com/u/137044581?s=48&v=4",
             "releases": [
                 {
                     "date": "2024-08-11T14:37:00Z",

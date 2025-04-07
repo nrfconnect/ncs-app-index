@@ -4,6 +4,8 @@
     "apps": [
         {
             "name": "SmartThingsFindPartnershipProgram",
+            "repo": "https://github.com/SmartThingsCommunity/SmartThingsFindPartnershipProgram",
+            "avatar": "https://avatars.githubusercontent.com/u/7317431?s=48&v=4",
             "title": "SmartThings Find Device SDK",
             "description": "SmartThings Find Device SDK is the core device library that makes BLE device to work with SmartThings Find Service. It would supply ready-to-use port code for nRF chipsets. You may simply build your own device firmware with given application example.",
             "kind": "sample",
