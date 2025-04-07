@@ -13,14 +13,14 @@ import {
     BookIcon,
     LockIcon,
     RepoIcon,
-    OrganizationIcon
+    OrganizationIcon,
 } from '@primer/octicons-react';
 
 import { useState } from 'react';
 import { NormalisedApp } from '../schema';
 import VSCodeButton from './VSCodeButton';
 import TagList from './TagList';
-import ReleasesDropDownList from './ReleasesDropDownList'
+import ReleasesDropDownList from './ReleasesDropDownList';
 import VSCodeQueryParams from './VSCodeQueryParams';
 import { AppDetails } from './Root';
 import { telemetry } from './telemetry';
@@ -31,18 +31,23 @@ interface Props {
     setShowingAppDetails: (showingAppDetails: AppDetails) => void;
 }
 
-function Avatar({ app }: { app: NormalisedApp }) {
+function Avatar({ app, sizeInPx }: { app: NormalisedApp; sizeInPx?: number }) {
     const src = app.avatar ?? app.owner.avatar;
+    sizeInPx ??= 96; // Rendered size is 48px, so for nice retina quality we need an icon of size 96px
 
-    if (src) {
-        return <img src={src} className="h-12 w-12" />
+    try {
+        if (src) {
+            const { origin, pathname } = new URL(src);
+            return <img src={`${origin}${pathname}?s=${sizeInPx}&v=4`} className="h-12 w-12" />;
+        }
+    } catch {
+        // URL might be invalid
     }
 
     return <RepoIcon size={48} />;
 }
 
 function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
-
     const [queryParams, setQueryParams] = useState(new VSCodeQueryParams(app));
 
     return (
@@ -59,14 +64,16 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                             <a href={app.repo} target="_blank" title="Visit Website">
                                 <LinkExternalIcon className="hoverable-icon" size={20} />
                             </a>
-                            {app.restricted &&
-                                <a href={app.restricted.detailsUrl}
-                                   target="_blank"
-                                   rel={'noopener noreferrer'} 
-                                   title="This add-on requires additional permissions.">
-                                   <LockIcon className="hoverable-icon" size={20}/>
+                            {app.restricted && (
+                                <a
+                                    href={app.restricted.detailsUrl}
+                                    target="_blank"
+                                    rel={'noopener noreferrer'}
+                                    title="This add-on requires additional permissions."
+                                >
+                                    <LockIcon className="hoverable-icon" size={20} />
                                 </a>
-                            }
+                            )}
                         </div>
 
                         <div className="hidden items-center gap-2 md:flex">
@@ -99,9 +106,9 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
             </Markdown>
 
             <div className="flex flex-wrap items-center gap-2">
-                <ReleasesDropDownList app={app}
-                    onReleaseChosen={
-                    (branch) => {
+                <ReleasesDropDownList
+                    app={app}
+                    onReleaseChosen={(branch) => {
                         const newQueryParams = new VSCodeQueryParams(app);
                         newQueryParams.branch = branch!;
                         setQueryParams(newQueryParams);
@@ -113,32 +120,46 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                 <button
                     className="button bg-[#768692] text-white"
                     onClick={() => {
-                        telemetry.trackEvent(new ShowAppGuideEvent(app.name, queryParams.branch, app.owner.name));
-                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'instruction' });
+                        telemetry.trackEvent(
+                            new ShowAppGuideEvent(app.name, queryParams.branch, app.owner.name),
+                        );
+                        setShowingAppDetails({
+                            id: app.id,
+                            sha: queryParams.branch,
+                            type: 'instruction',
+                        });
                     }}
                     title={`Open a guide for the '${app.name}'`}
                 >
                     Instructions <TerminalIcon size={20} />
                 </button>
 
-                {!!app.docsUrl
-                    && <a
+                {!!app.docsUrl && (
+                    <a
                         className="button bg-[#768692] text-white"
                         href={app.docsUrl}
                         title={`Open documentation for ${app.name}`}
                         target={'_blank'}
                         rel={'noopener noreferrer'}
-                        onClick={() => telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))}
+                        onClick={() =>
+                            telemetry.trackEvent(new OpenDocsEvent(app.name, app.owner.name))
+                        }
                     >
                         Documentation <BookIcon size={20} />
                     </a>
-                }
+                )}
 
                 <button
                     className="button bg-[#768692] text-white"
                     onClick={() => {
-                        telemetry.trackEvent(new ShowSupportInfoEvent(app.name, queryParams.branch, app.owner.name));
-                        setShowingAppDetails({ id: app.id, sha: queryParams.branch, type: 'support' });
+                        telemetry.trackEvent(
+                            new ShowSupportInfoEvent(app.name, queryParams.branch, app.owner.name),
+                        );
+                        setShowingAppDetails({
+                            id: app.id,
+                            sha: queryParams.branch,
+                            type: 'support',
+                        });
                     }}
                     title={`Show support information for the ${app.title ?? app.name}`}
                 >
