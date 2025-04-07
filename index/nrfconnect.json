@@ -91,7 +91,7 @@
         }
       ],
       "defaultBranch": "v0.4.0",
-      "docsUrl": "https://docs.nordicsemi.com/bundle?cluster=true&exclude_metadata_filter.field=display-type&exclude_metadata_filter.value=inline&labelkey=addon-zigbee-r23&rpp=10&sort.field=last_uploaded&sort.value=desc"
+      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-zigbee-r23-latest/page/index.html"
     },
     {
       "name": "ncs-example-application",
