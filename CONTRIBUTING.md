@@ -11,7 +11,7 @@ Pull requests that make other changes to the repository will be rejected.
 
 When submitting your index file make sure it follows the current [`JSON schema`](./resources/schema.json).
 
-It is also recommended to fill the `contact` field with support information for your organization. This will be displayed when users click the **Support** button in the Add-ons tile.
+It is also recommended to fill the `contact` field with support information for your organization. This will be displayed when users click the **Support** button in the Add-on's tile.
 
 ## Validation
 
