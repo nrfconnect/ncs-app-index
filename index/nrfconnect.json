@@ -103,6 +103,9 @@
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
       "docsUrl": "https://github.com/nrfconnect/ncs-example-application/blob/main/README.md",
+      "testStatus": {
+        "badge": "https://github.com/nrfconnect/ncs-example-application/actions/workflows/build-using-docker.yml/badge.svg"
+      },
       "releases": [
         {
           "date": "2024-12-17T16:52:00Z",

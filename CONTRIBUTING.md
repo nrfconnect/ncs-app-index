@@ -13,6 +13,9 @@ When submitting your index file make sure it follows the current [`JSON schema`]
 
 It is also recommended to fill the `contact` field with support information for your organization. This will be displayed when users click the **Support** button in the Add-on's tile.
 
+It is also possible to display a workflow status badge of an add-on. It works in a similar manner as a badges displayed on the README pages on Github. Use the `testStatus` field to provide
+the badge's URL for your add-on. Learn more about generating the [badges urls](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows/adding-a-workflow-status-badge#using-the-workflow-file-name).
+
 ## Validation
 
 If you use Visual Studio Code, the editor will automatically provide validation and autocompletion for the index file. If you are using another editor, you can use the JSON schema located at `resources/schema.json` to validate your file. Make sure that your file correctly follows the schema before creating your pull request, otherwise the CI pipeline will fail. Use the `validate-index` script  to make sure that the schema validates successfully:

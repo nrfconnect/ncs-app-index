@@ -161,6 +161,15 @@
                         "required": [
                             "detailsUrl"
                         ]
+                    },
+                    "testStatus": {
+                        "type": "object",
+                        "properties": {
+                            "badge": {
+                                "type": "string",
+                                "description": "An url pointing to a workflow status badge. How to get the badge for a repo hosted on Github: https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/monitoring-workflows/adding-a-workflow-status-badge#using-the-workflow-file-name"
+                            }
+                        }
                     }
                 },
                 "additionalProperties": false,
