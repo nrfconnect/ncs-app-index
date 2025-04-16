@@ -179,11 +179,6 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                         <LawIcon /> {app.license}
                     </div>
                 )}
-                {/* {app.testStatus &&
-                    <div className="flex">
-                        <img src={`${app.testStatus.badge}`} className="" />
-                    </div>
-                } */}
             </div>
         </li>
     );
