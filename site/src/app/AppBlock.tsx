@@ -93,6 +93,12 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                                 })}
                             />
                         )}
+
+                        {app.testStatus &&
+                            <div className="mx-2">
+                                <img src={`${app.testStatus.badge}`} className="" />
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -167,7 +173,7 @@ function AppBlock({ app, setShowingAppDetails }: Props): JSX.Element {
                 </button>
             </div>
 
-            <div className="flex w-full justify-between gap-3 text-xs text-gray-600">
+            <div className="flex w-full px-1 gap-5 text-xs text-gray-600">
                 {app.license && (
                     <div className="flex items-center gap-1">
                         <LawIcon /> {app.license}

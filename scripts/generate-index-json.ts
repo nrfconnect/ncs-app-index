@@ -113,6 +113,7 @@ async function fetchRepoData(
             docsUrl: app.docsUrl,
             restricted: app.restricted,
             avatar: app.avatar,
+            testStatus: app.testStatus,
         } as Application;
     } catch {
         throw new Error(`Failed to fetch data for ${orgId}/${app.name}`);
