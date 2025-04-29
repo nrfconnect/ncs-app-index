@@ -14,14 +14,14 @@
         "license": "Other",
         "releases": [
           {
-            "name": "Amazon Sidewalk add-on v0.1.0",
-            "tag": "v0.1.0-add-on",
-            "date": "2025-03-21T10:00:00Z",
-            "sdk": "10dd3ddbf2560aba2da99a2dc2536b177a1498d7"
+            "name": "Amazon Sidewalk add-on v1.0.0",
+            "tag": "v1.0.0-add-on",
+            "date": "2025-04-29T14:30:00Z",
+            "sdk": "v3.0.0"
           }
         ],
-        "defaultBranch": "main",
-        "docsUrl": "https://docs.nordicsemi.com/bundle/sidewalk_latest/page/index.html"
+        "defaultBranch": "v1.0.0-add-on",
+        "docsUrl": "https://docs.nordicsemi.com/bundle/addon-sidewalk-latest/page/index.html"
     },
     {
       "name": "ncs-zigbee-r22",
