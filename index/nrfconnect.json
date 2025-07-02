@@ -190,7 +190,7 @@
       "tags": ["dfu", "lte"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "docsUrl": "https://github.com/nrfconnect/Asset-Tracker-Template/blob/main/README.md",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/asset-tracker-template-latest/page/index.html",
       "releases": [
         {
           "date": "2025-04-29T12:40:59Z",
