@@ -42,13 +42,19 @@
       ],
       "apps": "samples/*",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "defaultBranch": "v1.0.0",
+      "defaultBranch": "v1.0.1",
       "releases": [
         {
           "name": "Zigbee R22 add-on v1.0.0",
           "tag": "v1.0.0",
           "date": "2025-03-10T13:03:00Z",
-          "sdk": "v2.8.0"
+          "sdk": "v2.9.0"
+        },
+        {
+          "name": "Zigbee R22 add-on v1.0.1",
+          "tag": "v1.0.1",
+          "date": "2025-07-15T11:28:00Z",
+          "sdk": "v2.9.0"
         }
       ]
     },
