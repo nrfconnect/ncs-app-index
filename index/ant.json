@@ -1,0 +1,29 @@
+{
+    "name": "ANT Wireless",
+    "description": "ANT Wireless, a division of Garmin Canada Inc.",
+    "apps": [
+        {
+            "name": "sdk-ant",
+            "repo": "https://github.com/ant-nrfconnect/sdk-ant",
+            "title": "ANT Wireless SDK",
+            "description": "The ANT Wireless SDK Add-on provides resources for developing low power wireless ANT and ANT+ enabled applications with the nRF Connect SDK. Private repository access is granted upon request to ANT+ Adopters.",
+            "kind": "sample",
+            "avatar": "https://avatars.githubusercontent.com/u/109540422?s=48&v=4",
+            "tags": [
+                "connectivity"
+            ],
+            "releases": [
+                {
+                    "date": "2025-07-24T22:31:23Z",
+                    "name": "v2.0.0",
+                    "tag": "v2.0.0",
+                    "sdk": "v2.9.2"
+                }
+            ],
+            "docsUrl": "https://www.thisisant.com/APIassets/ANTnRFConnectDoc/",
+            "restricted": {
+                "detailsUrl": "https://www.thisisant.com/developer/ant/nrf-connect-sdk/"
+            }
+        }
+    ]
+}
