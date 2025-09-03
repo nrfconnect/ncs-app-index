@@ -221,6 +221,12 @@
           "name": "Asset Tracker Template v1.0.0",
           "tag": "v1.0.0",
           "sdk": "v3.0.0"
+        },
+        {
+          "date": "2025-09-03T12:49:54Z",
+          "name": "Asset Tracker Template v1.1.0",
+          "tag": "v1.1.0",
+          "sdk": "v3.1.0"
         }
       ]
     }
