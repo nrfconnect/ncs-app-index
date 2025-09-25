@@ -211,28 +211,16 @@
       "title": "Asset Tracker Template",
       "description": "Template for Asset Tracker applications running on the nRF91 Series SiP.",
       "kind": "template",
-      "tags": ["dfu", "lte"],
+      "tags": ["lte", "dfu", "connectivity"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
       "docsUrl": "https://docs.nordicsemi.com/bundle/asset-tracker-template-latest/page/index.html",
       "releases": [
         {
-          "date": "2025-04-29T12:40:59Z",
-          "name": "Asset Tracker Template v1.0.0",
-          "tag": "v1.0.0",
-          "sdk": "v3.0.0"
-        },
-        {
-          "date": "2025-09-03T12:49:54Z",
-          "name": "Asset Tracker Template v1.1.0",
-          "tag": "v1.1.0",
-          "sdk": "v3.1.0"
-        },
-        {
-          "date": "2025-09-23T14:01:54Z",
-          "name": "Asset Tracker Template v1.2.2",
-          "tag": "v1.2.2",
-          "sdk": "v3.2.0-preview1"
+          "tag": "placeholder",
+          "name": "Releases are automatically populated by generate-index-json script",
+          "date": "1970-01-01T00:00:00Z",
+          "sdk": "placeholder"
         }
       ]
     }
