@@ -78,25 +78,45 @@ async function fetchRepoData(
     app: OrgIndex['apps'][number],
 ): Promise<Application> {
     try {
+        // Special handling for Asset Tracker Template
+        if (
+            orgId === 'nrfconnect' &&
+            (app.name === 'asset-tracker-template' || app.repo?.toLowerCase().includes('asset-tracker-template'))
+        ) {
+            try {
+                // Use GitHub API to fetch latest release(s)
+                const { Octokit } = await import('@octokit/rest');
+                const octokit = new Octokit();
+                const releasesResp = await octokit.repos.listReleases({
+                    owner: 'nrfconnect',
+                    repo: 'Asset-Tracker-Template',
+                    per_page: 5
+                });
+                app.releases = releasesResp.data.map((rel) => ({
+                    tag: rel.tag_name,
+                    name: rel.name || rel.tag_name,
+                    date: rel.published_at || rel.created_at || '',
+                    sdk: rel.tag_name // You may want to parse SDK version from tag or body if needed
+                }));
+            } catch (err) {
+                console.error('Failed to fetch Asset Tracker Template releases from GitHub:', err);
+            }
+        }
         try {
             app.releases = app.releases.sort((a, b) => {
                 const [updatedA, updatedB] = [
                     new Date(a.date),
                     new Date(b.date)
                 ];
-
                 if (updatedA === updatedB) {
                     return a.name.localeCompare(b.name);
                 }
-
                 return updatedA > updatedB ? -1 : 1;
             });
         } catch {
             console.log(`failed to parse ${app.name}`)
         }
-
         console.log(colours.green(`Fetched data for ${orgId}/${app.name}`));
-
         return {
             id: app.repo,
             repo: app.repo,
