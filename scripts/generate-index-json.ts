@@ -92,16 +92,58 @@ async function fetchRepoData(
                     repo: 'Asset-Tracker-Template',
                     per_page: 5
                 });
-                app.releases = releasesResp.data.map((rel) => ({
-                    tag: rel.tag_name,
-                    name: rel.name || rel.tag_name,
-                    date: rel.published_at || rel.created_at || '',
-                    sdk: rel.tag_name // You may want to parse SDK version from tag or body if needed
-                }));
+                
+                // For each release, fetch the west.yml to get the actual SDK version
+                const releasesWithSdk = await Promise.all(
+                    releasesResp.data.map(async (rel) => {
+                        let sdkVersion = rel.tag_name; // fallback to tag name
+                        
+                        try {
+                            // Fetch west.yml for this specific tag
+                            const westYmlResp = await octokit.repos.getContent({
+                                owner: 'nrfconnect',
+                                repo: 'Asset-Tracker-Template',
+                                path: 'west.yml',
+                                ref: rel.tag_name
+                            });
+                            
+                            if ('content' in westYmlResp.data) {
+                                const westYmlContent = Buffer.from(westYmlResp.data.content, 'base64').toString('utf-8');
+                                
+                                // Parse the revision field from west.yml
+                                const revisionMatch = westYmlContent.match(/revision:\s*(.+)/);
+                                if (revisionMatch && revisionMatch[1]) {
+                                    const revision = revisionMatch[1].trim();
+                                    
+                                    // Extract SDK version from revision
+                                    if (revision.startsWith('tags/')) {
+                                        // Format: tags/v3.2.0-preview1 -> v3.2.0-preview1
+                                        sdkVersion = revision.replace('tags/', '');
+                                    } else {
+                                        // For commit hashes, use the hash as is
+                                        sdkVersion = revision;
+                                    }
+                                }
+                            }
+                        } catch (err) {
+                            console.warn(`Failed to fetch west.yml for ${rel.tag_name}:`, err instanceof Error ? err.message : err);
+                        }
+                        
+                        return {
+                            tag: rel.tag_name,
+                            name: rel.name || rel.tag_name,
+                            date: rel.published_at || rel.created_at || '',
+                            sdk: sdkVersion
+                        };
+                    })
+                );
+                
+                app.releases = releasesWithSdk;
             } catch (err) {
                 console.error('Failed to fetch Asset Tracker Template releases from GitHub:', err);
             }
         }
+        
         try {
             app.releases = app.releases.sort((a, b) => {
                 const [updatedA, updatedB] = [
