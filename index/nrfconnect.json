@@ -235,6 +235,26 @@
           "sdk": "placeholder"
         }
       ]
+    },
+    {
+      "name": "sdk-edge-ai",
+      "repo": "https://github.com/nrfconnect/sdk-edge-ai",
+      "title": "Edge AI Add-on",
+      "description": "A compact add-on that makes it easy to run generated machine-learning models on Nordic Semiconductor devices using the nRF Connect SDK (NCS).",
+      "tags": ["edge-ai"],
+      "kind": "template",
+      "apps": "samples/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-edge-ai_v1.0.0-rc2/page/index.html",
+      "releases": [
+        {
+          "tag": "v1.0.0-rc2",
+          "name": "nRF Edge AI Add-on v1.0.0-rc2",
+          "date": "2025-12-09T00:00:00Z",
+          "sdk": "v3.2.0-rc2"
+        }
+      ],
+      "defaultBranch": "v1.0.0-rc2"
     }
   ]
 }
