@@ -34,7 +34,24 @@ async function generateIndex(orgIndices: ParsedOrgFile[]): Promise<AppIndex> {
         appIndex.apps.push(...apps);
     }
 
-    appIndex.apps = appIndex.apps.sort((a, b) => a.name < b.name ? -1 : 1);
+    appIndex.apps = appIndex.apps.sort((a, b) => {
+        // Find the most recent release date for each app
+        const getLatestDate = (app: Application) => {
+          if (!Array.isArray(app.releases) || app.releases.length === 0) return new Date(0).toISOString();
+          // Find the max date from the releases
+          const initialDate = app.releases[0]?.date || new Date(0).toISOString();
+          return app.releases.reduce((latest: string, curr: Application['releases'][number]) => {
+            if (!curr.date) return latest;
+            return (new Date(curr.date) > new Date(latest) ? curr.date : latest);
+          }, initialDate);
+        };
+      
+        const dateA = getLatestDate(a);
+        const dateB = getLatestDate(b);
+        
+        // Sort descending (most recent first)
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+      });
 
     return appIndex;
 }
