@@ -255,6 +255,25 @@
         }
       ],
       "defaultBranch": "v1.0.0"
+    },
+    {
+      "name": "ncs-serial-modem",
+      "repo": "https://github.com/nrfconnect/ncs-serial-modem",
+      "title": "Serial Modem",
+      "description": "Serial Modem application running on the nRF91 Series SiP.",
+      "kind": "template",
+      "tags": ["lte", "connectivity"],
+      "apps": "app",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-serial_modem-latest/page/index.html",
+      "releases": [
+        {
+          "tag": "v0.3.0",
+          "name": "Serial Modem v0.3.0",
+          "date": "2025-12-18T00:00:00Z",
+          "sdk": "v3.2.0"
+        }
+      ]
     }
   ]
 }
