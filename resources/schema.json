@@ -95,7 +95,10 @@
                                 "ble",
                                 "blecon",
                                 "connectivity",
-                                "edge-ai"
+                                "edge-ai",
+                                "door-lock",
+                                "access-control",
+                                "aliro"
                             ]
                         },
                         "description": "An array of tags describing the application."

@@ -280,6 +280,25 @@
           "sdk": "v3.2.0"
         }
       ]
+    },
+    {
+      "name": "ncs-door-lock-and-access-control",
+      "repo": "https://github.com/nrfconnect/ncs-door-lock-and-access-control",
+      "title": "Door Lock and Access Control",
+      "description": "The nRF Door Lock and Access Control Add-on for the nRF Connect SDK provides a complete reference for building Aliro- and Matter-compatible locks and access control readers for both residential and commercial applications. The reference integrates multiple wireless technologies, including Bluetooth Low Energy (BLE), Ultra-Wideband (UWB), NFC, Thread, and Wi-Fi. This allows developers to choose the appropriate technology for their specific use case.",
+      "kind": "template",
+      "tags": ["door-lock", "access-control", "aliro", "matter", "connectivity"],
+      "apps": "app",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/door_lock_and_access_control_1.0.0/page/index.html",
+      "releases": [
+        {
+          "tag": "v1.0.0",
+          "name": "Door Lock and Access Control v1.0.0",
+          "date": "2026-02-25T00:00:00Z",
+          "sdk": "v3.2.0"
+        }
+      ]
     }
   ]
 }
