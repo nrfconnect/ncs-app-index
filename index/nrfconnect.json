@@ -254,13 +254,13 @@
       "docsUrl": "https://docs.nordicsemi.com/bundle/addon-edge-ai_latest/page/index.html",
       "releases": [
         {
-          "tag": "v1.0.0",
-          "name": "nRF Edge AI Add-on v1.0.0",
-          "date": "2025-12-09T00:00:00Z",
-          "sdk": "v3.2.0"
+          "tag": "v2.0.0",
+          "name": "nRF Edge AI Add-on v2.0.0",
+          "date": "2026-03-06T00:00:00Z",
+          "sdk": "v3.3.0-preview2"
         }
       ],
-      "defaultBranch": "v1.0.0"
+      "defaultBranch": "v2.0.0"
     },
     {
       "name": "ncs-serial-modem",
