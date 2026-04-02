@@ -280,12 +280,25 @@
       "docsUrl": "https://docs.nordicsemi.com/bundle/addon-serial_modem-latest/page/index.html",
       "releases": [
         {
+          "tag": "v1.0.1",
+          "name": "Serial Modem v1.0.1",
+          "date": "2026-03-26T00:00:00Z",
+          "sdk": "v3.2.4"
+        },
+        {
+          "tag": "v1.0.0",
+          "name": "Serial Modem v1.0.0",
+          "date": "2026-02-19T00:00:00Z",
+          "sdk": "v3.2.2"
+        },
+        {
           "tag": "v0.3.0",
           "name": "Serial Modem v0.3.0",
           "date": "2025-12-18T00:00:00Z",
           "sdk": "v3.2.0"
         }
-      ]
+      ],
+      "defaultBranch": "v1.0.1"
     },
     {
       "name": "ncs-door-lock-and-access-control",
