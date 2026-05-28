@@ -14,6 +14,12 @@
         "license": "Other",
         "releases": [
           {
+            "name": "Amazon Sidewalk add-on v1.2.0",
+            "tag": "v1.2.0-add-on",
+            "date": "2026-05-28T15:00:00Z",
+            "sdk": "v3.3.0"
+          },
+          {
             "name": "Amazon Sidewalk add-on v1.1.0",
             "tag": "v1.1.0-add-on",
             "date": "2025-10-10T15:09:00Z",
@@ -32,7 +38,7 @@
             "sdk": "v3.0.0"
           }
         ],
-        "defaultBranch": "v1.1.0-add-on",
+        "defaultBranch": "v1.2.0-add-on",
         "docsUrl": "https://docs.nordicsemi.com/bundle/addon-sidewalk-latest/page/index.html"
     },
     {
