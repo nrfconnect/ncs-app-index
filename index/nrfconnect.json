@@ -324,12 +324,19 @@
       "docsUrl": "https://docs.nordicsemi.com/bundle/door_lock_and_access_control_1.0.0/page/index.html",
       "releases": [
         {
+          "tag": "v1.0.1",
+          "name": "Door Lock and Access Control v1.0.1",
+          "date": "2026-05-29T00:00:00Z",
+          "sdk": "v3.2.0"
+        },
+        {
           "tag": "v1.0.0",
           "name": "Door Lock and Access Control v1.0.0",
           "date": "2026-02-25T00:00:00Z",
           "sdk": "v3.2.0"
         }
-      ]
+      ],
+      "defaultBranch": "v1.0.1"
     }
   ]
 }
