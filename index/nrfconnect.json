@@ -238,7 +238,7 @@
       "tags": ["lte", "dfu", "connectivity"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "docsUrl": "https://docs.nordicsemi.com/bundle/asset-tracker-template-latest/page/index.html",
+      "docsUrl": "https://nordic-semiconductor.fluidtopics.net/r/bundle/Asset-Tracker-Template/page/Asset-Tracker-Template",
       "releases": [
         {
           "tag": "placeholder",
@@ -289,7 +289,7 @@
       "tags": ["lte", "connectivity"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-serial_modem-latest/page/index.html",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/addon-serial_modem/latest/index.html",
       "releases": [
         {
           "tag": "v2.0.0-preview1",
