@@ -18,7 +18,7 @@
                     "sdk": "v2.8.0-rc2"
                 }
             ],
-            "docsUrl": "https://docs.nordicsemi.com/bundle/addon-nrfcloud_firmware-latest/page/index.html"
+            "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/addon-nrfcloud_firmware/latest/index.html"
         }
     ]
 }
