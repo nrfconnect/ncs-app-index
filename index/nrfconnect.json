@@ -238,7 +238,7 @@
       "tags": ["lte", "dfu", "connectivity"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "docsUrl": "https://nordic-semiconductor.fluidtopics.net/r/bundle/Asset-Tracker-Template/page/Asset-Tracker-Template",
+      "docsUrl": "https://docs.nordicsemi.com/bundle/asset-tracker-template-latest/page/index.html",
       "releases": [
         {
           "tag": "placeholder",
