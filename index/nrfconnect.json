@@ -292,6 +292,12 @@
       "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/addon-serial_modem/latest/index.html",
       "releases": [
         {
+          "tag": "v2.0.0-preview2",
+          "name": "Serial Modem v2.0.0-preview2",
+          "date": "2026-06-18T00:00:00Z",
+          "sdk": "v3.4.0-rc1++"
+        },
+        {
           "tag": "v2.0.0-preview1",
           "name": "Serial Modem v2.0.0-preview1",
           "date": "2026-04-10T00:00:00Z",
