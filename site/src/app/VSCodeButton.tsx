@@ -13,7 +13,7 @@ interface Props {
 function VSCodeButton({ queryParams }: Props): JSX.Element {
     return (
         <a
-            href={`vscode://nordic-semiconductor.nrf-connect-extension-pack/get-application?${queryParams.toString()}`}
+            href={`vscode://nordic-semiconductor.nrf-connect/get-application?${queryParams.toString()}`}
             title="Open in nRF Connect for VS Code"
             className="button bg-[#0032A0] text-white"
         >
