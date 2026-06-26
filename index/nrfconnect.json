@@ -321,8 +321,14 @@
       "tags": ["door-lock", "access-control", "aliro", "matter", "connectivity"],
       "apps": "app",
       "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
-      "docsUrl": "https://docs.nordicsemi.com/bundle/door_lock_and_access_control_1.0.0/page/index.html",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/door_lock_and_access_control/latest/index.html",
       "releases": [
+        {
+          "tag": "v1.1.0",
+          "name": "Door Lock and Access Control v1.1.0",
+          "date": "2026-06-26T00:00:00Z",
+          "sdk": "v3.3.0"
+        },
         {
           "tag": "v1.0.1",
           "name": "Door Lock and Access Control v1.0.1",
@@ -336,7 +342,7 @@
           "sdk": "v3.2.0"
         }
       ],
-      "defaultBranch": "v1.0.1"
+      "defaultBranch": "v1.1.0"
     }
   ]
 }
