@@ -1,0 +1,29 @@
+{
+    "name": "N-Ix",
+    "description": "nRF Connect SDK add-on development for DALI-2 control on nRF54L15.",
+    "contact": {
+        "devzoneUsername": "Borissimus"
+    },
+    "apps": [
+        {
+            "name": "dali-nrf54",
+            "repo": "https://github.com/Borissimus/dali-nrf54",
+            "title": "DALI Controller Add-on for nRF54L15",
+            "description": "An nRF Connect SDK add-on for DALI-2 control on nRF54L15 with a controller sample and CPUAPP/CPUFLPR split runtime.",
+            "kind": "sample",
+            "tags": [
+                "connectivity"
+            ],
+            "apps": "samples/*",
+            "docsUrl": "https://github.com/Borissimus/dali-nrf54/blob/main/README.md",
+            "releases": [
+                {
+                    "date": "2026-07-02T08:58:28Z",
+                    "name": "v0.1.1",
+                    "tag": "v0.1.1",
+                    "sdk": "v3.4.0"
+                }
+            ]
+        }
+    ]
+}
