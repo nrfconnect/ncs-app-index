@@ -421,6 +421,26 @@
           "sdk": "v3.4.0"
         }
       ]
+    },
+    {
+      "name": "ncs-matter-edge-ai",
+      "repo": "https://github.com/nrfconnect/ncs-matter-edge-ai",
+      "title": "Matter Edge AI",
+      "description": "The Matter Edge AI add-on for the nRF Connect SDK combines Matter smart-home protocol support with Edge AI capabilities. It enables development of Matter accessories that use on-device inference.",
+      "kind": "template",
+      "tags": ["edge-ai", "matter", "connectivity"],
+      "apps": "samples/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/ncs-matter-edge-ai/latest/index.html",
+      "releases": [
+        {
+          "tag": "v1.0.0",
+          "name": "Matter Edge AI v1.0.0",
+          "date": "2026-07-24T11:54:00Z",
+          "sdk": "v3.4.0"
+        }
+      ],
+      "defaultBranch": "v1.0.0"
     }
   ]
 }
