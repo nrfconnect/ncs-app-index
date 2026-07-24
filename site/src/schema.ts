@@ -47,7 +47,8 @@ export const validTags = [
     'FSK',
     'ble',
     'blecon',
-    'connectivity'
+    'connectivity',
+    'knx'
 ] as const;
 
 export const appKindSchema = {

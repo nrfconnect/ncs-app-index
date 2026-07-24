@@ -98,7 +98,8 @@
                                 "edge-ai",
                                 "door-lock",
                                 "access-control",
-                                "aliro"
+                                "aliro",
+                                "knx"
                             ]
                         },
                         "description": "An array of tags describing the application."
