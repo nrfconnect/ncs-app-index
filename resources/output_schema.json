@@ -127,7 +127,8 @@
                                 "FSK",
                                 "ble",
                                 "blecon",
-                                "connectivity"
+                                "connectivity",
+                                "knx"
                             ]
                         }
                     },
