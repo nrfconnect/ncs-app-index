@@ -1,15 +1,17 @@
 {
-    "name": "N-Ix",
+    "name": "N-iX",
     "description": "nRF Connect SDK add-on development for DALI-2 control on nRF54L15.",
+    "avatar": "https://src.n-ix.com/uploads/2024/02/13/8c07f401-e3a4-4473-b135-f4179b24dbd8.png",
     "contact": {
-        "devzoneUsername": "Borissimus"
+        "devzoneUsername": "Borissimus",
+        "email": "contact@n-ix.com"
     },
     "apps": [
         {
             "name": "dali-nrf54",
             "repo": "https://github.com/Borissimus/dali-nrf54",
-            "title": "DALI Controller Add-on for nRF54L15",
-            "description": "An nRF Connect SDK add-on for DALI-2 control on nRF54L15 with a controller sample and CPUAPP/CPUFLPR split runtime.",
+            "title": "DALI-2 Dual-Core Lighting Control Add-on for nRF54L15",
+            "description": "Developed by N-iX in partnership with Nordic Semiconductor, this add-on runs a DALI-2 protocol stack on nRF54L15, isolating time-critical bus timing on the FLPR RISC-V core from application logic and BLE on Cortex-M33. It delivers sub-microsecond command accuracy, about 1% main-core load, and a high-level API for device, group, and scene control.",
             "kind": "sample",
             "tags": [
                 "connectivity"
@@ -21,6 +23,12 @@
                     "date": "2026-07-02T08:58:28Z",
                     "name": "v0.1.1",
                     "tag": "v0.1.1",
+                    "sdk": "v3.4.0"
+                },
+                {
+                    "date": "2026-07-29T13:04:20Z",
+                    "name": "v0.1.2",
+                    "tag": "v0.1.2",
                     "sdk": "v3.4.0"
                 }
             ]
