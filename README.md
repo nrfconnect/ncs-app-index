@@ -17,6 +17,14 @@ If your organization has a project that you would like to include in this reposi
 
 This and following sections describe how to build and run the nRF Connect SDK Add-on index in the local environment. If you wish to just publish an nRF Connect SDK Add-on, please refer to [`Contributing an Add-on`](#contributing-an-add-on).
 
+### Prerequisites
+
+**Node.js 18.18 or later** is required (Node.js **22** is used in CI). Older versions — including Node.js 12 — are not supported: `npm install` and the build scripts depend on modern Node.js and will fail on distributions that ship an outdated runtime. Check your version with:
+
+```
+node --version
+```
+
 To create an Add-on index page of your own, you need to start with cloning this repository and generating a new index JSON file. Use the information in the following sections to make sure that the JSON file is set up correctly.
 
 ### Generating index.json file
@@ -124,9 +132,9 @@ You can customize the local website in the following ways:
 
 To verify that your add-on index is correctly picked up by the [nRF Connect for Visual Studio Code extension], set the extension to fetch the add-on index from the custom URL:
 
-1. In Visual Studio Code, open the `settings.json` workspace settings file.
+1. In Visual Studio Code, open `settings.json`: press **Ctrl+Shift+P** (**Cmd+Shift+P** on macOS), search for **Preferences: Open Workspace Settings (JSON)**, and open the workspace settings file for this repository.
 
-1. Add the following line to the file:
+1. Add the following line to the file (same base URL as [Verifying website locally](#verifying-website-locally) — include the `/ncs-app-index` path, not `http://localhost:3000` alone):
    ```
    "nrf-connect.appIndexUri": "http://localhost:3000/ncs-app-index",
    ```
