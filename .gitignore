@@ -4,3 +4,7 @@ out
 .next
 resources/index.json
 site/public/index.json
+
+resources/schema.json
+
+resources/output_schema.json

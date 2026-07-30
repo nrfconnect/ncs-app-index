@@ -48,7 +48,11 @@ export const validTags = [
     'ble',
     'blecon',
     'connectivity',
-    'knx'
+    'edge-ai',
+    'door-lock',
+    'access-control',
+    'aliro',
+    'knx',
 ] as const;
 
 export const appKindSchema = {

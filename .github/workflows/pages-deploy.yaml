@@ -62,6 +62,8 @@ jobs:
         run: npm run generate-index-json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate generated index.json
+        run: npm run validate-output-index
       - name: Check types
         run: npm run check-types
       - name: Validate index files

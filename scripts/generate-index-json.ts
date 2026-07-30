@@ -189,6 +189,7 @@ async function fetchRepoData(
             apps: app.apps,
             releases: app.releases,
             tags: app.tags,
+            lastUpdate: app.releases[0]?.date,
             docsUrl: app.docsUrl,
             restricted: app.restricted,
             avatar: app.avatar,

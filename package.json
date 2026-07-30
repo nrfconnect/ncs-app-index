@@ -7,7 +7,9 @@
         "copyright": "tsx scripts/copyright.ts",
         "generate-index-json": "tsx scripts/generate-index-json.ts",
         "validate-index": "tsx scripts/validate-index.ts",
-        "check-types": "tsc --noEmit"
+        "check-types": "tsc --noEmit",
+        "postinstall": "npm run generate-schemas",
+        "validate-output-index": "tsx scripts/validate-output-index.ts"
     },
     "repository": {
         "type": "git",

@@ -9,7 +9,7 @@ Pull requests that make other changes to the repository will be rejected.
 
 ## Required information
 
-When submitting your index file make sure it follows the current [`JSON schema`](./resources/schema.json).
+When submitting your index file make sure it follows the schema in [`site/src/schema.ts`](./site/src/schema.ts) (`orgIndexSchema` for contributor index files, `validTags` for allowed tag values).
 
 It is also recommended to fill the `contact` field with support information for your organization. This will be displayed when users click the **Support** button in the Add-on's tile.
 
@@ -18,11 +18,26 @@ the badge's URL for your add-on. Learn more about generating the [badges urls](h
 
 ## Validation
 
-If you use Visual Studio Code, the editor will automatically provide validation and autocompletion for the index file. If you are using another editor, you can use the JSON schema located at `resources/schema.json` to validate your file. Make sure that your file correctly follows the schema before creating your pull request, otherwise the CI pipeline will fail. Use the `validate-index` script  to make sure that the schema validates successfully:
+The schema lives in [`site/src/schema.ts`](./site/src/schema.ts). Before opening a pull request, validate your index file — otherwise CI will fail.
+
+### Visual Studio Code
+
+If you open this repository as a workspace in VS Code, the editor can validate and autocomplete `index/*.json` using a local JSON schema at `resources/schema.json`. That file is gitignored and must be generated first:
+
+- Run **`npm install`** (runs `generate-schemas` via `postinstall`), or
+- Run **`npm run generate-schemas`** if dependencies are already installed or after editing `site/src/schema.ts`.
+
+Without one of those commands, VS Code will not have a schema to validate against.
+
+### Command-line validation
+
+Run this from the repository root before creating your pull request:
 
 ```
 npm run validate-index
 ```
+
+This checks all `index/*.json` files against [`site/src/schema.ts`](./site/src/schema.ts) — the same validation CI runs.
 
 ## Publishing
 
