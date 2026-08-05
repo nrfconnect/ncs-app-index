@@ -47,7 +47,7 @@
       "repo": "https://github.com/nrfconnect/ncs-zigbee-r22",
       "description": "The Zigbee R22 add-on for the nRF Connect SDK provides support for developing Zigbee R22 applications based on the third-party precompiled ZBOSS R22 stack.",
       "kind": "template",
-      "docsUrl": "https://docs.nordicsemi.com/bundle?cluster=true&exclude_metadata_filter.field=display-type&exclude_metadata_filter.value=inline&labelkey=addon-zigbee-r22&rpp=10&sort.field=last_uploaded&sort.value=desc",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/zigbee-r22/latest/index.html",
       "tags": [
         "zigbee",
         "connectivity"
@@ -142,10 +142,16 @@
           "tag": "v1.3.0",
           "date": "2026-02-23T15:00:00Z",
           "sdk": "v2.9.2"
+        },
+        {
+          "name": "Zigbee add-on v1.4.0",
+          "tag": "v1.4.0",
+          "date": "2026-08-04T18:19:00Z",
+          "sdk": "v3.4.0"
         }
       ],
-      "defaultBranch": "v1.3.0",
-      "docsUrl": "https://docs.nordicsemi.com/bundle/addon-zigbee-r23-latest/page/index.html"
+      "defaultBranch": "v1.4.0",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/ncs-zigbee/latest/index.html"
     },
     {
       "name": "ncs-example-application",
