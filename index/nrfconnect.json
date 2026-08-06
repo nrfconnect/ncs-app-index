@@ -407,8 +407,8 @@
     {
       "name": "quickstart-bluetooth",
       "repo": "https://github.com/nrfconnect/quickstart-bluetooth",
-      "title": "Bluetooth LE Quick Start",
-      "description": "The peripheral_lbs button/LED-over-BLE sample plus Memfault observability (heartbeat metrics and coredumps) delivered over the Memfault Diagnostic Service BLE gateway path, for the nRF Connect for Desktop Quick Start guide. Targets the nRF54L15 DK only; the device never performs on-device HTTP/TLS.",
+      "title": "nRF Cloud Bluetooth LE Quick Start",
+      "description": "The peripheral_lbs button/LED-over-BLE sample plus Memfault observability (heartbeat metrics and coredumps) delivered over the Memfault Diagnostic Service BLE gateway path, for the nRF Connect for Desktop Quick Start guide. Targets the nRF54L15 DK only.",
       "kind": "sample",
       "tags": ["bluetooth", "ble", "connectivity"],
       "apps": "project/app",
@@ -417,13 +417,19 @@
       "testStatus": {
         "badge": "https://github.com/nrfconnect/quickstart-bluetooth/actions/workflows/build.yml/badge.svg"
       },
-      "defaultBranch": "main",
+      "defaultBranch": "v1.0.1",
       "license": "LicenseRef-Nordic-5-Clause",
       "releases": [
         {
           "tag": "v1.0.0",
           "name": "quickstart-bluetooth v1.0.0",
           "date": "2026-07-17T15:15:18Z",
+          "sdk": "v3.4.0"
+        },
+        {
+          "tag": "v1.0.1",
+          "name": "quickstart-bluetooth v1.0.1",
+          "date": "2026-07-29T19:13:16Z",
           "sdk": "v3.4.0"
         }
       ]
