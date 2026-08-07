@@ -1,0 +1,31 @@
+{
+    "name": "Hubble Network",
+    "description": "Hubble Network provides infrastructure-less global connectivity for Bluetooth Low Energy (LE) devices over its Terrestrial Network of 100M+ gateways and its Satellite Network, delivering device location and data anywhere.",
+    "avatar": "https://avatars.githubusercontent.com/u/92760739?s=48&v=4",
+    "contact": {
+        "devzoneUsername": "Hubble Network Support",
+        "email": "support@hubble.com"
+    },
+    "apps": [
+        {
+            "name": "hubble-device-sdk",
+            "title": "Hubble Device SDK",
+            "description": "On-device SDK for connecting firmware to Hubble's Terrestrial (Bluetooth Low Energy) and Satellite Networks, built on a modular architecture that ports across RTOSes and hardware.",
+            "repo": "https://github.com/HubbleNetwork/hubble-device-sdk",
+            "docsUrl": "https://HubbleNetwork.github.io/hubble-device-sdk/main/",
+            "manifest": "west-ncs.yml",
+            "kind": "sample",
+            "tags": ["bluetooth","ble","connectivity"],
+            "license": "Apache License 2.0",
+            "apps": "samples/zephyr/*",
+            "releases": [
+                {
+                    "date": "2026-08-07T04:50:26Z",
+                    "name": "Hubble Device SDK v3.0.0",
+                    "sdk": "v3.4.0",
+                    "tag": "v3.0.0"
+                }
+            ]
+        }
+    ]
+}
