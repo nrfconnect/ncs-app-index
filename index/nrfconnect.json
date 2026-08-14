@@ -467,6 +467,26 @@
         }
       ],
       "defaultBranch": "v0.1.0"
+    },
+    {
+      "name": "ncs-matter-zigbee",
+      "repo": "https://github.com/nrfconnect/ncs-matter-zigbee",
+      "title": "Matter and Zigbee",
+      "description": "The Matter and Zigbee add-on for the nRF Connect SDK provides support for developing applications that use combined solution based on Matter and Zigbee technologies.",
+      "kind": "template",
+      "tags": ["matter", "zigbee", "connectivity"],
+      "apps": "samples/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/ncs-matter-zigbee/latest/index.html",
+      "releases": [
+        {
+          "tag": "v1.0.0",
+          "name": "Matter and Zigbee v1.0.0",
+          "date": "2026-08-14T10:35:00Z",
+          "sdk": "v3.4.0"
+        }
+      ],
+      "defaultBranch": "v1.0.0"
     }
   ]
 }
