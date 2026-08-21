@@ -407,7 +407,7 @@
     {
       "name": "quickstart-bluetooth",
       "repo": "https://github.com/nrfconnect/quickstart-bluetooth",
-      "title": "nRF Cloud Bluetooth LE Quick Start",
+      "title": "nRF Cloud Bluetooth Quick Start",
       "description": "The peripheral_lbs button/LED-over-BLE sample plus Memfault observability (heartbeat metrics and coredumps) delivered over the Memfault Diagnostic Service BLE gateway path, for the nRF Connect for Desktop Quick Start guide. Targets the nRF54L15 DK only.",
       "kind": "sample",
       "tags": ["bluetooth", "ble", "connectivity"],
