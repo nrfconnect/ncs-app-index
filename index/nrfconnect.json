@@ -417,7 +417,7 @@
       "testStatus": {
         "badge": "https://github.com/nrfconnect/quickstart-bluetooth/actions/workflows/build.yml/badge.svg"
       },
-      "defaultBranch": "v1.0.1",
+      "defaultBranch": "v1.1.0",
       "license": "LicenseRef-Nordic-5-Clause",
       "releases": [
         {
@@ -430,6 +430,12 @@
           "tag": "v1.0.1",
           "name": "quickstart-bluetooth v1.0.1",
           "date": "2026-07-29T19:13:16Z",
+          "sdk": "v3.4.0"
+        },
+        {
+          "tag": "v1.1.0",
+          "name": "quickstart-bluetooth v1.1.0",
+          "date": "2026-08-17T15:44:00Z",
           "sdk": "v3.4.0"
         }
       ]
