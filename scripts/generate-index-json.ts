@@ -21,6 +21,19 @@ import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
 const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground', 'hello-nrfcloud'];
 const partnerOrgs: string[] = ['golioth', 'blecon'];
 
+const githubReleaseRepos: Record<string, { owner: string; repo: string; label: string }> = {
+    'asset-tracker-template': {
+        owner: 'nrfconnect',
+        repo: 'Asset-Tracker-Template',
+        label: 'Asset Tracker Template',
+    },
+    'ncs-serial-modem-host-applications': {
+        owner: 'nrfconnect',
+        repo: 'ncs-serial-modem-host-applications',
+        label: 'Serial Modem Host Applications',
+    },
+};
+
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
 }
@@ -90,74 +103,82 @@ async function fetchOrgData({
     }
 }
 
+async function fetchGithubReleasesWithSdk(
+    owner: string,
+    repo: string,
+    label: string,
+    app: OrgIndex['apps'][number],
+): Promise<void> {
+    try {
+        const { Octokit } = await import('@octokit/rest');
+        const octokit = new Octokit();
+        const releasesResp = await octokit.repos.listReleases({
+            owner,
+            repo,
+            per_page: 5,
+        });
+
+        const releasesWithSdk = await Promise.all(
+            releasesResp.data.map(async (rel) => {
+                let sdkVersion = rel.tag_name;
+
+                try {
+                    const westYmlResp = await octokit.repos.getContent({
+                        owner,
+                        repo,
+                        path: 'west.yml',
+                        ref: rel.tag_name,
+                    });
+
+                    if ('content' in westYmlResp.data) {
+                        const westYmlContent = Buffer.from(westYmlResp.data.content, 'base64').toString('utf-8');
+                        const revisionMatch = westYmlContent.match(/revision:\s*(.+)/);
+
+                        if (revisionMatch?.[1]) {
+                            const revision = revisionMatch[1].trim();
+
+                            if (revision.startsWith('tags/')) {
+                                sdkVersion = revision.replace('tags/', '');
+                            } else {
+                                sdkVersion = revision;
+                            }
+                        }
+                    }
+                } catch (err) {
+                    console.warn(`Failed to fetch west.yml for ${rel.tag_name}:`, err instanceof Error ? err.message : err);
+                }
+
+                return {
+                    tag: rel.tag_name,
+                    name: rel.name || rel.tag_name,
+                    date: rel.published_at || rel.created_at || '',
+                    sdk: sdkVersion,
+                };
+            }),
+        );
+
+        app.releases = releasesWithSdk;
+    } catch (err) {
+        console.error(`Failed to fetch ${label} releases from GitHub:`, err);
+    }
+}
+
 async function fetchRepoData(
     orgId: string,
     app: OrgIndex['apps'][number],
 ): Promise<Application> {
     try {
-        // Special handling for Asset Tracker Template
-        if (
-            orgId === 'nrfconnect' &&
-            (app.name === 'asset-tracker-template' || app.repo?.toLowerCase().includes('asset-tracker-template'))
-        ) {
-            try {
-                // Use GitHub API to fetch latest release(s)
-                const { Octokit } = await import('@octokit/rest');
-                const octokit = new Octokit();
-                const releasesResp = await octokit.repos.listReleases({
-                    owner: 'nrfconnect',
-                    repo: 'Asset-Tracker-Template',
-                    per_page: 5
-                });
-                
-                // For each release, fetch the west.yml to get the actual SDK version
-                const releasesWithSdk = await Promise.all(
-                    releasesResp.data.map(async (rel) => {
-                        let sdkVersion = rel.tag_name; // fallback to tag name
-                        
-                        try {
-                            // Fetch west.yml for this specific tag
-                            const westYmlResp = await octokit.repos.getContent({
-                                owner: 'nrfconnect',
-                                repo: 'Asset-Tracker-Template',
-                                path: 'west.yml',
-                                ref: rel.tag_name
-                            });
-                            
-                            if ('content' in westYmlResp.data) {
-                                const westYmlContent = Buffer.from(westYmlResp.data.content, 'base64').toString('utf-8');
-                                
-                                // Parse the revision field from west.yml
-                                const revisionMatch = westYmlContent.match(/revision:\s*(.+)/);
-                                if (revisionMatch && revisionMatch[1]) {
-                                    const revision = revisionMatch[1].trim();
-                                    
-                                    // Extract SDK version from revision
-                                    if (revision.startsWith('tags/')) {
-                                        // Format: tags/v3.2.0-preview1 -> v3.2.0-preview1
-                                        sdkVersion = revision.replace('tags/', '');
-                                    } else {
-                                        // For commit hashes, use the hash as is
-                                        sdkVersion = revision;
-                                    }
-                                }
-                            }
-                        } catch (err) {
-                            console.warn(`Failed to fetch west.yml for ${rel.tag_name}:`, err instanceof Error ? err.message : err);
-                        }
-                        
-                        return {
-                            tag: rel.tag_name,
-                            name: rel.name || rel.tag_name,
-                            date: rel.published_at || rel.created_at || '',
-                            sdk: sdkVersion
-                        };
-                    })
-                );
-                
-                app.releases = releasesWithSdk;
-            } catch (err) {
-                console.error('Failed to fetch Asset Tracker Template releases from GitHub:', err);
+        if (orgId === 'nrfconnect') {
+            for (const [key, repoConfig] of Object.entries(githubReleaseRepos)) {
+                if (app.name === key) {
+                    await fetchGithubReleasesWithSdk(
+                        repoConfig.owner,
+                        repoConfig.repo,
+                        repoConfig.label,
+                        app,
+                    );
+                    break;
+                }
             }
         }
         
