@@ -32,6 +32,11 @@ const githubReleaseRepos: Record<string, { owner: string; repo: string; label: s
         repo: 'ncs-serial-modem-host-applications',
         label: 'Serial Modem Host Applications',
     },
+    'quickstart-bluetooth': {
+        owner: 'nrfconnect',
+        repo: 'quickstart-bluetooth',
+        label: 'nRF Cloud Bluetooth Quick Start',
+    },
 };
 
 function notUndefined<T>(value: T | undefined): value is T {
