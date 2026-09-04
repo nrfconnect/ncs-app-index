@@ -6,13 +6,19 @@
             "name": "sdk-ant",
             "repo": "https://github.com/ant-nrfconnect/sdk-ant",
             "title": "ANT Wireless SDK",
-            "description": "The ANT Wireless SDK Add-on provides resources for developing low power wireless ANT and ANT+ enabled applications with the nRF Connect SDK. Private repository access is granted upon request to ANT+ Adopters.",
+            "description": "The ANT Wireless SDK Add-on provides resources for developing low power wireless ANT and ANT+ enabled applications with the nRF Connect SDK. ANT stacks for Nordic Semiconductor SoCs are licensed by Garmin and subject to per-instance commercial royalties. Evaluation use is free.",
             "kind": "sample",
             "avatar": "https://avatars.githubusercontent.com/u/109540422?s=48&v=4",
             "tags": [
                 "connectivity"
             ],
             "releases": [
+                {
+                    "date": "2026-09-04T00:00:00Z",
+                    "name": "v2.1.1",
+                    "tag": "v2.1.1",
+                    "sdk": "v3.2.4"
+                },
                 {
                     "date": "2026-04-16T00:00:00Z",
                     "name": "v2.1.0",
@@ -28,7 +34,7 @@
             ],
             "docsUrl": "https://ant-nrfconnect.github.io/",
             "restricted": {
-                "detailsUrl": "https://www.thisisant.com/developer/ant/nrf-connect-sdk/"
+                "detailsUrl": "https://developer.garmin.com/ant-program/nrf-connect-sdk/"
             }
         }
     ]
