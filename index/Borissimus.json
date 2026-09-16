@@ -11,7 +11,7 @@
             "name": "dali-nrf54",
             "repo": "https://github.com/Borissimus/dali-nrf54",
             "title": "DALI-2 Dual-Core Lighting Control Add-on for nRF54L15",
-            "description": "Developed by N-iX in partnership with Nordic Semiconductor, this add-on runs a DALI-2 protocol stack on nRF54L15, isolating time-critical bus timing on the FLPR RISC-V core from application logic and BLE on Cortex-M33. It delivers sub-microsecond command accuracy, about 1% main-core load, and a high-level API for device, group, and scene control.",
+            "description": "Developed by N-iX in partnership with Nordic Semiconductor, this add-on runs the timing-critical DALI runtime on the nRF54L15 FLPR RISC-V core and exposes a CPUAPP-facing API over IPC. In our controller test setup, DALI network setup used about 0.5% CPUAPP load without the optional BLE workload, while median peak-to-peak TX packet jitter was 0.8 us. The controller sample supports device discovery, addressed and broadcast on/off, level control, status and actual-level queries.",
             "kind": "sample",
             "tags": [
                 "connectivity"
@@ -29,6 +29,12 @@
                     "date": "2026-07-29T13:04:20Z",
                     "name": "v0.1.2",
                     "tag": "v0.1.2",
+                    "sdk": "v3.4.0"
+                },
+                {
+                    "date": "2026-09-22T12:34:16Z",
+                    "name": "v0.1.3",
+                    "tag": "v0.1.3",
                     "sdk": "v3.4.0"
                 }
             ]
