@@ -540,6 +540,12 @@
           "name": "Matter v1.0.0",
           "date": "2026-08-27T16:48:00Z",
           "sdk": "v3.4.0"
+        },
+        {
+          "tag": "v1.0.99-preview-thread-hdr",
+          "name": "Matter v1.0.99 Preview Thread HDR",
+          "date": "2026-09-18T07:33:00Z",
+          "sdk": "v3.4.0"
         }
       ],
       "defaultBranch": "v1.0.0"
