@@ -20,6 +20,12 @@
             "apps": "samples/zephyr/*",
             "releases": [
                 {
+                    "date": "2026-09-18T20:03:37Z",
+                    "name": "Hubble Device SDK v3.1.0",
+                    "sdk": "v3.4.0",
+                    "tag": "v3.1.0"
+                },
+                {
                     "date": "2026-08-07T04:50:26Z",
                     "name": "Hubble Device SDK v3.0.0",
                     "sdk": "v3.4.0",
