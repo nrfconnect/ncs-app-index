@@ -549,6 +549,27 @@
         }
       ],
       "defaultBranch": "v1.0.0"
+    },
+    {
+      "name": "ncs-hid",
+      "repo": "https://github.com/nrfconnect/ncs-hid",
+      "title": "HID Add-on",
+      "description": "The HID Add-on for the nRF Connect SDK provides a complete solution for developing Human Interface Devices on Nordic Semiconductor SoCs.",
+      "kind": "project",
+      "tags": ["bluetooth", "ble", "dfu"],
+      "apps": "applications/*",
+      "avatar": "https://avatars.githubusercontent.com/u/40860733?s=200&v=4",
+      "license": "LicenseRef-Nordic-5-Clause",
+      "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/addon-hid/latest/index.html",
+      "releases": [
+        {
+          "tag": "v1.0.0",
+          "name": "HID Add-on v1.0.0",
+          "date": "2026-10-06T15:11:00Z",
+          "sdk": "v3.4.1"
+        }
+      ],
+      "defaultBranch": "v1.0.0"
     }
   ]
 }
