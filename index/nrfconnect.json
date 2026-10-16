@@ -415,6 +415,12 @@
       "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/door_lock_and_access_control/latest/index.html",
       "releases": [
         {
+          "tag": "v1.2.1",
+          "name": "Door Lock and Access Control v1.2.1",
+          "date": "2026-10-16T00:00:00Z",
+          "sdk": "v3.4.1"
+        },
+        {
           "tag": "v1.2.0",
           "name": "Door Lock and Access Control v1.2.0",
           "date": "2026-09-10T00:00:00Z",
@@ -445,7 +451,7 @@
           "sdk": "v3.2.0"
         }
       ],
-      "defaultBranch": "v1.2.0"
+      "defaultBranch": "v1.2.1"
     },
     {
       "name": "quickstart-bluetooth",
