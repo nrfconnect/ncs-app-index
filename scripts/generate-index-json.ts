@@ -16,28 +16,12 @@ import type {
     Organization,
     Application,
 } from '../site/src/schema';
-import { ParsedOrgFile, readOrgIndexFiles } from './orgFiles';
+import { ParsedOrgFile, readOrgIndexFiles, resolveDefaultBranch } from './orgFiles';
+import { githubReleaseRepoForAppName } from './githubReleaseRepos';
+import { createOctokitGithubClient, fetchGithubReleasesWithSdk } from './githubReleases';
 
 const nordicOrgs: string[] = ['nrfconnect', 'nordic', 'nordicplayground', 'hello-nrfcloud'];
 const partnerOrgs: string[] = ['golioth', 'blecon'];
-
-const githubReleaseRepos: Record<string, { owner: string; repo: string; label: string }> = {
-    'asset-tracker-template': {
-        owner: 'nrfconnect',
-        repo: 'Asset-Tracker-Template',
-        label: 'Asset Tracker Template',
-    },
-    'ncs-serial-modem-host-applications': {
-        owner: 'nrfconnect',
-        repo: 'ncs-serial-modem-host-applications',
-        label: 'Serial Modem Host Applications',
-    },
-    'quickstart-bluetooth': {
-        owner: 'nrfconnect',
-        repo: 'quickstart-bluetooth',
-        label: 'nRF Cloud Bluetooth Quick Start',
-    },
-};
 
 function notUndefined<T>(value: T | undefined): value is T {
     return value !== undefined;
@@ -108,64 +92,25 @@ async function fetchOrgData({
     }
 }
 
-async function fetchGithubReleasesWithSdk(
-    owner: string,
-    repo: string,
-    label: string,
-    app: OrgIndex['apps'][number],
-): Promise<void> {
-    try {
-        const { Octokit } = await import('@octokit/rest');
-        const octokit = new Octokit();
-        const releasesResp = await octokit.repos.listReleases({
-            owner,
-            repo,
-            per_page: 5,
-        });
-
-        const releasesWithSdk = await Promise.all(
-            releasesResp.data.map(async (rel) => {
-                let sdkVersion = rel.tag_name;
-
-                try {
-                    const westYmlResp = await octokit.repos.getContent({
-                        owner,
-                        repo,
-                        path: 'west.yml',
-                        ref: rel.tag_name,
-                    });
-
-                    if ('content' in westYmlResp.data) {
-                        const westYmlContent = Buffer.from(westYmlResp.data.content, 'base64').toString('utf-8');
-                        const revisionMatch = westYmlContent.match(/revision:\s*(.+)/);
-
-                        if (revisionMatch?.[1]) {
-                            const revision = revisionMatch[1].trim();
-
-                            if (revision.startsWith('tags/')) {
-                                sdkVersion = revision.replace('tags/', '');
-                            } else {
-                                sdkVersion = revision;
-                            }
-                        }
-                    }
-                } catch (err) {
-                    console.warn(`Failed to fetch west.yml for ${rel.tag_name}:`, err instanceof Error ? err.message : err);
-                }
-
-                return {
-                    tag: rel.tag_name,
-                    name: rel.name || rel.tag_name,
-                    date: rel.published_at || rel.created_at || '',
-                    sdk: sdkVersion,
-                };
-            }),
-        );
-
-        app.releases = releasesWithSdk;
-    } catch (err) {
-        console.error(`Failed to fetch ${label} releases from GitHub:`, err);
+async function fetchGithubReleasesForNrfconnectApp(app: OrgIndex['apps'][number]): Promise<void> {
+    const repoConfig = githubReleaseRepoForAppName(app.name);
+    if (!repoConfig) {
+        return;
     }
+
+    const { Octokit } = await import('@octokit/rest');
+    const token = process.env.GITHUB_TOKEN;
+    const octokit = new Octokit(token ? { auth: token } : {});
+    const client = createOctokitGithubClient(octokit);
+
+    await fetchGithubReleasesWithSdk(
+        client,
+        repoConfig.owner,
+        repoConfig.repo,
+        repoConfig.label,
+        app,
+        repoConfig.minReleaseTag,
+    );
 }
 
 async function fetchRepoData(
@@ -174,17 +119,7 @@ async function fetchRepoData(
 ): Promise<Application> {
     try {
         if (orgId === 'nrfconnect') {
-            for (const [key, repoConfig] of Object.entries(githubReleaseRepos)) {
-                if (app.name === key) {
-                    await fetchGithubReleasesWithSdk(
-                        repoConfig.owner,
-                        repoConfig.repo,
-                        repoConfig.label,
-                        app,
-                    );
-                    break;
-                }
-            }
+            await fetchGithubReleasesForNrfconnectApp(app);
         }
         
         try {
@@ -209,7 +144,7 @@ async function fetchRepoData(
             description: app.description,
             name: app.name,
             title: app.title,
-            defaultBranch: app.defaultBranch ?? app.releases[0]?.tag,
+            defaultBranch: resolveDefaultBranch(app.defaultBranch, app.releases),
             manifest: app.manifest,
             kind: app.kind,
             license: app.license ?? 'Other License',

@@ -9,7 +9,8 @@
         "validate-index": "tsx scripts/validate-index.ts",
         "check-types": "tsc --noEmit",
         "postinstall": "npm run generate-schemas",
-        "validate-output-index": "tsx scripts/validate-output-index.ts"
+        "validate-output-index": "tsx scripts/validate-output-index.ts",
+        "test": "tsx --test tests/unit/*.test.ts"
     },
     "repository": {
         "type": "git",
