@@ -548,19 +548,12 @@
       "docsUrl": "https://nrfconnectdocs.nordicsemi.com/addons/ncs-matter/latest/index.html",
       "releases": [
         {
-          "tag": "v1.0.0",
-          "name": "Matter v1.0.0",
-          "date": "2026-08-27T16:48:00Z",
-          "sdk": "v3.4.0"
-        },
-        {
-          "tag": "v1.0.99-preview-thread-hdr",
-          "name": "Matter v1.0.99 Preview Thread HDR",
-          "date": "2026-09-18T07:33:00Z",
-          "sdk": "v3.4.0"
+          "tag": "placeholder",
+          "name": "Releases are automatically populated by generate-index-json script",
+          "date": "1970-01-01T00:00:00Z",
+          "sdk": "placeholder"
         }
-      ],
-      "defaultBranch": "v1.0.0"
+      ]
     },
     {
       "name": "ncs-hid",
