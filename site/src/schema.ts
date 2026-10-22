@@ -131,7 +131,8 @@ export const appMetadataSchema = {
         },
         defaultBranch: {
             type: 'string',
-            description: 'The default git branch that the repository is checked out. Inferred from the repo if missing.'
+            description:
+                'Git tag or branch checked out by default in the add-on index (VS Code quick start and release dropdown). Optional: if omitted, generate-index-json picks the newest release whose name or tag does not contain "preview" (case-insensitive). Set this explicitly to override that inference.',
         },
         docsUrl: {
             type: 'string',

@@ -4,6 +4,7 @@
  */
 
 import { NormalisedApp } from '../schema';
+import { releaseTagsForDropdown } from '../releaseSelectOptions';
 import Select, {components, ControlProps, CSSObjectWithLabel, DropdownIndicatorProps, MenuProps } from 'react-select';
 import { GitBranchIcon } from '@primer/octicons-react';
 import { useState } from 'react';
@@ -32,8 +33,7 @@ const HiddenComponent = () => null;
 
 function ReleasesDropDownList({ app, onReleaseChosen }: Props): JSX.Element {
 
-  const releases: ReleaseOption[] = [{ label: app.defaultBranch, value: app.defaultBranch },
-          ...app.releases.map((release) => ({ label: release.tag, value: release.tag ?? '' }))];
+  const releases: ReleaseOption[] = releaseTagsForDropdown(app.releases, app.defaultBranch);
   const selectStyles = {
     control: (base: CSSObjectWithLabel, state: ControlProps<ReleaseOption>) => ({
       ...base,
