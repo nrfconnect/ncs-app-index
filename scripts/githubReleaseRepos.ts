@@ -34,6 +34,11 @@ export const githubReleaseRepos: Record<string, GithubReleaseRepoConfig> = {
         label: 'nRF Cloud Bluetooth Quick Start',
         minReleaseTag: 'v1.1.0',
     },
+    'ncs-matter': {
+        owner: 'nrfconnect',
+        repo: 'ncs-matter',
+        label: 'Matter',
+    },
 };
 
 export function githubReleaseRepoForAppName(appName: string): GithubReleaseRepoConfig | undefined {
