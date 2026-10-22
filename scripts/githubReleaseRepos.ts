@@ -39,20 +39,25 @@ export const githubReleaseRepos: Record<string, GithubReleaseRepoConfig> = {
         repo: 'ncs-matter',
         label: 'Matter',
     },
+    'ncs-knx-iot': {
+        owner: 'nrfconnect',
+        repo: 'ncs-knx-iot',
+        label: 'KNX IoT',
+    },
     'ncs-zigbee': {
         owner: 'nrfconnect',
         repo: 'ncs-zigbee',
         label: 'Zigbee R23',
     },
-    'ncs-matter-zigbee': {
-        owner: 'nrfconnect',
-        repo: 'ncs-matter-zigbee',
-        label: 'Matter and Zigbee',
-    },
     'ncs-matter-edge-ai': {
         owner: 'nrfconnect',
         repo: 'ncs-matter-edge-ai',
         label: 'Matter Edge AI',
+    },
+    'ncs-matter-zigbee': {
+        owner: 'nrfconnect',
+        repo: 'ncs-matter-zigbee',
+        label: 'Matter and Zigbee',
     },
 };
 
