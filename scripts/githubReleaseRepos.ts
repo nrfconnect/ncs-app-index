@@ -49,6 +49,11 @@ export const githubReleaseRepos: Record<string, GithubReleaseRepoConfig> = {
         repo: 'ncs-matter-zigbee',
         label: 'Matter and Zigbee',
     },
+    'ncs-matter-edge-ai': {
+        owner: 'nrfconnect',
+        repo: 'ncs-matter-edge-ai',
+        label: 'Matter Edge AI',
+    },
 };
 
 export function githubReleaseRepoForAppName(appName: string): GithubReleaseRepoConfig | undefined {
