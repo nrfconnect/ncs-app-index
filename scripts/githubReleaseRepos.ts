@@ -12,6 +12,8 @@ export type GithubReleaseRepoConfig = {
      * and releases of that age already listed in the org index file are kept unchanged.
      */
     minReleaseTag?: string;
+    /** When set, only GitHub releases whose tag matches are loaded; other tags are ignored. */
+    tagPattern?: RegExp;
 };
 
 /** nrfconnect add-ons whose GitHub releases are auto-populated by generate-index-json. */
@@ -53,6 +55,13 @@ export const githubReleaseRepos: Record<string, GithubReleaseRepoConfig> = {
         owner: 'nrfconnect',
         repo: 'ncs-matter-edge-ai',
         label: 'Matter Edge AI',
+    },
+    'sdk-sidewalk': {
+        owner: 'nrfconnect',
+        repo: 'sdk-sidewalk',
+        label: 'Amazon Sidewalk',
+        minReleaseTag: 'v1.0.0',
+        tagPattern: /^v\d+\.\d+\.\d+-add-on$/,
     },
     'ncs-matter-zigbee': {
         owner: 'nrfconnect',
