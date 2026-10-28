@@ -59,6 +59,12 @@ export const githubReleaseRepos: Record<string, GithubReleaseRepoConfig> = {
         repo: 'ncs-matter-zigbee',
         label: 'Matter and Zigbee',
     },
+    'ncs-door-lock-and-access-control': {
+        owner: 'nrfconnect',
+        repo: 'ncs-door-lock-and-access-control',
+        label: 'Door Lock and Access Control',
+        minReleaseTag: 'v1.0.0',
+    },
 };
 
 export function githubReleaseRepoForAppName(appName: string): GithubReleaseRepoConfig | undefined {
