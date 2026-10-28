@@ -110,6 +110,7 @@ async function fetchGithubReleasesForNrfconnectApp(app: OrgIndex['apps'][number]
         repoConfig.label,
         app,
         repoConfig.minReleaseTag,
+        repoConfig.tagPattern,
     );
 }
 

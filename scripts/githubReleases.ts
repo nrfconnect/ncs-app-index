@@ -129,9 +129,13 @@ export async function fetchGithubReleasesWithSdk(
     label: string,
     app: OrgIndex['apps'][number],
     minReleaseTag?: string,
+    tagPattern?: RegExp,
 ): Promise<void> {
     try {
-        const releaseList = await client.listReleases(owner, repo, GITHUB_RELEASES_PER_PAGE);
+        const allReleases = await client.listReleases(owner, repo, GITHUB_RELEASES_PER_PAGE);
+        const releaseList = tagPattern
+            ? allReleases.filter((rel) => tagPattern.test(rel.tag_name))
+            : allReleases;
         const fetched = await populateGithubReleasesForApp(
             client,
             owner,
