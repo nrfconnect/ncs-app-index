@@ -143,4 +143,29 @@ describe('fetchGithubReleasesWithSdk with minReleaseTag', () => {
 
         assert.deepEqual(app.releases.map((r) => r.tag), ['v1.2.0', 'v1.0.1']);
     });
+
+    it('ignores tags that do not match the configured tag pattern', async () => {
+        const { client, westRequests } = setup([
+            'v1.3.0-add-on',
+            'v1.3.0-add-on-rc1',
+            'v1.0.0-add-on',
+            'v0.1.0-add-on',
+            'v2.9.0',
+        ]);
+        const app = newApp([PLACEHOLDER]);
+        const { minReleaseTag, tagPattern } = githubReleaseRepos['sdk-sidewalk']!;
+
+        await fetchGithubReleasesWithSdk(
+            client,
+            'nrfconnect',
+            'sdk-sidewalk',
+            'Sidewalk',
+            app,
+            minReleaseTag,
+            tagPattern,
+        );
+
+        assert.deepEqual(app.releases.map((r) => r.tag), ['v1.3.0-add-on', 'v1.0.0-add-on']);
+        assert.deepEqual([...westRequests].sort(), ['v1.0.0-add-on', 'v1.3.0-add-on']);
+    });
 });
