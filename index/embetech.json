@@ -1,0 +1,37 @@
+{
+    "name": "Embetech",
+    "description": "Embetech develops embeNET, a wireless mesh networking stack for embedded devices.",
+    "avatar": "https://avatars.githubusercontent.com/u/147065431?v=4",
+    "contact": {
+        "devzoneUsername": "lukasz-krzak",
+        "email": "contact@embe.tech"
+    },
+    "apps": [
+        {
+            "name": "embenet-demo-nrf5x-zephyr",
+            "repo": "https://github.com/embetech-official/embenet-demo-nrf5x-zephyr",
+            "docsUrl": "https://github.com/embetech-official/embenet-demo-nrf5x-zephyr/blob/main/README.md",
+            "testStatus": {
+                "badge": "https://github.com/embetech-official/embenet-demo-nrf5x-zephyr/actions/workflows/build.yml/badge.svg"
+            },
+            "title": "embeNET for nRF5x",
+            "description": "Zephyr module integrating the embeNET wireless mesh networking stack on nRF52, nRF53 and nRF54 devices. Supports both the Node and Border Router roles and includes samples for each.",
+            "kind": "sample",
+            "license": "Embetech Evaluation License",
+            "avatar": "https://avatars.githubusercontent.com/u/147065431?v=4",
+            "apps": "samples/*",
+            "releases": [
+                {
+                    "date": "2026-11-20T12:20:57Z",
+                    "name": "embeNET for nRF5x v2.0.0",
+                    "tag": "v2.0.0",
+                    "sdk": "v3.4.0"
+                }
+            ],
+            "tags": [
+                "bluetooth",
+                "connectivity"
+            ]
+        }
+    ]
+}
